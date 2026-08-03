@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>แบบ รต.1 ค่าใช้จ่ายด้านช่าง - ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* =================================================================
+   1. สไตล์ดั้งเดิม (Header, Footer, สีหลัก)
+================================================================= */
+:root{
+  --navy:#0D2644;--navy2:#163557;
+  --gold:#C8961E;--gold-lt:#E8CA7A;--gold-bg:#FBF6E9;
+  --cream:#F5F2EB;--white:#FFFFFF;
+  --ink:#1E2430;--muted:#5A6374;--line:#DDD8CC;
+  --blue-tint:#EEF4FA;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans Thai',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:14px;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:'Noto Serif Thai',serif;}
+
+/* TOPBAR */
+.topbar{background:var(--navy);color:#b0bfcf;font-size:.75rem;}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:5px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
+.topbar-links{display:flex;gap:14px;}
+.topbar-links a:hover{color:var(--gold-lt);}
+.topbar-links a::before{content:"· ";opacity:.4;}
+.topbar-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.topbar-tools { display: flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.15); padding: 3px 8px; border-radius: 4px; }
+.font-btn { background: none; border: 1px solid rgba(255,255,255,0.3); color: #fff; border-radius: 3px; padding: 2px 7px; font-size: .75rem; cursor: pointer; transition: 0.2s; font-family: inherit;}
+.font-btn:hover { background: var(--gold); border-color: var(--gold); }
+
+/* HEADER & VISION BAR */
+.site-header { width: 100%; background: linear-gradient(180deg, rgba(13, 38, 68, 0.4) 0%, rgba(13, 38, 68, 0.9) 100%), url('orange2.jpg') center/cover no-repeat; color: #fff; border-bottom: 3px solid var(--gold); aspect-ratio: 21 / 9; min-height: 250px; max-height: 400px; display: flex; flex-direction: column; justify-content: space-between; }
+.header-inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: flex-start; gap: 16px; }
+.h-seal { width: 75px; height: 75px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold-lt); background: #fff;}
+.h-seal img { width: 100%; height: 100%; object-fit: cover; }
+.h-text .eyebrow{font-size:.7rem;color:var(--gold-lt);font-weight:600;letter-spacing:.06em;}
+.h-text h1{font-size:1.4rem;font-weight:700;line-height:1.3;margin-top:2px;}
+.h-text .en{font-size:.78rem;color:#bfcedd;margin-top:2px;}
+.h-date { margin-left: auto; text-align: right; flex: none; }
+.h-date span { font-size: .95rem; color: #ffffff; }
+.h-date strong { display: block; font-size: 1.25rem; color: #fff; font-family: 'Noto Serif Thai', serif; margin-top: 2px; }
+.vision-bar { background: rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.15); width: 100%; margin-top: auto; display: flex; align-items: center; justify-content: center; min-height: 44px; }
+.vision-bar p { max-width: 1200px; margin: 0; padding: 8px 20px; font-size: .85rem; color: #fff; font-style: italic; text-align: center; line-height: 1.4; }
+
+/* TICKER */
+.ticker-wrap{background:var(--gold);overflow:hidden;white-space:nowrap;display:flex;border-bottom:2px solid #a87c18;}
+.ticker-label{background:var(--navy);color:var(--gold-lt);font-weight:700;font-size:.72rem;padding:7px 14px;flex:none;letter-spacing:.05em;}
+.ticker-track{overflow:hidden;flex:1;}
+.ticker-content{display:inline-block;padding:7px 0;font-size:.78rem;font-weight:600;color:var(--navy);animation:ticker 42s linear infinite;}
+@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* =================================================================
+   สไตล์เมนูหลัก (โค้ดเดิม 100%)
+================================================================= */
+nav.main-nav{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(13,38,68,.08);}
+.nav-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, max-content); justify-content: center; gap: 5px 30px; padding: 10px 20px; }
+.nav-item{position:relative;}
+.nav-btn { background: none; border: none; cursor: pointer; font-family: 'Noto Sans Thai', sans-serif; font-size: 0.92rem; font-weight: 600; color: var(--navy); padding: 13px 16px; display: flex; align-items: center; gap: 6px; white-space: nowrap; border-bottom: 3px solid transparent; transition: color 0.15s, border-color 0.15s; }
+.nav-btn:after{content:"▾";font-size:.6rem;opacity:.5;transition:transform 0.2s;}
+.nav-btn.no-arrow:after{content:"";display:none;}
+.nav-item.active .nav-btn { color:var(--gold); border-bottom-color:var(--gold); }
+.nav-item.active .nav-btn:after { transform: rotate(180deg); }
+.mnew { display: inline-block; color: #2e7d32; background-color: #e8f5e9; border: 1px solid #c8e6c9; font-size: 0.65rem; font-weight: bold; padding: 2px 6px; border-radius: 12px; margin-left: 6px; vertical-align: middle; }
+.nav-item.has-dropdown { position: relative; }
+.dropdown-box { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; box-shadow: 0 8px 24px rgba(13,38,68,0.12); min-width: 280px; z-index: 999; border-radius: 0 0 8px 8px; overflow: hidden; flex-direction: column; border: 1px solid #eef2f6; border-top: 3px solid var(--gold); }
+.nav-item.active .dropdown-box { display: flex; }
+.nav-wrap .nav-item:nth-child(3) .dropdown-box, .nav-wrap .nav-item:nth-child(4) .dropdown-box, .nav-wrap .nav-item:nth-child(7) .dropdown-box, .nav-wrap .nav-item:nth-child(8) .dropdown-box { left: auto; right: 0; }
+.dropdown-group { border-bottom: 1px solid #f1f5f9; }
+.dropdown-group:last-child { border-bottom: none; }
+.dropdown-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; font-size: 0.85rem; font-weight: 700; color: var(--navy); background: #f8fafc; text-decoration: none; cursor: pointer; transition: background 0.2s; }
+.dropdown-header:hover { background: #edf2f7; }
+.dropdown-header::after { content: "▾"; font-size: 0.7rem; opacity: 0.6; transition: transform 0.2s; }
+.dropdown-group.active .dropdown-header { background: #e0e7ff; color: #1e3a8a; border-left: 3px solid var(--gold); }
+.dropdown-group.active .dropdown-header::after { transform: rotate(180deg); }
+.dropdown-sub { display: none; flex-direction: column; background: #ffffff; padding: 4px 0; }
+.dropdown-group.active .dropdown-sub { display: flex; }
+.dropdown-sub a { display: block; padding: 10px 20px 10px 30px; color: #334155; text-decoration: none; font-size: 0.85rem; transition: all 0.2s ease; line-height: 1.5; }
+.dropdown-sub a:hover { color: var(--gold); background: #f8fbff; padding-left: 35px; }
+
+/* =================================================================
+   2. สไตล์หน้าเนื้อหา "รายละเอียดแบบรายงานตามไตรมาส"
+================================================================= */
+.page-container { max-width: 1000px; margin: 0 auto; padding: 40px 20px 80px; }
+.page-heading { text-align: center; margin-bottom: 50px; }
+
+/* ปุ่มย้อนกลับ */
+.back-btn-container { text-align: left; margin-bottom: 20px; }
+.back-btn { display: inline-flex; align-items: center; color: var(--muted); font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+.back-btn:hover { color: var(--navy); }
+.back-btn::before { content: "←"; margin-right: 8px; font-size: 1.2rem; }
+.page-heading h2 { font-size: 1.85rem; color: var(--navy); display: inline-block; padding: 12px 40px; background: var(--white); border-radius: 50px; box-shadow: 0 4px 15px rgba(13,38,68,0.06); border-bottom: 3px solid var(--gold); font-family: 'Noto Serif Thai', serif; }
+.page-heading p { color: var(--muted); font-size: 1.05rem; line-height: 1.5; margin: 0; }
+
+/* การ์ดประจำปีงบประมาณ */
+.year-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(13,38,68,0.04);
+  border: 1px solid #eef2f6;
+  padding: 35px 40px;
+  margin-bottom: 30px;
+}
+.year-title {
+  font-family: 'Noto Serif Thai', serif;
+  color: #b71c1c; 
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 2px dashed #f1f5f9;
+  padding-bottom: 15px;
+}
+
+/* เลย์เอาต์แบบ Grid 4 ช่องสำหรับ 4 ไตรมาส */
+.quarter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+/* กล่องย่อยแต่ละไตรมาส */
+.quarter-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px 15px;
+  text-align: center;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
+}
+.quarter-box:hover {
+  background: var(--blue-tint);
+  border-color: var(--navy);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(13,38,68,0.08);
+}
+.q-title {
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+.q-month {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+.q-btn {
+  display: inline-block;
+  background: var(--white);
+  color: #d32f2f;
+  border: 1px solid #ffcdd2;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+}
+.q-btn:hover {
+  background: #ffebee;
+  border-color: #ef5350;
+}
+.q-btn.disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =================================================================
+   ส่วนที่เพิ่มใหม่: ระบบ Dropdown ไฟล์ย่อย
+================================================================= */
+.download-dropdown {
+  position: relative;
+  width: 100%;
+}
+.q-btn.has-dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.q-btn.has-dropdown::after {
+  content: "▾";
+  font-size: 0.7rem;
+  margin-left: 6px;
+  transition: transform 0.2s;
+}
+.q-btn.has-dropdown.active {
+  background: #ffebee;
+  border-color: #ef5350;
+}
+.q-btn.has-dropdown.active::after {
+  transform: rotate(180deg);
+}
+
+/* กล่องรายชื่อไฟล์ที่จะโผล่ลงมา */
+.file-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #ef5350;
+  border-radius: 6px;
+  margin-top: 4px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  z-index: 10;
+  flex-direction: column;
+  overflow: hidden;
+}
+.file-list.active {
+  display: flex;
+  animation: slideDown 0.2s ease forwards;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.file-link {
+  padding: 10px 12px;
+  color: #d32f2f;
+  text-decoration: none;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #ffebee;
+  transition: background 0.2s;
+  text-align: left;
+}
+.file-link:last-child {
+  border-bottom: none;
+}
+.file-link:hover {
+  background: #ffebee;
+  color: #b71c1c;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) { .nav-wrap { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
+@media (max-width: 768px) {
+  .page-heading h2 { font-size: 1.5rem; padding: 10px 30px; }
+  .year-card { padding: 25px 20px; }
+  .quarter-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
+  .quarter-box { min-height: 140px; }
+}
+@media (max-width: 500px) { 
+  .nav-wrap { grid-template-columns: 1fr; } 
+  .quarter-grid { grid-template-columns: 1fr; } 
+}
+
+/* FOOTER */
+.site-footer { background-color: #0d1e36; color: #aeb9c7; font-family: 'Noto Sans Thai', sans-serif; margin-top: 40px; }
+.footer-container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 30px; }
+.footer-title { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 20px; line-height: 1.5; font-family: 'Noto Serif Thai', serif; }
+.footer-contact p { font-size: 0.85rem; margin-bottom: 12px; line-height: 1.6; }
+.footer-links { list-style: none; padding: 0; margin: 0; }
+.footer-links li { margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 10px; }
+.footer-links li:last-child { border-bottom: none; }
+.footer-links a { color: #aeb9c7; text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease; }
+.footer-links a:hover { color: #ffffff; text-decoration: underline; }
+.footer-links.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 15px; }
+.footer-bottom { background-color: #081426; text-align: center; padding: 20px; font-size: 0.85rem; color: #7b8b9e; border-top: 1px solid rgba(255,255,255,0.05); }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <span>กระทรวงมหาดไทย | สำนักงานปลัดกระทรวงมหาดไทย</span>
+    <div class="topbar-right">
+      <div class="topbar-tools">
+        <button class="font-btn" onclick="changeFontSize(-1)" title="ลดขนาดตัวอักษร">A-</button>
+        <button class="font-btn" onclick="changeFontSize(0)" title="ขนาดตัวอักษรปกติ">A</button>
+        <button class="font-btn" onclick="changeFontSize(1)" title="เพิ่มขนาดตัวอักษร">A+</button>
+      </div>
+      <div class="topbar-links">
+        <a href="#">ศสส.สป.</a><a href="#">Intranet</a><a href="#">E-Office</a><a href="#">Mail moi.go.th</a><a href="#">ติดต่อเรา</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="h-seal"><img src="singh.webp" alt="โลโก้กระทรวงมหาดไทย"></div>
+    <div class="h-text">
+      <div class="eyebrow">กระทรวงมหาดไทย · สำนักงานปลัดกระทรวงมหาดไทย</div>
+      <h1>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</h1>
+      <div class="en">Information and Communication Technology Center Region 4 (Nakhon Ratchasima)</div>
+    </div>
+    <div class="h-date" id="realtime-date"></div>
+  </div>
+  <div class="vision-bar">
+    <p>"มุ่งสู่การเป็นองค์กรอัจฉริยะด้วยระบบบริหารจัดการเทคโนโลยีสารสนเทศและการสื่อสารที่เป็นสากลและธรรมาภิบาลเพื่อบูรณาการการบริหารจัดการของกระทรวงมหาดไทยและจังหวัด"</p>
+  </div>
+</header>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <span class="ticker-label">ข่าวด่วน</span>
+  <div class="ticker-track">
+    <span class="ticker-content">จังหวัดนครราชสีมา "เมืองหญิงกล้า ผ้าไหมดี หมี่โคราช ปราสาทหิน ดินด่านเกวียน" &nbsp;•&nbsp; Download Jabber for PC [ใหม่] &nbsp;•&nbsp; ESET Endpoint Antivirus V.8 [ใหม่] &nbsp;•&nbsp; แผนปฏิบัติการดิจิทัลศูนย์ฯ สป. ปีงบประมาณ 2566 [ใหม่] &nbsp;•&nbsp; ระเบียบการเข้าอยู่บ้านพักของราชการ [ใหม่] &nbsp;•&nbsp; คำสั่ง ศสข.4 (นม) เรื่องการแบ่งงานและมอบหมายหน้าที่ [ใหม่] &nbsp;•&nbsp;</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="main-nav">
+  <div class="nav-wrap">
+    
+    <div class="nav-item">
+      <a href="ict4.html" class="nav-btn no-arrow"> หน้าหลัก</a>
+    </div>
+
+    <div class="nav-item has-dropdown">
+      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">เกี่ยวกับหน่วยงาน</a>
+      <div class="dropdown-box">
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ข้อมูลทั่วไป</a>
+          <div class="dropdown-sub">
+            <a href="history.html">> ประวัติความเป็นมา และสถานที่ตั้ง</a>
+            <a href="duties.html">> อำนาจและหน้าที่ของ ศสข.</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">โครงสร้างและบุคลากร</a>
+          <div class="dropdown-sub">
+            <a href="executives.html">> ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
+            <a href="staff.html">> แนะนำบุคลากรปัจจุบัน</a>
+            <a href="#">> การฝึกอบรม/ดูงานของบุคลากร</a>
+            <a href="contacts.html">> หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item has-dropdown">
+      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">ข้อมูลและรายงาน</a>
+      <div class="dropdown-box">
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ข้อมูลทั่วไป</a>
+         <div class="dropdown-sub">
+             <a href="equipment.html">> รายการตรวจสอบครุภัณฑ์</a>
+            <a href="assetRegister.html">> ทะเบียนคุมทรัพย์สิน</a>
+            <a href="guard_duty1.html">> เวรรักษาการณ์สถานที่ราชการและบริการด้านสื่อสาร</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">สรุปผลการดำเนินงาน</a>
+          <div class="dropdown-sub">
+            <a href="summary.html">> การจัดทำรายงานประจำปี</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">E – Reports</a>
+          <div class="dropdown-sub">
+            <a href="e_reports_main.html">> การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
+            <a href="#">> การประชุมผ่านระบบวีดิทัศน์ทางไกล (VCS)</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">แผนปฏิบัติการ ศสส.สป.</a>
+          <div class="dropdown-sub">
+            <a href="#">> แผนปฏิบัติการดิจิทัลศูนย์ฯ <span class="mnew">ใหม่</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item has-dropdown">
+      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">ข้อมูลด้านช่าง</a>
+      <div class="dropdown-box">
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">บริการเครือข่าย</a>
+          <div class="dropdown-sub">
+            <a href="#">> วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
+            <a href="#">> ผู้ขอใช้บริการเครือข่าย Online</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ข้อมูลโทรศัพท์</a>
+          <div class="dropdown-sub">
+            <a href="#">> โทรศัพท์ มท.ในโคราชติดตั้งที่ใดบ้าง?</a>
+            <a href="#">> จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a>
+            <a href="#">> Access Code เครือข่ายโทรศัพท์ มท.</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item has-dropdown">
+      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">คำสั่ง / ระเบียบ</a>
+      <div class="dropdown-box">
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">คำสั่ง</a>
+          <div class="dropdown-sub">
+            <a href="#">> คำสั่งแบ่งงานและมอบหมายหน้าที่ <span class="mnew">ใหม่</span></a>
+            <a href="#">> คำสั่งแต่งตั้งคณะกรรมการบ้านพัก <span class="mnew">ใหม่</span></a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">แบบฟอร์ม</a>
+          <div class="dropdown-sub">
+            <a href="front-office.html">> Front Office</a>
+            <a href="back-office.html">> Back Front</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ระเบียบ / ข้อบังคับ</a>
+          <div class="dropdown-sub">
+            <a href="#">> ระเบียบการเข้าอยู่บ้านพักของราชการ <span class="mnew">ใหม่</span></a>
+            <a href="#">> ข้อบังคับเงินออมสวัสดิการของ ศสข.4 (นม)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item has-dropdown">
+      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">คู่มือ / ดาวน์โหลด</a>
+      <div class="dropdown-box">
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">คู่มือปฏิบัติงาน</a>
+          <div class="dropdown-sub">
+            <a href="#">> MOI Network Management <span class="mnew">ใหม่</span></a>
+            <a href="#">> ระบบรักษาความปลอดภัยสารสนเทศ 2565 <span class="mnew">ใหม่</span></a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">Jabber / Webex</a>
+          <div class="dropdown-sub">
+            <a href="#">> คู่มือการใช้งาน cisco jabber</a>
+            <a href="#">> หมายเลขห้องประชุมแต่ละจังหวัด</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ดาวน์โหลด</a>
+          <div class="dropdown-sub">
+            <a href="#" style="color:#c62828; font-weight:bold;">> Jabber for PC <span class="mnew">ใหม่</span></a>
+            <a href="#" style="color:#c62828; font-weight:bold;">> ESET Endpoint Antivirus V.8 <span class="mnew">ใหม่</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item has-dropdown">
+      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">อบรม / E-Learning</a>
+      <div class="dropdown-box">
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">Online Learning</a>
+          <div class="dropdown-sub">
+            <a href="#">> TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ]</a>
+            <a href="#">> OCSC Learning Portal [สำนักงาน ก.พ.]</a>
+            <a href="#">> E-Learning กระทรวงมหาดไทย</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">สรรหามาฝาก</a>
+          <div class="dropdown-sub">
+            <a href="#">> E-Mail และหมายเลขโทรศัพท์ข้าราชการ <span class="mnew">ใหม่</span></a>
+            <a href="#">> โปรแกรม SCAN VIRUS trojan</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="nav-item has-dropdown">
+      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">ภารกิจ / Links</a>
+      <div class="dropdown-box">
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">สถิติและภารกิจ</a>
+          <div class="dropdown-sub">
+            <a href="#">> ตัวชี้วัดการให้บริการสื่อสารฯ</a>
+            <a href="#">> การพัฒนาบุคลากรของ ศสข.4 (นม)</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">เครือข่าย Intranet</a>
+          <div class="dropdown-sub">
+            <a href="#">> ศสส.สป.</a>
+            <a href="#">> ศสข.1 (อย) — ศสข.4 (นม)</a>
+            <a href="#">> กระทรวงมหาดไทย</a>
+          </div>
+        </div>
+        <div class="dropdown-group">
+          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">E-Office ศสข.4 (นม)</a>
+          <div class="dropdown-sub">
+            <a href="#">> สารบรรณอิเล็กทรอนิกส์ edocument</a>
+            <a href="#">> Mail moi.go.th</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</nav>
+
+<!-- CONTENT (เนื้อหาเพจ) -->
+<main class="page-container">
+  <div class="page-heading">
+    <h2>แบบรายงาน รต.1</h2>
+    <p style="margin-top: 15px; line-height: 1.6;">
+      <strong style="color: var(--navy); font-size: 1.15rem;">ค่าใช้จ่ายด้านช่าง</strong><br>
+      <span style="color: var(--muted); font-size: 1.05rem;">กรุณาเลือกปีงบประมาณและไตรมาสที่ต้องการดาวน์โหลด</span>
+    </p>
+  </div>
+
+  <div class="year-list">
+    
+    <!-- ปีงบประมาณ 2564 -->
+    <div class="year-card">
+      <h3 class="year-title">ปีงบประมาณ 2564</h3>
+      <div class="quarter-grid">
+        <!-- ไตรมาส 1 -->
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 1</div>
+          <div class="q-month">ต.ค. - ธ.ค. 63</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <!-- ไตรมาส 2 -->
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 2</div>
+          <div class="q-month">ม.ค. - มี.ค. 64</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <!-- ไตรมาส 3 -->
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 3</div>
+          <div class="q-month">เม.ย. - มิ.ย. 64</div>
+         <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <!-- ไตรมาส 4 -->
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 4</div>
+          <div class="q-month">ก.ค. - ก.ย. 64</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ปีงบประมาณ 2563 -->
+    <div class="year-card">
+      <h3 class="year-title">ปีงบประมาณ 2563</h3>
+      <div class="quarter-grid">
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 1</div>
+          <div class="q-month">ต.ค. - ธ.ค. 62</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 2</div>
+          <div class="q-month">ม.ค. - มี.ค. 63</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 3</div>
+          <div class="q-month">เม.ย. - มิ.ย. 63</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 4</div>
+          <div class="q-month">ก.ค. - ก.ย. 63</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ปีงบประมาณ 2562 -->
+    <div class="year-card">
+      <h3 class="year-title">ปีงบประมาณ 2562</h3>
+      <div class="quarter-grid">
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 1</div>
+          <div class="q-month">ต.ค. - ธ.ค. 61</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 2</div>
+          <div class="q-month">ม.ค. - มี.ค. 62</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 3</div>
+          <div class="q-month">เม.ย. - มิ.ย. 62</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+        <div class="quarter-box">
+          <div class="q-title">ไตรมาสที่ 4</div>
+          <div class="q-month">ก.ค. - ก.ย. 62</div>
+          <div class="download-dropdown">
+            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
+            <div class="file-list">
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
+              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- สามารถเพิ่ม ปีงบประมาณ 2561, 2560 ลงไปต่อได้เลยครับ -->
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-col footer-contact">
+      <h4 class="footer-title">ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4<br>(นครราชสีมา)</h4>
+      <p>ถ.กำแพงสงคราม ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา 30000</p>
+      <p>โทร. (มท) 36443 | (TOT) 0-4424-2995</p>
+      <p>โทรสาร (มท) 36466, 36455 | (TOT) 0-4424-2995 ต่อ 9</p>
+      <p>อีเมล: zonel4@moi.go.th</p>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">ระบบงานออนไลน์</h4>
+      <ul class="footer-links">
+        <li><a href="#">E-Office ศสข.4</a></li>
+        <li><a href="#">สารบรรณอิเล็กทรอนิกส์</a></li>
+        <li><a href="#">Mail moi.go.th</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">หน่วยงานเครือข่าย</h4>
+      <ul class="footer-links grid-2-col">
+        <li><a href="http://zone1.moi.go.th" target="_blank">ศสข.1 (อยุธยา)</a></li>
+        <li><a href="http://zone4.moi.go.th" target="_blank">ศสข.4 (นครราชสีมา)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-title">เกี่ยวกับเว็บไซต์</h4>
+      <ul class="footer-links">
+        <li><a href="#">นโยบายเว็บไซต์ (Website Policy)</a></li>
+        <li><a href="#">คำถามที่พบบ่อย (FAQ)</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2569 ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</p>
+  </div>
+</footer>
+
+<!-- JAVASCRIPT ควบคุมการทำงาน -->
+<script>
+  let currentZoom = 1;
+  function changeFontSize(step) {
+    if (step === 0) { currentZoom = 1; } 
+    else { currentZoom += (step * 0.1); }
+    if (currentZoom < 0.8) currentZoom = 0.8;
+    if (currentZoom > 1.4) currentZoom = 1.4;
+    document.documentElement.style.fontSize = (currentZoom * 100) + "%";
+  }
+
+  function updateClock() {
+    const now = new Date();
+    const thaiDays = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
+    const thaiMonths = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+    const day = thaiDays[now.getDay()];
+    const date = now.getDate();
+    const month = thaiMonths[now.getMonth()];
+    const year = now.getFullYear() + 543;
+    const time = now.toLocaleTimeString('th-TH');
+    
+    const dateContainer = document.getElementById('realtime-date');
+    if (dateContainer) {
+      dateContainer.innerHTML = '<span>วัน' + day + 'ที่ ' + date + ' ' + month + ' พ.ศ. ' + year + '</span>' + '<strong>' + time + '</strong>'; 
+    }
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  function toggleDropdown(e, btn) {
+    e.preventDefault(); 
+    let currentItem = btn.closest('.nav-item');
+    document.querySelectorAll('.nav-item').forEach(item => {
+      if (item !== currentItem) {
+        item.classList.remove('active');
+        item.querySelectorAll('.dropdown-group').forEach(group => group.classList.remove('active'));
+      }
+    });
+    currentItem.classList.toggle('active');
+  }
+
+  function toggleSub(e, header) {
+    e.preventDefault(); 
+    let currentGroup = header.closest('.dropdown-group');
+    let parentBox = header.closest('.dropdown-box');
+    parentBox.querySelectorAll('.dropdown-group').forEach(group => {
+      if (group !== currentGroup) {
+        group.classList.remove('active');
+      }
+    });
+    currentGroup.classList.toggle('active');
+  }
+
+  // ปิดเมนูหลักเมื่อคลิกที่อื่น
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.main-nav')) {
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+        item.querySelectorAll('.dropdown-group').forEach(group => group.classList.remove('active'));
+      });
+    }
+  });
+
+  // ===================================================================
+  // ฟังก์ชันสำหรับเปิดปิด Dropdown ไฟล์ดาวน์โหลด
+  // ===================================================================
+  function toggleFiles(e, btn) {
+    e.preventDefault();
+    
+    if(btn.classList.contains('disabled')) return;
+
+    let fileList = btn.nextElementSibling;
+    
+    if (fileList.classList.contains('active')) {
+      fileList.classList.remove('active');
+      btn.classList.remove('active');
+    } else {
+      document.querySelectorAll('.file-list').forEach(list => {
+        list.classList.remove('active');
+      });
+      document.querySelectorAll('.download-dropdown .q-btn').forEach(button => {
+        button.classList.remove('active');
+      });
+
+      fileList.classList.add('active');
+      btn.classList.add('active');
+    }
+  }
+
+  // ปิด Dropdown ไฟล์เมื่อคลิกพื้นที่อื่นบนจอ
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.download-dropdown')) {
+      document.querySelectorAll('.file-list').forEach(list => {
+        list.classList.remove('active');
+      });
+      document.querySelectorAll('.download-dropdown .q-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+    }
+  });
+</script>
+</body>
+</html>

@@ -705,6 +705,57 @@ section{position:relative;}
 @media(max-width: 640px) {
   .pr-grid-new { grid-template-columns: 1fr; }
 }
+/* ================= INTERACTIVE MINI MAP ================= */
+.story-map {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mini-platform {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1100 / 650; /* รักษาสัดส่วนความกว้าง/สูง ให้มาร์คเกอร์อยู่ตรงจุดเป๊ะๆ */
+  background-image: url('mapthai.png'); /* รูปภาพแผนที่ 3D ของคุณ */
+  background-size: cover; 
+  background-position: center;
+  filter: drop-shadow(0px 15px 25px rgba(10, 30, 51, 0.15)); /* ใส่เงาบางๆ ให้แผนที่ดูลอยขึ้นมา */
+}
+.mini-marker {
+  position: absolute; 
+  transform: translate(-50%, -50%); 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: default;
+  z-index: 10;
+}
+.mini-marker:hover { 
+  transform: translate(-50%, -65%) scale(1.15); 
+  z-index: 20;
+}
+.mini-marker img { 
+  width: 45px; /* ย่อขนาดตราสัญลักษณ์ให้พอดีกับกรอบเล็ก */
+  height: auto; 
+  filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.3)); 
+  transition: filter 0.3s; 
+}
+.mini-marker:hover img { 
+  filter: drop-shadow(0px 8px 12px rgba(217, 184, 118, 0.8)); /* ตราจะเรืองแสงสีทองตอนชี้เมาส์ */
+}
+.mini-marker-label {
+  position: absolute; 
+  top: 100%; 
+  background: rgba(10, 30, 51, 0.85); 
+  color: #fff; 
+  padding: 2px 6px;
+  border-radius: 3px; 
+  font-size: 0.65rem; 
+  white-space: nowrap; 
+  margin-top: 4px;
+  pointer-events: none;
+}
 </style>
 </head>
 <body>
@@ -1039,9 +1090,39 @@ section{position:relative;}
 </section>
 
 <!-- ============ STORY : DUTIES ============ -->
-<section class="pad-sm">
-  <div class="wrap story rev reveal">
-    <div class="story-media-frame"><div class="ph2"></div></div>
+<section class="pad" style="background: var(--paper);">
+  <div class="wrap story reveal">
+    
+    <!-- ฝั่งซ้าย: นำโครงสร้าง Interactive Map มาใส่แทนที่ -->
+    <div class="story-map">
+      <div class="mini-platform">
+          <!-- มาร์คเกอร์ -->
+          <div class="mini-marker" style="top: 60%; left: 18%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">กรุงเทพมหานคร</div>
+          </div>
+          <div class="mini-marker" style="top: 55%; left: 46%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">ศสข.4 นครราชสีมา</div>
+          </div>
+          <div class="mini-marker" style="top: 28%; left: 55%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">ศสข.6 ขอนแก่น</div>
+          </div>
+          <div class="mini-marker" style="top: 80%; left: 30%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">ศสข.2 ชลบุรี</div>
+          </div>
+          <div class="mini-marker" style="top: 67%; left: 73%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">บุรีรัมย์</div>
+          </div>
+          <div class="mini-marker" style="top: 45%; left: 69%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">สุรินทร์</div>
+          </div>
+          <div class="mini-marker" style="top: 30%; left: 79%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">ศรีสะเกษ</div>
+          </div>
+          <div class="mini-marker" style="top: 21%; left: 90%;">
+              <img src="Seal_of_the_Ministry_of_Interior_of_Thailand.svg.png" alt="icon"><div class="mini-marker-label">อุบลราชธานี</div>
+          </div>
+      </div>
+    </div>
     <div class="story-text">
       <div class="eyebrow"><span class="num">๐๒</span><span class="rule"></span>อำนาจหน้าที่</div>
       <h2>เครือข่ายสื่อสารที่มั่นคง คือรากฐานของการบริหารราชการ</h2>

@@ -23,9 +23,9 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Noto Sans Thai',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-weight:300;overflow-x:hidden;}
+body{font-family:'Sarabun',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-weight:300;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:'Noto Serif Thai',serif;font-weight:600;}
+h1,h2,h3,h4{font-family:'Sarabun',serif;font-weight:600;}
 img{display:block;max-width:100%;}
 .wrap{max-width:1180px;margin:0 auto;padding-left:28px;padding-right:28px;}
 .pad{padding:80px 0;}
@@ -43,7 +43,7 @@ img{display:block;max-width:100%;}
 .site-nav.solid .brand-seal { border-color: var(--gold-lt); }
 .brand-seal img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
 .brand-text { line-height: 1.3; }
-.brand-text .th { font-family: 'Noto Serif Thai', serif; font-size: .92rem; font-weight: 600; display: block; }
+.brand-text .th { font-family: 'Sarabun', serif; font-size: .92rem; font-weight: 600; display: block; }
 .brand-text .en { font-size: .64rem; letter-spacing: .09em; opacity: .75; }
 
 /* เมนูแนวนอน (Desktop) */
@@ -97,7 +97,7 @@ img{display:block;max-width:100%;}
 /* หัวข้อหลักในมือถือ */
 .mobile-drawer a.m-top {
   display: flex; justify-content: space-between; align-items: center;
-  color: #fff; font-family: 'Noto Serif Thai', serif; font-size: 1.15rem;
+  color: #fff; font-family: 'Sarabun', serif; font-size: 1.15rem;
   padding: 16px 12px; border-bottom: 1px solid rgba(255,255,255,.1);
   border-radius: 4px; transition: all 0.3s ease; flex-shrink: 0 !important;
 }
@@ -171,14 +171,14 @@ img{display:block;max-width:100%;}
   background: linear-gradient(160deg, var(--navy-3) 0%, var(--navy) 100%);
   color: #fff; padding: 160px 0 60px; text-align: center; border-bottom: 3px solid var(--gold);
 }
-.subpage-header h1 { font-family: 'Noto Serif Thai', serif; font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 10px; }
+.subpage-header h1 { font-family: 'Sarabun', serif; font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 10px; }
 .subpage-header p { color: var(--gold-lt); font-size: 1rem; }
 
 /* ================= โครงสร้างเนื้อหา: อำนาจและหน้าที่ ================= */
-.page-container { max-width: 950px; margin: 0 auto; padding: 60px 20px 80px; }
+.page-container { max-width: 1150px; margin: 0 auto; padding: 60px 20px 80px; }
 
 .section-head { text-align: center; margin-bottom: 40px; }
-.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); color: var(--navy); line-height: 1.35; margin-bottom: 15px; font-family: 'Noto Serif Thai', serif; }
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); color: var(--navy); line-height: 1.35; margin-bottom: 15px; font-family: 'Sarabun', serif; }
 .section-head h2::after { content: ""; display: block; width: 60px; height: 3px; background: var(--gold); margin: 15px auto 0; border-radius: 2px; }
 
 .content-card {
@@ -196,7 +196,7 @@ img{display:block;max-width:100%;}
   margin-bottom: 30px;
   border-left: 5px solid var(--gold);
   padding-left: 15px;
-  font-family: 'Noto Serif Thai', serif;
+  font-family: 'Sarabun', serif;
 }
 
 /* รายการหน้าที่มีไอคอนดีไซน์ใหม่ */
@@ -205,6 +205,7 @@ img{display:block;max-width:100%;}
   padding: 0;
   margin-bottom: 40px;
 }
+/* โค้ดใหม่: เปลี่ยนพื้นหลังเป็นสีเทา */
 .duty-list li {
   position: relative;
   padding: 20px 20px 20px 60px;
@@ -212,9 +213,9 @@ img{display:block;max-width:100%;}
   font-size: 1rem;
   color: var(--muted);
   line-height: 1.7;
-  background: var(--cream); /* ใช้พื้นหลังสีครีมอ่อน */
+  background: #ffffff; /* เปลี่ยนพื้นหลังเป็นสีเทาอ่อน */
   border-radius: 8px;
-  border: 1px solid var(--line);
+  border: 1px solid #e2e8f0; /* ขอบสีเทาให้กลมกลืน */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .duty-list li:hover {
@@ -263,7 +264,7 @@ img{display:block;max-width:100%;}
 /* ================= CONTACT / FOOTER ================= */
 .contact{background:linear-gradient(165deg,#081627,var(--navy) 60%,var(--navy-2));color:#fff;padding:100px 0 0;}
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;}
-.contact-brand .th{font-family:'Noto Serif Thai',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
+.contact-brand .th{font-family:'Sarabun',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
 .contact-brand p{color:#9db2c6;font-size:.85rem;max-width:340px;}
 .contact-col h5{color:var(--gold-lt);font-size:.78rem;letter-spacing:.1em;margin-bottom:22px;}
 .contact-col ul{list-style:none;}

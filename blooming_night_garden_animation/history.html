@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ประวัติความเป็นมา และสถานที่ตั้ง - ศสข.4 (นครราชสีมา)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet"><style>
 /* ================= CSS พื้นฐานและตัวแปรสีจากหน้าหลัก ================= */
 :root{
   --navy:#0A1E33;
@@ -234,24 +233,31 @@ img{display:block;max-width:100%;}
 }
 
 /* ================= CONTACT / FOOTER ================= */
-.contact{background:linear-gradient(165deg,#081627,var(--navy) 60%,var(--navy-2));color:#fff;padding:100px 0 0;}
+.contact{background:linear-gradient(165deg,#081627,var(--navy) 60%,var(--navy-2));color:#fff;padding:100px 0 0; margin-top: 80px;}
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;}
 .contact-brand .th{font-family:'Sarabun',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
 .contact-brand p{color:#9db2c6;font-size:.85rem;max-width:340px;}
 .contact-col h5{color:var(--gold-lt);font-size:.78rem;letter-spacing:.1em;margin-bottom:22px;}
 .contact-col ul{list-style:none;}
 .contact-col li{margin-bottom:13px;font-size:.84rem;}
-.contact-col a{color:#c7d4e2;}
+.contact-col a{color:#c7d4e2; transition: .3s;}
 .contact-col a:hover{color:var(--gold-lt);}
 .contact-col.two-col ul{columns:2;column-gap:24px;}
 .contact-col.two-col li{break-inside:avoid;}
-.footer-bottom {
-  margin-top: 80px; border-top: 1px solid rgba(255,255,255,.12); padding: 26px 20px;
-  width: 100vw; position: relative; left: 50%; transform: translateX(-50%);
-  display: flex; justify-content: center; align-items: center;
-}
+.footer-bottom { margin-top: 80px; border-top: 1px solid rgba(255,255,255,.12); padding: 26px 20px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; }
 .footer-bottom p { font-size: .75rem; color: #8098b0; text-align: center; margin: 0; }
-@media(max-width:860px){
+
+/* ================= สไตล์ปุ่มโซเชียล F และ E ================= */
+.social-row { display: flex !important; flex-direction: row !important; gap: 14px; margin-top: 22px; }
+.social-row a.btn-fb { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #1877F2; border: 1px solid #1877F2; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
+.social-row a.btn-fb:hover { background-color: #145dbf; border-color: #145dbf; }
+.social-row a.btn-email { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #EA4335; border: 1px solid #EA4335; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
+.social-row a.btn-email:hover { background-color: #c53024; border-color: #c53024; }
+
+/* Responsive */
+@media(max-width:980px){
+  .nav-links{display:none;}
+  .menu-toggle{display:flex;}
   .contact-grid{grid-template-columns:1fr 1fr;gap:40px;}
   .contact-brand{grid-column:span 2;}
 }
@@ -264,7 +270,7 @@ img{display:block;max-width:100%;}
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
+<!-- ============ NAV (เต็มรูปแบบ) ============ -->
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="ict4.html" class="brand">
@@ -284,7 +290,7 @@ img{display:block;max-width:100%;}
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ข้อมูลทั่วไป</a>
             <div class="dropdown-sub">
-              <a href="history.html">ประวัติความเป็นมา และสถานที่ตั้ง</a>
+              <a href="history.html">ประวัติความเป็นมาและสถานที่ตั้ง</a>
               <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
             </div>
           </div>
@@ -314,7 +320,7 @@ img{display:block;max-width:100%;}
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">E – Reports</a>
             <div class="dropdown-sub">
               <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
-              <a href="#">แผนปฏิบัติการดิจิทัลศูนย์ฯ <span class="tag-new">ใหม่</span></a>
+              <a href="#">แผนปฏิบัติการดิจิทัลศูนย์ฯ </a>
             </div>
           </div>
         </div>
@@ -326,14 +332,14 @@ img{display:block;max-width:100%;}
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คำสั่ง</a>
             <div class="dropdown-sub">
-              <a href="#">คำสั่งแบ่งงานและมอบหมายหน้าที่ <span class="tag-new">ใหม่</span></a>
-              <a href="front-office.html">แบบฟอร์ม Front Office</a>
+              <a href="#">คำสั่งแบ่งงานและมอบหมายหน้าที่ </a>
+
             </div>
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ระเบียบ / ข้อบังคับ</a>
             <div class="dropdown-sub">
-              <a href="#">ระเบียบการเข้าอยู่บ้านพักของราชการ <span class="tag-new">ใหม่</span></a>
+              <a href="#">ระเบียบการเข้าอยู่บ้านพักของราชการ </a>
               <a href="#">ข้อบังคับเงินออมสวัสดิการของ ศสข.4</a>
             </div>
           </div>
@@ -346,15 +352,17 @@ img{display:block;max-width:100%;}
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คู่มือปฏิบัติงาน</a>
             <div class="dropdown-sub">
-              <a href="#">MOI Network Management <span class="tag-new">ใหม่</span></a>
+              <a href="#">MOI Network Management </a>
               <a href="#">ระบบรักษาความปลอดภัยสารสนเทศ</a>
             </div>
           </div>
-          <div class="dropdown-group">
+           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ดาวน์โหลด</a>
             <div class="dropdown-sub">
-              <a href="#">Jabber for PC <span class="tag-new">ใหม่</span></a>
-              <a href="#">ESET Endpoint Antivirus V.8 <span class="tag-new">ใหม่</span></a>
+               <a href="front-office.html">แบบฟอร์ม Front Office</a> 
+               <a href="back-office.html"> Back Office</a>
+              <a href="#">Jabber for PC </a>
+              <a href="#">ESET Endpoint Antivirus V.8 </a>
             </div>
           </div>
         </div>
@@ -374,7 +382,7 @@ img{display:block;max-width:100%;}
   
   <a href="javascript:void(0)" class="m-top" data-m="m1">เกี่ยวกับหน่วยงาน <span>▾</span></a>
   <div class="m-sub" id="m1">
-    <a href="history.html">ประวัติความเป็นมา และสถานที่ตั้ง</a>
+    <a href="history.html">ประวัติความเป็นมาและสถานที่ตั้ง</a>
     <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
     <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
     <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
@@ -387,32 +395,34 @@ img{display:block;max-width:100%;}
     <a href="assetRegister.html">ทะเบียนคุมทรัพย์สิน</a>
     <a href="guard_duty1.html">เวรรักษาการณ์และบริการด้านสื่อสาร</a>
     <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
-    <a href="#">แผนปฏิบัติการดิจิทัลศูนย์ฯ <span class="tag-new">ใหม่</span></a>
+    <a href="#">แผนปฏิบัติการดิจิทัลศูนย์ฯ </a>
   </div>
   
   <a href="javascript:void(0)" class="m-top" data-m="m3">คำสั่ง / ระเบียบ <span>▾</span></a>
   <div class="m-sub" id="m3">
-    <a href="#">คำสั่งแบ่งงานและมอบหมายหน้าที่ <span class="tag-new">ใหม่</span></a>
-    <a href="front-office.html">แบบฟอร์ม Front Office</a>
-    <a href="#">ระเบียบการเข้าอยู่บ้านพักของราชการ <span class="tag-new">ใหม่</span></a>
+    <a href="#">คำสั่งแบ่งงานและมอบหมายหน้าที่ </a>
+    <a href="#">ระเบียบการเข้าอยู่บ้านพักของราชการ </a>
     <a href="#">ข้อบังคับเงินออมสวัสดิการของ ศสข.4</a>
   </div>
   
   <a href="javascript:void(0)" class="m-top" data-m="m4">คู่มือ / ดาวน์โหลด <span>▾</span></a>
   <div class="m-sub" id="m4">
-    <a href="#">MOI Network Management <span class="tag-new">ใหม่</span></a>
+    <a href="#">MOI Network Management </a>
     <a href="#">ระบบรักษาความปลอดภัยสารสนเทศ</a>
-    <a href="#">Jabber for PC <span class="tag-new">ใหม่</span></a>
-    <a href="#">ESET Endpoint Antivirus V.8 <span class="tag-new">ใหม่</span></a>
+    <a href="front-office.html">แบบฟอร์ม Front Office</a> 
+    <a href="back-office.html"> Back Office</a>
+    <a href="#">Jabber for PC </a>
+    <a href="#">ESET Endpoint Antivirus V.8 </a>
   </div>
   
   <a href="#contact" class="m-top">ติดต่อเรา</a>
 </div>
 
+
 <!-- ============ SUBPAGE HEADER ============ -->
 <header class="subpage-header">
   <div class="wrap reveal">
-    <h1>ประวัติความเป็นมา และสถานที่ตั้ง</h1>
+    <h1>ประวัติความเป็นมาและสถานที่ตั้ง</h1>
     <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</p>
   </div>
 </header>
@@ -429,7 +439,6 @@ img{display:block;max-width:100%;}
     <!-- ประวัติความเป็นมา (พร้อมคลาส reveal และกล่อง content-card) -->
     <div class="reveal" style="margin-bottom: 40px;">
       <div class="section-head">
-        <div class="eyebrow"><span class="num">๐๑</span><span class="rule"></span>ข้อมูลหน่วยงาน</div>
         <h2>ประวัติความเป็นมา</h2>
       </div>
 
@@ -479,7 +488,6 @@ img{display:block;max-width:100%;}
     <!-- สถานที่ตั้ง (พร้อมคลาส reveal และกล่อง content-card) -->
     <div class="reveal">
       <div class="section-head" style="margin-top: 40px;">
-        <div class="eyebrow"><span class="num">๐๒</span><span class="rule"></span>ติดต่อหน่วยงาน</div>
         <h2>สถานที่ตั้งและการติดต่อ</h2>
       </div>
 
@@ -508,7 +516,7 @@ img{display:block;max-width:100%;}
   </div>
 </main>
 
-<!-- ============ CONTACT / FOOTER ============ -->
+<!-- ============ CONTACT / FOOTER (Master Template + ปุ่มโซเชียล) ============ -->
 <footer class="contact" id="contact">
   <div class="wrap">
     <div class="contact-grid">
@@ -516,6 +524,12 @@ img{display:block;max-width:100%;}
         <div class="th">ศูนย์เทคโนโลยีสารสนเทศ<br>และการสื่อสาร เขต 4 (นครราชสีมา)</div>
         <p>ถ.กำแหงสงคราม ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา 30000</p>
         <p style="margin-top:10px;">โทร. (มท) 36443 | (TOT) 0-4424-2995<br>อีเมล: zonel4@moi.go.th</p>
+        
+        <!-- เพิ่มโค้ดปุ่มโซเชียล F และ E -->
+        <div class="social-row">
+          <a href="#" class="btn-fb" aria-label="Facebook">f</a>
+          <a href="mailto:zonel4@moi.go.th" class="btn-email" aria-label="Email">e</a>
+        </div>
       </div>
       <div class="contact-col">
         <h5>ระบบงานออนไลน์</h5>
@@ -541,7 +555,7 @@ img{display:block;max-width:100%;}
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2569 ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) — สำนักงานปลัดกระทรวงมหาดไทย</p>
+      <p>© 2026 ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) — สำนักงานปลัดกระทรวงมหาดไทย</p>
     </div>
   </div>
 </footer>

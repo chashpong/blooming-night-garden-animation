@@ -3,490 +3,501 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>รายการตรวจสอบครุภัณฑ์ - ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4</title>
+<title>ทะเบียนคุมทรัพย์สิน - ศสข.4 (นครราชสีมา)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* =================================================================
-   1. สไตล์ดั้งเดิม (Header, Footer, สีหลัก)
-================================================================= */
+/* ================= CSS พื้นฐานและตัวแปรสี (Master Template) ================= */
 :root{
-  --navy:#0D2644;--navy2:#163557;
-  --gold:#C8961E;--gold-lt:#E8CA7A;--gold-bg:#FBF6E9;
-  --cream:#F5F2EB;--white:#FFFFFF;
-  --ink:#1E2430;--muted:#5A6374;--line:#DDD8CC;
-  --blue-tint:#EEF4FA;
+  --navy:#0A1E33;
+  --navy-2:#122E4B;
+  --navy-3:#1B4269;
+  --gold:#B8863A;
+  --gold-lt:#D9B876;
+  --gold-pale:#F1E4C8;
+  --cream:#F7F4EC;
+  --paper:#FFFFFF;
+  --ink:#1C2430;
+  --muted:#6B7280;
+  --line:#E6E0D2;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Sarabun',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:14px;}
+body{font-family:'Sarabun',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-weight:300;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
-h1,h2,h3,h4{font-family:'Sarabun',serif;}
+h1,h2,h3,h4{font-family:'Sarabun',serif;font-weight:600;}
+img{display:block;max-width:100%;}
+.wrap{max-width:1180px;margin:0 auto;padding-left:28px;padding-right:28px;}
+.pad{padding:80px 0;}
 
-/* TOPBAR */
-.topbar{background:var(--navy);color:#b0bfcf;font-size:.75rem;}
-.topbar-inner{max-width:1200px;margin:0 auto;padding:5px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;}
-.topbar-links{display:flex;gap:14px;}
-.topbar-links a:hover{color:var(--gold-lt);}
-.topbar-links a::before{content:"· ";opacity:.4;}
-.topbar-right { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-.topbar-tools { display: flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.15); padding: 3px 8px; border-radius: 4px; }
-.font-btn { background: none; border: 1px solid rgba(255,255,255,0.3); color: #fff; border-radius: 3px; padding: 2px 7px; font-size: .75rem; cursor: pointer; transition: 0.2s; font-family: inherit;}
-.font-btn:hover { background: var(--gold); border-color: var(--gold); }
+/* ---------- อนิเมชันเลื่อนขึ้น ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
 
-/* HEADER & VISION BAR */
-.site-header { width: 100%; background: linear-gradient(180deg, rgba(13, 38, 68, 0.4) 0%, rgba(13, 38, 68, 0.9) 100%), url('orange2.jpg') center/cover no-repeat; color: #fff; border-bottom: 3px solid var(--gold); aspect-ratio: 21 / 9; min-height: 250px; max-height: 400px; display: flex; flex-direction: column; justify-content: space-between; }
-.header-inner { width: 100%; max-width: 1200px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: flex-start; gap: 16px; }
-.h-seal { width: 75px; height: 75px; flex: none; display: flex; align-items: center; justify-content: center; border-radius: 50%; overflow: hidden; border: 2px solid var(--gold-lt); background: #fff;}
-.h-seal img { width: 100%; height: 100%; object-fit: cover; }
-.h-text .eyebrow{font-size:.7rem;color:var(--gold-lt);font-weight:600;letter-spacing:.06em;}
-.h-text h1{font-size:1.4rem;font-weight:700;line-height:1.3;margin-top:2px;}
-.h-text .en{font-size:.78rem;color:#bfcedd;margin-top:2px;}
-.h-date { margin-left: auto; text-align: right; flex: none; }
-.h-date span { font-size: .95rem; color: #ffffff; }
-.h-date strong { display: block; font-size: 1.25rem; color: #fff; font-family: 'Sarabun', serif; margin-top: 2px; }
-.vision-bar { background: rgba(0, 0, 0, 0.4); border-top: 1px solid rgba(255, 255, 255, 0.15); width: 100%; margin-top: auto; display: flex; align-items: center; justify-content: center; min-height: 44px; }
-.vision-bar p { max-width: 1200px; margin: 0; padding: 8px 20px; font-size: .85rem; color: #fff; font-style: italic; text-align: center; line-height: 1.4; }
+/* ================= NAV (Master Template) ================= */
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: background .4s ease, box-shadow .4s ease, padding .4s ease; padding: 26px 0; }
+.site-nav.solid { background: rgba(10,30,51,.97); box-shadow: 0 8px 30px rgba(0,0,0,.18); padding: 14px 0; backdrop-filter: blur(6px); }
+.site-nav .nav-inner { max-width: 1220px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; color: #fff; }
+.brand-seal { width: 46px; height: 46px; border-radius: 50%; border: 1px solid rgba(255,255,255,.55); display: flex; align-items: center; justify-content: center; flex: none; transition: border-color .4s; background: #fff; overflow: hidden; }
+.site-nav.solid .brand-seal { border-color: var(--gold-lt); }
+.brand-seal img { width: 100%; height: 100%; object-fit: contain; padding: 2px; }
+.brand-text { line-height: 1.3; }
+.brand-text .th { font-family: 'Sarabun', serif; font-size: .92rem; font-weight: 600; display: block; }
+.brand-text .en { font-size: .64rem; letter-spacing: .09em; opacity: .75; }
 
-/* TICKER */
-.ticker-wrap{background:var(--gold);overflow:hidden;white-space:nowrap;display:flex;border-bottom:2px solid #a87c18;}
-.ticker-label{background:var(--navy);color:var(--gold-lt);font-weight:700;font-size:.72rem;padding:7px 14px;flex:none;letter-spacing:.05em;}
-.ticker-track{overflow:hidden;flex:1;}
-.ticker-content{display:inline-block;padding:7px 0;font-size:.78rem;font-weight:600;color:var(--navy);animation:ticker 42s linear infinite;}
-@keyframes ticker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.nav-links > li { position: relative; list-style: none; }
+.nav-links a.top-link { display: flex; align-items: center; gap: 6px; color: #fff; font-size: .85rem; font-weight: 400; letter-spacing: .02em; padding: 10px 16px; position: relative; cursor: pointer; border-radius: 20px; transition: background .3s ease, color .3s ease; }
+.nav-links a.top-link:hover { background: rgba(255,255,255,.08); }
+.nav-links a.top-link .chev { font-size: .6rem; color: var(--gold-lt); transition: transform .3s ease; display: inline-block; transform: translateY(1px); }
+.nav-links li.active a.top-link { background: rgba(217,184,118,.14); color: var(--gold-lt); }
+.nav-links li.active a.top-link .chev { transform: rotate(180deg) translateY(-1px); }
+.nav-links a.top-link .ul-mark { position: absolute; left: 16px; right: 16px; bottom: 5px; height: 1px; background: var(--gold-lt); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+.nav-links li:not(.active):hover a.top-link .ul-mark { transform: scaleX(1); }
 
-/* =================================================================
-   สไตล์เมนูหลัก (โค้ดเดิม 100%)
-================================================================= */
-nav.main-nav{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(13,38,68,.08);}
-.nav-wrap { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, max-content); justify-content: center; gap: 5px 30px; padding: 10px 20px; }
-.nav-item{position:relative;}
-.nav-btn { background: none; border: none; cursor: pointer; font-family: 'Sarabun', sans-serif; font-size: 0.92rem; font-weight: 600; color: var(--navy); padding: 13px 16px; display: flex; align-items: center; gap: 6px; white-space: nowrap; border-bottom: 3px solid transparent; transition: color 0.15s, border-color 0.15s; }
-.nav-btn:after{content:"▾";font-size:.6rem;opacity:.5;transition:transform 0.2s;}
-.nav-btn.no-arrow:after{content:"";display:none;}
-.nav-item.active .nav-btn { color:var(--gold); border-bottom-color:var(--gold); }
-.nav-item.active .nav-btn:after { transform: rotate(180deg); }
-.mnew { display: inline-block; color: #2e7d32; background-color: #e8f5e9; border: 1px solid #c8e6c9; font-size: 0.65rem; font-weight: bold; padding: 2px 6px; border-radius: 12px; margin-left: 6px; vertical-align: middle; }
-.nav-item.has-dropdown { position: relative; }
-.dropdown-box { display: none; position: absolute; top: 100%; left: 0; background: #ffffff; box-shadow: 0 8px 24px rgba(13,38,68,0.12); min-width: 280px; z-index: 999; border-radius: 0 0 8px 8px; overflow: hidden; flex-direction: column; border: 1px solid #eef2f6; border-top: 3px solid var(--gold); }
-.nav-item.active .dropdown-box { display: flex; }
-.nav-wrap .nav-item:nth-child(3) .dropdown-box, .nav-wrap .nav-item:nth-child(4) .dropdown-box, .nav-wrap .nav-item:nth-child(7) .dropdown-box, .nav-wrap .nav-item:nth-child(8) .dropdown-box { left: auto; right: 0; }
-.dropdown-group { border-bottom: 1px solid #f1f5f9; }
+.dropdown-box { display: flex; position: absolute; top: 100%; left: 0; background: #ffffff; box-shadow: 0 10px 30px rgba(13,38,68,0.15); width: 280px; z-index: 999; border-radius: 0 0 8px 8px; overflow: hidden; flex-direction: column; border: 1px solid #eef2f6; border-top: 3px solid var(--gold); opacity: 0; visibility: hidden; transform: translateY(-10px); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; }
+.nav-item.active .dropdown-box { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+.nav-wrap .nav-item:nth-child(4) .dropdown-box, .nav-wrap .nav-item:nth-child(5) .dropdown-box { left: auto; right: 0; }
+.dropdown-group { border-bottom: 1px solid #f1f5f9; width: 100%; }
 .dropdown-group:last-child { border-bottom: none; }
-.dropdown-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 20px; font-size: 0.85rem; font-weight: 700; color: var(--navy); background: #f8fafc; text-decoration: none; cursor: pointer; transition: background 0.2s; }
-.dropdown-header:hover { background: #edf2f7; }
-.dropdown-header::after { content: "▾"; font-size: 0.7rem; opacity: 0.6; transition: transform 0.2s; }
-.dropdown-group.active .dropdown-header { background: #e0e7ff; color: #1e3a8a; border-left: 3px solid var(--gold); }
+.dropdown-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; font-size: 0.85rem; font-weight: 700; color: var(--navy); background: #ffffff; cursor: pointer; transition: background 0.2s, color 0.2s; text-decoration: none; }
+.dropdown-header:hover { background: #f8fafc; color: var(--gold); }
+.dropdown-header::after { content: "▾"; font-size: 0.7rem; opacity: 0.5; transition: transform 0.3s; }
+.dropdown-group.active .dropdown-header { background: #f4f7fa; color: var(--navy); border-left: 3px solid var(--gold); padding-left: 15px; }
 .dropdown-group.active .dropdown-header::after { transform: rotate(180deg); }
-.dropdown-sub { display: none; flex-direction: column; background: #ffffff; padding: 4px 0; }
-.dropdown-group.active .dropdown-sub { display: flex; }
-.dropdown-sub a { display: block; padding: 10px 20px 10px 30px; color: #334155; text-decoration: none; font-size: 0.85rem; transition: all 0.2s ease; line-height: 1.5; }
-.dropdown-sub a:hover { color: var(--gold); background: #f8fbff; padding-left: 35px; }
+.dropdown-sub { display: flex; flex-direction: column; background: #ffffff; max-height: 0; padding: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease; }
+.dropdown-group.active .dropdown-sub { max-height: 500px; padding: 10px 0 14px; opacity: 1; }
+.dropdown-sub a { display: block; padding: 10px 18px 10px 24px; color: var(--muted); font-size: 0.8rem; border-bottom: 1px dashed #e2e8f0; transition: all 0.2s ease; text-decoration: none; }
+.dropdown-sub a:last-child { border-bottom: none; }
+.dropdown-sub a:hover { color: var(--gold); background: #ffffff; padding-left: 28px; }
 
-/* =================================================================
-   2. สไตล์หน้าเนื้อหา (รายการตรวจสอบครุภัณฑ์)
-================================================================= */
-.page-container { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
-.page-heading { text-align: center; margin-bottom: 50px; }
-.page-heading h2 { font-size: 1.85rem; color: var(--navy); display: inline-block; padding: 12px 40px; background: var(--white); border-radius: 50px; box-shadow: 0 4px 15px rgba(13,38,68,0.06); border-bottom: 3px solid var(--gold); font-family: 'Sarabun', serif; }
-.page-heading p { color: var(--muted); font-size: 1.05rem; line-height: 1.6; margin: 0; }
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.menu-toggle span { width: 24px; height: 1px; background: #fff; transition: 0.3s; }
 
-.content-card {
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(13,38,68,0.04);
-  border: 1px solid #eef2f6;
-  padding: 40px;
+/* ================= MOBILE DRAWER ================= */
+.mobile-drawer { position: fixed; inset: 0; background: var(--navy); z-index: 1500; display: flex; flex-direction: column; padding: 100px 32px 40px; transform: translateX(100%); transition: transform .4s ease; overflow-y: auto; }
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer .close-drawer { position: absolute; top: 26px; right: 26px; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; transition: 0.3s; }
+.mobile-drawer .close-drawer:hover { color: var(--gold); }
+.mobile-drawer a.m-top { display: flex; justify-content: space-between; align-items: center; color: #fff; font-family: 'Sarabun', serif; font-size: 1.15rem; padding: 16px 12px; border-bottom: 1px solid rgba(255,255,255,.1); border-radius: 4px; transition: all 0.3s ease; flex-shrink: 0 !important; }
+.mobile-drawer a.m-top:active { transform: scale(0.98); }
+.mobile-drawer a.m-top span { font-size: 0.8rem; opacity: 0.5; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.mobile-drawer a.m-top.active span { transform: rotate(180deg); color: var(--gold); opacity: 1; }
+.mobile-drawer .m-sub { display: block !important; flex-shrink: 0 !important; padding-left: 20px; background: rgba(0,0,0,0.15); border-radius: 4px; max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; margin-bottom: 0; transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.mobile-drawer .m-sub.open { max-height: 600px !important; opacity: 1; margin-top: 5px; margin-bottom: 10px; }
+.mobile-drawer .m-sub a { display: block; color: #a9bdd0; font-size: 0.95rem; padding: 12px 12px 12px 20px; border-bottom: 1px dashed rgba(255,255,255,0.05); border-radius: 4px; transition: all 0.2s ease; transform: translateX(-15px); opacity: 0; pointer-events: none; }
+.mobile-drawer .m-sub a:last-child { border-bottom: none; }
+.mobile-drawer .m-sub a:hover { color: var(--gold); padding-left: 28px; background: rgba(255,255,255,0.02); }
+.mobile-drawer .m-sub.open a { transform: translateX(0); opacity: 1; pointer-events: auto; }
+.mobile-drawer .m-sub.open a:nth-child(1) { transition: all 0.3s ease 0.05s; }
+.mobile-drawer .m-sub.open a:nth-child(2) { transition: all 0.3s ease 0.10s; }
+.mobile-drawer .m-sub.open a:nth-child(3) { transition: all 0.3s ease 0.15s; }
+.mobile-drawer .m-sub.open a:nth-child(4) { transition: all 0.3s ease 0.20s; }
+.mobile-drawer .m-sub.open a:nth-child(5) { transition: all 0.3s ease 0.25s; }
+
+/* ================= HEADER หน้าจอย่อย ================= */
+.subpage-header { background: linear-gradient(160deg, var(--navy-3) 0%, var(--navy) 100%); color: #fff; padding: 160px 0 60px; text-align: center; border-bottom: 3px solid var(--gold); }
+.subpage-header h1 { font-family: 'Sarabun', serif; font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 10px; }
+.subpage-header p { color: var(--gold-lt); font-size: 1rem; }
+
+/* ================= โครงสร้างเนื้อหาหน้าทะเบียนคุมทรัพย์สิน ================= */
+.section-head { text-align: center; margin-bottom: 40px; }
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); color: var(--navy); line-height: 1.35; display: inline-block; padding-bottom: 10px; border-bottom: 3px solid var(--gold); }
+
+.content-card { background: var(--white); border-radius: 12px; box-shadow: 0 10px 30px rgba(10, 30, 51, 0.08); border: 1px solid #eef2f6; padding: 50px 40px; }
+
+/* ================= สไตล์การ์ดดาวน์โหลด (ดีไซน์ใหม่ 3 คอลัมน์) ================= */
+.asset-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px; 
+  max-width: 1080px; 
+  margin: 0 auto;  /* <-- บรรทัดนี้สำคัญ ต้องเหมือนกันครับ */
 }
-
-/* เลย์เอาต์แบบกล่องเรียงลงมา (1 คอลัมน์) */
-.year-grid {
+.asset-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 35px 24px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  max-width: 600px; /* จำกัดความกว้างไม่ให้กล่องยืดยาวเกินไป เพื่อความสวยงาม */
-  margin: 0 auto; /* จัดให้อยู่กึ่งกลางการ์ด */
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ปุ่มลิงก์แต่ละปี (Card Design) */
-.year-item {
+/* เส้นสีทองด้านบนการ์ด (จะโผล่มาตอนเอาเมาส์ชี้) */
+.asset-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.asset-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(10,30,51,0.08);
+  border-color: transparent;
+}
+.asset-card:hover::before {
+  transform: scaleX(1);
+}
+
+.asset-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--cream);
   display: flex;
   align-items: center;
-  padding: 18px 24px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
   color: var(--navy);
-  text-decoration: none;
-  font-size: 1.05rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
-  line-height: 1.5;
-}
-.year-item:hover {
-  background: var(--blue-tint);
-  border-color: var(--navy);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(13,38,68,0.08);
-  color: var(--navy2);
-}
-.year-item::before {
-  content: "📄"; 
-  margin-right: 15px;
-  font-size: 1.3rem;
-  opacity: 0.8;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
 }
 
-@media (max-width: 1000px) { .nav-wrap { grid-template-columns: repeat(2, 1fr); gap: 10px; } }
-@media (max-width: 768px) {
-  .page-heading h2 { font-size: 1.4rem; padding: 12px 25px; }
-  .content-card { padding: 25px 20px; }
-  .year-item { font-size: 0.95rem; padding: 15px 20px; }
+.asset-card:hover .asset-icon {
+  background: var(--navy);
+  color: #fff;
+  transform: scale(1.1);
 }
-@media (max-width: 500px) { .nav-wrap { grid-template-columns: 1fr; } }
 
-/* FOOTER */
-.site-footer { background-color: #0d1e36; color: #aeb9c7; font-family: 'Sarabun', sans-serif; margin-top: 40px; }
-.footer-container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 30px; }
-.footer-title { color: #ffffff; font-size: 1rem; font-weight: 700; margin-bottom: 20px; line-height: 1.5; font-family: 'Sarabun', serif; }
-.footer-contact p { font-size: 0.85rem; margin-bottom: 12px; line-height: 1.6; }
-.footer-links { list-style: none; padding: 0; margin: 0; }
-.footer-links li { margin-bottom: 15px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 10px; }
-.footer-links li:last-child { border-bottom: none; }
-.footer-links a { color: #aeb9c7; text-decoration: none; font-size: 0.85rem; transition: color 0.3s ease; }
-.footer-links a:hover { color: #ffffff; text-decoration: underline; }
-.footer-links.grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 15px; }
-.footer-bottom { background-color: #081426; text-align: center; padding: 20px; font-size: 0.85rem; color: #7b8b9e; border-top: 1px solid rgba(255,255,255,0.05); }
+.asset-info h4 {
+  font-size: 1.45rem;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.asset-info p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.asset-action {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(217,184,118,0.1);
+  padding: 8px 18px;
+  border-radius: 20px;
+  transition: all 0.3s;
+}
+
+.asset-card:hover .asset-action {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* การแสดงผลบนหน้าจอขนาดเล็ก */
+@media (max-width: 980px) {
+  .asset-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .asset-grid { grid-template-columns: 1fr; }
+  .asset-card { padding: 25px 20px; }
+}
+
+/* ================= CONTACT / FOOTER ================= */
+.contact{background:linear-gradient(165deg,#081627,var(--navy) 60%,var(--navy-2));color:#fff;padding:100px 0 0; margin-top: 80px;}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;}
+.contact-brand .th{font-family:'Sarabun',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
+.contact-brand p{color:#9db2c6;font-size:.85rem;max-width:340px;}
+.contact-col h5{color:var(--gold-lt);font-size:.78rem;letter-spacing:.1em;margin-bottom:22px;}
+.contact-col ul{list-style:none;}
+.contact-col li{margin-bottom:13px;font-size:.84rem;}
+.contact-col a{color:#c7d4e2; transition: .3s;}
+.contact-col a:hover{color:var(--gold-lt);}
+.contact-col.two-col ul{columns:2;column-gap:24px;}
+.contact-col.two-col li{break-inside:avoid;}
+.footer-bottom { margin-top: 80px; border-top: 1px solid rgba(255,255,255,.12); padding: 26px 20px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; }
+.footer-bottom p { font-size: .75rem; color: #8098b0; text-align: center; margin: 0; }
+
+/* ================= สไตล์ปุ่มโซเชียล F และ E ================= */
+.social-row { display: flex !important; flex-direction: row !important; gap: 14px; margin-top: 22px; }
+.social-row a.btn-fb { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #1877F2; border: 1px solid #1877F2; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
+.social-row a.btn-fb:hover { background-color: #145dbf; border-color: #145dbf; }
+.social-row a.btn-email { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #EA4335; border: 1px solid #EA4335; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
+.social-row a.btn-email:hover { background-color: #c53024; border-color: #c53024; }
+
+/* Responsive */
+@media(max-width:980px){
+  .nav-links{display:none;}
+  .menu-toggle{display:flex;}
+  .contact-grid{grid-template-columns:1fr 1fr;gap:40px;}
+  .contact-brand{grid-column:span 2;}
+}
+@media(max-width:620px){
+  .contact-grid{grid-template-columns:1fr;}
+  .contact-brand{grid-column:span 1;}
+  .contact-col.two-col ul{columns:1;}
+}
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-  <div class="topbar-inner">
-    <span>กระทรวงมหาดไทย | สำนักงานปลัดกระทรวงมหาดไทย</span>
-    <div class="topbar-right">
-      <div class="topbar-tools">
-        <button class="font-btn" onclick="changeFontSize(-1)" title="ลดขนาดตัวอักษร">A-</button>
-        <button class="font-btn" onclick="changeFontSize(0)" title="ขนาดตัวอักษรปกติ">A</button>
-        <button class="font-btn" onclick="changeFontSize(1)" title="เพิ่มขนาดตัวอักษร">A+</button>
-      </div>
-      <div class="topbar-links">
-        <a href="#">ศสส.สป.</a><a href="#">Intranet</a><a href="#">E-Office</a><a href="#">Mail moi.go.th</a><a href="#">ติดต่อเรา</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- HEADER (รวมแถบ Vision Bar) -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="h-seal"><img src="singh.webp" alt="โลโก้กระทรวงมหาดไทย"></div>
-    <div class="h-text">
-      <div class="eyebrow">กระทรวงมหาดไทย · สำนักงานปลัดกระทรวงมหาดไทย</div>
-      <h1>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</h1>
-      <div class="en">Information and Communication Technology Center Region 4 (Nakhon Ratchasima)</div>
-    </div>
-    <div class="h-date" id="realtime-date"></div>
-  </div>
-  <!-- แถบวิสัยทัศน์ -->
-  <div class="vision-bar">
-    <p>"มุ่งสู่การเป็นองค์กรอัจฉริยะด้วยระบบบริหารจัดการเทคโนโลยีสารสนเทศและการสื่อสารที่เป็นสากลและธรรมาภิบาลเพื่อบูรณาการการบริหารจัดการของกระทรวงมหาดไทยและจังหวัด"</p>
-  </div>
-</header>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <span class="ticker-label">ข่าวด่วน</span>
-  <div class="ticker-track">
-    <span class="ticker-content">จังหวัดนครราชสีมา "เมืองหญิงกล้า ผ้าไหมดี หมี่โคราช ปราสาทหิน ดินด่านเกวียน" &nbsp;•&nbsp; Download Jabber for PC [ใหม่] &nbsp;•&nbsp; ESET Endpoint Antivirus V.8 [ใหม่] &nbsp;•&nbsp; แผนปฏิบัติการดิจิทัลศูนย์ฯ สป. ปีงบประมาณ 2566 [ใหม่] &nbsp;•&nbsp; ระเบียบการเข้าอยู่บ้านพักของราชการ [ใหม่] &nbsp;•&nbsp; คำสั่ง ศสข.4 (นม) เรื่องการแบ่งงานและมอบหมายหน้าที่ [ใหม่] &nbsp;•&nbsp;</span>
-  </div>
-</div>
-
-<!-- NAV แบบคลิกเพื่อกางทีละ Step -->
-<nav class="main-nav">
-  <div class="nav-wrap">
+<!-- ============ NAV (Master Template) ============ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="ict4.html" class="brand">
+      <span class="brand-seal"><img src="singh.webp" alt="โลโก้กระทรวงมหาดไทย"></span>
+      <span class="brand-text">
+        <span class="th">ศสข.4 (นครราชสีมา)</span>
+        <span class="en">ICT REGIONAL CENTER 4 · MOI</span>
+      </span>
+    </a>
     
-    <!-- 1. ปุ่มกลับหน้าหลัก -->
-    <div class="nav-item">
-      <a href="ict4.html" class="nav-btn no-arrow"> หน้าหลัก</a>
-    </div>
+    <ul class="nav-links nav-wrap">
+      <li class="nav-item"><a href="ict4.html" class="top-link"><span class="ul-mark"></span>หน้าหลัก</a></li>
+      
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>เกี่ยวกับหน่วยงาน<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ข้อมูลทั่วไป</a>
+            <div class="dropdown-sub">
+              <a href="history.html">ประวัติความเป็นมาและสถานที่ตั้ง</a>
+              <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">โครงสร้างและบุคลากร</a>
+            <div class="dropdown-sub">
+              <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
+              <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
+              <a href="contacts.html">โทรศัพท์และอีเมลของข้าราชการ</a>
+            </div>
+          </div>
+        </div>
+      </li>
 
-    <!-- 2. เกี่ยวกับหน่วยงาน -->
-    <div class="nav-item has-dropdown">
-      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">เกี่ยวกับหน่วยงาน</a>
-      <div class="dropdown-box">
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ข้อมูลทั่วไป</a>
-          <div class="dropdown-sub">
-            <a href="history.html">> ประวัติความเป็นมา และสถานที่ตั้ง</a>
-            <a href="duties.html">> อำนาจและหน้าที่ของ ศสข.</a>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>ข้อมูลและรายงาน<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ข้อมูลทั่วไป</a>
+            <div class="dropdown-sub">
+              <a href="equipment.html">รายการตรวจสอบครุภัณฑ์</a>
+              <a href="assetRegister.html">ทะเบียนคุมทรัพย์สิน</a>
+              <a href="guard_duty1.html">เวรรักษาการณ์และบริการด้านสื่อสาร</a>
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">E – Reports</a>
+            <div class="dropdown-sub">
+              <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
+              <a href="#">แผนปฏิบัติการดิจิทัลศูนย์ฯ </a>
+            </div>
           </div>
         </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">โครงสร้างและบุคลากร</a>
-          <div class="dropdown-sub">
-            <a href="executives.html">> ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
-            <a href="staff.html">> แนะนำบุคลากรปัจจุบัน</a>
-            <a href="contacts.html">> หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
-          </div>
-        </div>
-      </div>
-    </div>
+      </li>
 
-    <!-- 3. ข้อมูลและรายงาน -->
-    <div class="nav-item has-dropdown">
-      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">ข้อมูลและรายงาน</a>
-      <div class="dropdown-box">
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ข้อมูลทั่วไป</a>
-          <div class="dropdown-sub">
-           <a href="equipment.html">> รายการตรวจสอบครุภัณฑ์</a>
-           <a href="assetRegister.html">> ทะเบียนคุมทรัพย์สิน</a>
-           <a href="guard_duty1.html">> เวรรักษาการณ์สถานที่ราชการและบริการด้านสื่อสาร</a>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คำสั่ง / ระเบียบ<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คำสั่ง</a>
+            <div class="dropdown-sub">
+              <a href="#">คำสั่งแบ่งงานและมอบหมายหน้าที่ </a>
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ระเบียบ / ข้อบังคับ</a>
+            <div class="dropdown-sub">
+              <a href="#">ระเบียบการเข้าอยู่บ้านพักของราชการ </a>
+              <a href="#">ข้อบังคับเงินออมสวัสดิการของ ศสข.4</a>
+            </div>
           </div>
         </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">สรุปผลการดำเนินงาน</a>
-          <div class="dropdown-sub">
-            <a href="summary.html">> การจัดทำรายงานประจำปี</a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">E – Reports</a>
-          <div class="dropdown-sub">
-            <a href="e_reports_main.html">> การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
-            <a href="#">> การประชุมผ่านระบบวีดิทัศน์ทางไกล (VCS)</a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">แผนปฏิบัติการ ศสส.สป.</a>
-          <div class="dropdown-sub">
-            <a href="#">> แผนปฏิบัติการดิจิทัลศูนย์ฯ <span class="mnew">ใหม่</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
+      </li>
 
-    <!-- 4. ข้อมูลด้านช่าง -->
-    <div class="nav-item has-dropdown">
-      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">ข้อมูลด้านช่าง</a>
-      <div class="dropdown-box">
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">บริการเครือข่าย</a>
-          <div class="dropdown-sub">
-            <a href="#">> วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
-            <a href="#">> ผู้ขอใช้บริการเครือข่าย Online</a>
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คู่มือ / ดาวน์โหลด<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คู่มือปฏิบัติงาน</a>
+            <div class="dropdown-sub">
+              <a href="#">MOI Network Management </a>
+              <a href="#">ระบบรักษาความปลอดภัยสารสนเทศ</a>
+            </div>
+          </div>
+           <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ดาวน์โหลด</a>
+            <div class="dropdown-sub">
+               <a href="front-office.html">แบบฟอร์ม Front Office</a> 
+               <a href="back-office.html"> Back Office</a>
+              <a href="#">Jabber for PC </a>
+              <a href="#">ESET Endpoint Antivirus V.8 </a>
+            </div>
           </div>
         </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ข้อมูลโทรศัพท์</a>
-          <div class="dropdown-sub">
-            <a href="#">> โทรศัพท์ มท.ในโคราชติดตั้งที่ใดบ้าง?</a>
-            <a href="#">> จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a>
-            <a href="#">> Access Code เครือข่ายโทรศัพท์ มท.</a>
-          </div>
-        </div>
-      </div>
-    </div>
+      </li>
 
-    <!-- 5. คำสั่ง / ระเบียบ -->
-    <div class="nav-item has-dropdown">
-      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">คำสั่ง / ระเบียบ</a>
-      <div class="dropdown-box">
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">คำสั่ง</a>
-          <div class="dropdown-sub">
-            <a href="#">> คำสั่งแบ่งงานและมอบหมายหน้าที่ <span class="mnew">ใหม่</span></a>
-            <a href="#">> คำสั่งแต่งตั้งคณะกรรมการบ้านพัก <span class="mnew">ใหม่</span></a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">แบบฟอร์ม</a>
-          <div class="dropdown-sub">
-            <a href="front-office.html">> Front Office</a>
-            <a href="back-office.html">> Back Front</a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ระเบียบ / ข้อบังคับ</a>
-          <div class="dropdown-sub">
-            <a href="#">> ระเบียบการเข้าอยู่บ้านพักของราชการ <span class="mnew">ใหม่</span></a>
-            <a href="#">> ข้อบังคับเงินออมสวัสดิการของ ศสข.4 (นม)</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 6. คู่มือ / ดาวน์โหลด -->
-    <div class="nav-item has-dropdown">
-      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">คู่มือ / ดาวน์โหลด</a>
-      <div class="dropdown-box">
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">คู่มือปฏิบัติงาน</a>
-          <div class="dropdown-sub">
-            <a href="#">> MOI Network Management <span class="mnew">ใหม่</span></a>
-            <a href="#">> ระบบรักษาความปลอดภัยสารสนเทศ 2565 <span class="mnew">ใหม่</span></a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">Jabber / Webex</a>
-          <div class="dropdown-sub">
-            <a href="#">> คู่มือการใช้งาน cisco jabber</a>
-            <a href="#">> หมายเลขห้องประชุมแต่ละจังหวัด</a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">ดาวน์โหลด</a>
-          <div class="dropdown-sub">
-            <a href="#" style="color:#c62828; font-weight:bold;">> Jabber for PC <span class="mnew">ใหม่</span></a>
-            <a href="#" style="color:#c62828; font-weight:bold;">> ESET Endpoint Antivirus V.8 <span class="mnew">ใหม่</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7. อบรม / E-Learning -->
-    <div class="nav-item has-dropdown">
-      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">อบรม / E-Learning</a>
-      <div class="dropdown-box">
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">Online Learning</a>
-          <div class="dropdown-sub">
-            <a href="#">> TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ]</a>
-            <a href="#">> OCSC Learning Portal [สำนักงาน ก.พ.]</a>
-            <a href="#">> E-Learning กระทรวงมหาดไทย</a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">สรรหามาฝาก</a>
-          <div class="dropdown-sub">
-            <a href="#">> E-Mail และหมายเลขโทรศัพท์ข้าราชการ <span class="mnew">ใหม่</span></a>
-            <a href="#">> โปรแกรม SCAN VIRUS trojan</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 8. ภารกิจ / Links -->
-    <div class="nav-item has-dropdown">
-      <a href="javascript:void(0);" class="nav-btn" onclick="toggleDropdown(event, this)">ภารกิจ / Links</a>
-      <div class="dropdown-box">
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">สถิติและภารกิจ</a>
-          <div class="dropdown-sub">
-            <a href="#">> ตัวชี้วัดการให้บริการสื่อสารฯ</a>
-            <a href="#">> การพัฒนาบุคลากรของ ศสข.4 (นม)</a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">เครือข่าย Intranet</a>
-          <div class="dropdown-sub">
-            <a href="#">> ศสส.สป.</a>
-            <a href="#">> ศสข.1 (อย) — ศสข.4 (นม)</a>
-            <a href="#">> กระทรวงมหาดไทย</a>
-          </div>
-        </div>
-        <div class="dropdown-group">
-          <a href="javascript:void(0);" class="dropdown-header" onclick="toggleSub(event, this)">E-Office ศสข.4 (นม)</a>
-          <div class="dropdown-sub">
-            <a href="#">> สารบรรณอิเล็กทรอนิกส์ edocument</a>
-            <a href="#">> Mail moi.go.th</a>
-          </div>
-        </div>
-      </div>
-    </div>
+      <li class="nav-item"><a href="#contact" class="top-link"><span class="ul-mark"></span>ติดต่อเรา</a></li>
+    </ul>
     
+    <button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- CONTENT (เนื้อหาเพจ) -->
-<main class="page-container">
+<!-- ============ MOBILE DRAWER ============ -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <button class="close-drawer" id="closeDrawer">×</button>
+  <a href="ict4.html" class="m-top">หน้าหลัก</a>
   
-  <div class="page-heading">
-    <h2> ทะเบียนคุมทรัพย์สิน</h2>
+  <a href="javascript:void(0)" class="m-top" data-m="m1">เกี่ยวกับหน่วยงาน <span>▾</span></a>
+  <div class="m-sub" id="m1">
+    <a href="history.html">ประวัติความเป็นมาและสถานที่ตั้ง</a>
+    <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
+    <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
+    <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
+    <a href="contacts.html">โทรศัพท์และอีเมลของข้าราชการ</a>
   </div>
+  
+  <a href="javascript:void(0)" class="m-top" data-m="m2">ข้อมูลและรายงาน <span>▾</span></a>
+  <div class="m-sub" id="m2">
+    <a href="equipment.html">รายการตรวจสอบครุภัณฑ์</a>
+    <a href="assetRegister.html">ทะเบียนคุมทรัพย์สิน</a>
+    <a href="guard_duty1.html">เวรรักษาการณ์และบริการด้านสื่อสาร</a>
+    <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
+    <a href="#">แผนปฏิบัติการดิจิทัลศูนย์ฯ </a>
+  </div>
+  
+  <a href="javascript:void(0)" class="m-top" data-m="m3">คำสั่ง / ระเบียบ <span>▾</span></a>
+  <div class="m-sub" id="m3">
+    <a href="#">คำสั่งแบ่งงานและมอบหมายหน้าที่ </a>
+    <a href="#">ระเบียบการเข้าอยู่บ้านพักของราชการ </a>
+    <a href="#">ข้อบังคับเงินออมสวัสดิการของ ศสข.4</a>
+  </div>
+  
+  <a href="javascript:void(0)" class="m-top" data-m="m4">คู่มือ / ดาวน์โหลด <span>▾</span></a>
+  <div class="m-sub" id="m4">
+    <a href="#">MOI Network Management </a>
+    <a href="#">ระบบรักษาความปลอดภัยสารสนเทศ</a>
+    <a href="front-office.html">แบบฟอร์ม Front Office</a> 
+    <a href="back-office.html"> Back Office</a>
+    <a href="#">Jabber for PC </a>
+    <a href="#">ESET Endpoint Antivirus V.8 </a>
+  </div>
+  
+  <a href="#contact" class="m-top">ติดต่อเรา</a>
+</div>
 
-  <div class="content-card">
-    <div class="year-grid">
-      <!-- ข้อมูลเรียงลงมาตามลำดับปีใหม่ไปเก่าสุด -->
-      <a href="Fixed-Asset-Register-67 (1).xlsx" class="year-item"> ทะเบียนคุมทรัพย์สินประจำปีงบประมาณ 2567</a>
-      <a href="#" class="year-item"> ทะเบียนคุมทรัพย์สินประจำปีงบประมาณ 2566</a>
-      <a href="#" class="year-item"> ทะเบียนคุมทรัพย์สินประจำปีงบประมาณ 2565</a>
+<!-- ============ SUBPAGE HEADER ============ -->
+<header class="subpage-header">
+  <div class="wrap reveal">
+    <h1>ทะเบียนคุมทรัพย์สิน</h1>
+    <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</p>
+  </div>
+</header>
+
+<!-- ============ CONTENT: ASSET REGISTER ============ -->
+<main class="pad">
+  <div class="wrap reveal">
+    <div class="asset-grid">
+      
+      <!-- การ์ดปี 2567 -->
+      <a href="Fixed-Asset-Register-67 (1).xlsx" class="asset-card">
+        <div class="asset-icon">📊</div>
+        <div class="asset-info">
+          <h4>ปีงบประมาณ 2567</h4>
+          <p>ทะเบียนคุมทรัพย์สิน</p>
+        </div>
+        <div class="asset-action">ดาวน์โหลดเอกสาร ↓</div>
+      </a>
+
+      <!-- การ์ดปี 2566 -->
+      <a href="#" class="asset-card">
+        <div class="asset-icon">📊</div>
+        <div class="asset-info">
+          <h4>ปีงบประมาณ 2566</h4>
+          <p>ทะเบียนคุมทรัพย์สิน</p>
+        </div>
+        <div class="asset-action">ดาวน์โหลดเอกสาร ↓</div>
+      </a>
+
+      <!-- การ์ดปี 2565 -->
+      <a href="#" class="asset-card">
+        <div class="asset-icon">📊</div>
+        <div class="asset-info">
+          <h4>ปีงบประมาณ 2565</h4>
+          <p>ทะเบียนคุมทรัพย์สิน</p>
+        </div>
+        <div class="asset-action">ดาวน์โหลดเอกสาร ↓</div>
+      </a>
+
     </div>
   </div>
-
 </main>
 
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-container">
-    <div class="footer-col footer-contact">
-      <h4 class="footer-title">ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4<br>(นครราชสีมา)</h4>
-      <p>ถ.กำแพงสงคราม ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา 30000</p>
-      <p>โทร. (มท) 36443 | (TOT) 0-4424-2995</p>
-      <p>โทรสาร (มท) 36466, 36455 | (TOT) 0-4424-2995 ต่อ 9</p>
-      <p>อีเมล: zonel4@moi.go.th</p>
+<!-- ============ CONTACT / FOOTER (Master Template + ปุ่มโซเชียล) ============ -->
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-brand">
+        <div class="th">ศูนย์เทคโนโลยีสารสนเทศ<br>และการสื่อสาร เขต 4 (นครราชสีมา)</div>
+        <p>ถ.กำแหงสงคราม ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา 30000</p>
+        <p style="margin-top:10px;">โทร. (มท) 36443 | (TOT) 0-4424-2995<br>อีเมล: zonel4@moi.go.th</p>
+        
+        <!-- เพิ่มโค้ดปุ่มโซเชียล F และ E -->
+        <div class="social-row">
+          <a href="#" class="btn-fb" aria-label="Facebook">f</a>
+          <a href="mailto:zonel4@moi.go.th" class="btn-email" aria-label="Email">e</a>
+        </div>
+      </div>
+      <div class="contact-col">
+        <h5>ระบบงานออนไลน์</h5>
+        <ul>
+          <li><a href="#">E-Office ศสข.4</a></li>
+          <li><a href="#">สารบรรณอิเล็กทรอนิกส์</a></li>
+          <li><a href="#">Mail moi.go.th</a></li>
+          <li><a href="#">www.live.moi.go.th (VCS)</a></li>
+        </ul>
+      </div>
+      <div class="contact-col two-col">
+        <h5>หน่วยงานเครือข่าย</h5>
+        <ul>
+          <li><a href="http://zone1.moi.go.th" target="_blank">ศสข.1 (อยุธยา)</a></li>
+          <li><a href="http://zone2.moi.go.th" target="_blank">ศสข.2 (ชลบุรี)</a></li>
+          <li><a href="http://zone3.moi.go.th" target="_blank">ศสข.3 (นครปฐม)</a></li>
+          <li><a href="http://zone5.moi.go.th" target="_blank">ศสข.5 (อุดรธานี)</a></li>
+          <li><a href="http://zone6.moi.go.th" target="_blank">ศสข.6 (ขอนแก่น)</a></li>
+          <li><a href="http://zone7.moi.go.th" target="_blank">ศสข.7 (เชียงใหม่)</a></li>
+          <li><a href="http://zone8.moi.go.th" target="_blank">ศสข.8 (พิษณุโลก)</a></li>
+          <li><a href="http://zone9.moi.go.th" target="_blank">ศสข.9 (นครสวรรค์)</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4 class="footer-title">ระบบงานออนไลน์</h4>
-      <ul class="footer-links">
-        <li><a href="#">E-Office ศสข.4</a></li>
-        <li><a href="#">สารบรรณอิเล็กทรอนิกส์</a></li>
-        <li><a href="#">Mail moi.go.th</a></li>
-      </ul>
+    <div class="footer-bottom">
+      <p>© 2026 ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) — สำนักงานปลัดกระทรวงมหาดไทย</p>
     </div>
-    <div class="footer-col">
-      <h4 class="footer-title">หน่วยงานเครือข่าย</h4>
-      <ul class="footer-links grid-2-col">
-        <li><a href="http://zone1.moi.go.th" target="_blank">ศสข.1 (อยุธยา)</a></li>
-        <li><a href="http://zone4.moi.go.th" target="_blank">ศสข.4 (นครราชสีมา)</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4 class="footer-title">เกี่ยวกับเว็บไซต์</h4>
-      <ul class="footer-links">
-        <li><a href="#">นโยบายเว็บไซต์ (Website Policy)</a></li>
-        <li><a href="#">คำถามที่พบบ่อย (FAQ)</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2569 ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</p>
   </div>
 </footer>
 
-<!-- JAVASCRIPT ควบคุมการทำงาน -->
 <script>
-  let currentZoom = 1;
-  function changeFontSize(step) {
-    if (step === 0) { currentZoom = 1; } 
-    else { currentZoom += (step * 0.1); }
-    if (currentZoom < 0.8) currentZoom = 0.8;
-    if (currentZoom > 1.4) currentZoom = 1.4;
-    document.documentElement.style.fontSize = (currentZoom * 100) + "%";
-  }
+  // ================= แอนิเมชันตอนเลื่อนเมาส์ =================
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.15});
+  revealEls.forEach(el=>io.observe(el));
 
-  function updateClock() {
-    const now = new Date();
-    const thaiDays = ['อาทิตย์', 'จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์'];
-    const thaiMonths = ['มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
-    const day = thaiDays[now.getDay()];
-    const date = now.getDate();
-    const month = thaiMonths[now.getMonth()];
-    const year = now.getFullYear() + 543;
-    const time = now.toLocaleTimeString('th-TH');
-    
-    const dateContainer = document.getElementById('realtime-date');
-    if (dateContainer) {
-      dateContainer.innerHTML = '<span>วัน' + day + 'ที่ ' + date + ' ' + month + ' พ.ศ. ' + year + '</span>' + '<strong>' + time + '</strong>'; 
-    }
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
+  // ================= ควบคุมการเปิด/ปิด เมนูหลักและย่อย (Desktop) =================
   function toggleDropdown(e, btn) {
-    e.preventDefault(); 
+    e.preventDefault();
+    e.stopPropagation();
     let currentItem = btn.closest('.nav-item');
     document.querySelectorAll('.nav-item').forEach(item => {
       if (item !== currentItem) {
@@ -498,7 +509,8 @@ nav.main-nav{background:var(--white);border-bottom:1px solid var(--line);positio
   }
 
   function toggleSub(e, header) {
-    e.preventDefault(); 
+    e.preventDefault();
+    e.stopPropagation();
     let currentGroup = header.closest('.dropdown-group');
     let parentBox = header.closest('.dropdown-box');
     parentBox.querySelectorAll('.dropdown-group').forEach(group => {
@@ -509,14 +521,53 @@ nav.main-nav{background:var(--white);border-bottom:1px solid var(--line);positio
     currentGroup.classList.toggle('active');
   }
 
+  // ปิดเมนูเมื่อคลิกพื้นที่ว่างด้านนอก (Desktop)
   document.addEventListener('click', function(e) {
-    if (!e.target.closest('.main-nav')) {
+    if (!e.target.closest('.nav-item')) {
       document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
         item.querySelectorAll('.dropdown-group').forEach(group => group.classList.remove('active'));
       });
     }
   });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+        item.querySelectorAll('.dropdown-group').forEach(group => group.classList.remove('active'));
+      });
+    }
+  });
+
+  // เปลี่ยนสีพื้นหลังแถบ Nav ตอนเลื่อนหน้าจอ
+  const nav = document.getElementById('siteNav');
+  function handleScroll(){
+    if(window.scrollY > 60){ nav.classList.add('solid'); } else { nav.classList.remove('solid'); }
+  }
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+
+  // ================= ควบคุม Sidebar โหมดมือถือ =================
+  const drawer = document.getElementById('mobileDrawer');
+  document.getElementById('menuToggle').addEventListener('click', ()=> drawer.classList.add('open'));
+  document.getElementById('closeDrawer').addEventListener('click', ()=> drawer.classList.remove('open'));
+  
+  drawer.querySelectorAll('[data-m]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetSub = document.getElementById(btn.dataset.m);
+      const isOpen = targetSub.classList.contains('open');
+
+      drawer.querySelectorAll('.m-sub.open').forEach(sub => { sub.classList.remove('open'); });
+      drawer.querySelectorAll('a.m-top.active').forEach(activeBtn => { activeBtn.classList.remove('active'); });
+
+      if (!isOpen) {
+        targetSub.classList.add('open');
+        btn.classList.add('active'); 
+      }
+    });
+  });
+  drawer.querySelectorAll('a.m-top:not([data-m])').forEach(a=> a.addEventListener('click', ()=> drawer.classList.remove('open')));
 </script>
 </body>
 </html>

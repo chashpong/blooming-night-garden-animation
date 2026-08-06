@@ -84,8 +84,10 @@ img{display:block;max-width:100%;}
 /* ================= MOBILE DRAWER (แบบมีอนิเมชัน) ================= */
 .mobile-drawer {
   position: fixed; inset: 0; background: var(--navy); z-index: 1500;
-  display: flex; flex-direction: column; padding: 100px 32px 40px;
+  display: block; /* เปลี่ยนจาก flex เป็น block เพื่อแก้ปัญหาความสูงเพี้ยนในมือถือ */
+  padding: 80px 32px 120px; /* เพิ่มระยะห่างด้านล่าง (120px) ให้เลื่อนสุดได้สบายๆ */
   transform: translateX(100%); transition: transform .4s ease; overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* ทำให้ iOS เลื่อนได้ลื่นขึ้น */
 }
 .mobile-drawer.open { transform: translateX(0); }
 .mobile-drawer .close-drawer {

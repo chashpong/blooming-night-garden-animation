@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แบบ รต.1 ค่าใช้จ่ายด้านช่าง - ศสข.4 (นครราชสีมา)</title>
+<title>สำนักบริหารยุทธศาสตร์กลุ่มจังหวัด - ศสข.4 (นครราชสีมา)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ================= CSS พื้นฐานและตัวแปรสี (Master Template) ================= */
+/* ================= CSS พื้นฐานและตัวแปรสี ================= */
 :root{
   --navy:#0A1E33;
   --navy-2:#122E4B;
@@ -20,7 +20,6 @@
   --ink:#1C2430;
   --muted:#6B7280;
   --line:#E6E0D2;
-  --blue-tint:#EEF4FA;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -35,19 +34,16 @@ img{display:block;max-width:100%;}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
 .reveal.in{opacity:1;transform:translateY(0);}
 
-/* ================= NAV (Master Template) ================= */
-.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: background .4s ease, box-shadow .4s ease, padding .4s ease; padding: 26px 0; }
+/* ================= NAV ================= */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:1000;transition:background .4s ease,box-shadow .4s ease,padding .4s ease;padding:26px 0;}
 .site-nav.solid { background: rgba(10,30,51,.97); box-shadow: 0 8px 30px rgba(0,0,0,.18); padding: 14px 0; backdrop-filter: blur(6px); }
-.site-nav .nav-inner { max-width: 1220px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 12px; color: #fff; }
-.brand-seal { 
-  width: 46px; height: 46px; border-radius: 50%; 
-  border: none;
-  display: flex; align-items: center; justify-content: center; flex: none; 
-  transition: border-color .4s; 
-  background: transparent; 
-  overflow: hidden; 
-}
+.site-nav .nav-inner{max-width:1220px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;}
+.brand-seal{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;flex:none;transition:border-color .4s;background:#fff;overflow:hidden;}
+.brand-seal img { width: 100%; height: 100%; object-fit: cover; padding: 0; }
+.brand-text{line-height:1.3;}
+.brand-text .th{font-family:'Sarabun',serif;font-size:.92rem;font-weight:600;display:block;}
+.brand-text .en{font-size:.64rem;letter-spacing:.09em;opacity:.75;}
 .brand-seal img { width: 100%; height: 100%; object-fit: cover; padding: 0; }
 .brand-text { line-height: 1.3; }
 .brand-text .th { font-family: 'Sarabun', serif; font-size: .92rem; font-weight: 600; display: block; }
@@ -71,13 +67,14 @@ img{display:block;max-width:100%;}
 .dropdown-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; font-size: 0.85rem; font-weight: 700; color: var(--navy); background: #ffffff; cursor: pointer; transition: background 0.2s, color 0.2s; text-decoration: none; }
 .dropdown-header:hover { background: #f8fafc; color: var(--gold); }
 .dropdown-header::after { content: "▾"; font-size: 0.7rem; opacity: 0.5; transition: transform 0.3s; }
+/* ซ่อนลูกศรสำหรับลิงก์ตรง */
 .dropdown-header:not([href="javascript:void(0)"])::after { display: none; }
 .dropdown-group.active .dropdown-header { background: #f4f7fa; color: var(--navy); border-left: 3px solid var(--gold); padding-left: 15px; }
 .dropdown-group.active .dropdown-header::after { transform: rotate(180deg); }
 .dropdown-group.active .dropdown-header:not([href="javascript:void(0)"])::after { transform: none; display: none; }
 
 .dropdown-sub { display: flex; flex-direction: column; background: #ffffff; max-height: 0; padding: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease; }
-.dropdown-group.active .dropdown-sub { max-height: 500px; padding: 10px 0 14px; opacity: 1; overflow-y: auto;}
+.dropdown-group.active .dropdown-sub { max-height: 500px; padding: 10px 0 14px; opacity: 1; overflow-y: auto; }
 .dropdown-sub a { display: block; padding: 10px 18px 10px 24px; color: var(--muted); font-size: 0.8rem; border-bottom: 1px dashed #e2e8f0; transition: all 0.2s ease; text-decoration: none; }
 .dropdown-sub a:last-child { border-bottom: none; }
 .dropdown-sub a:hover { color: var(--gold); background: #ffffff; padding-left: 28px; }
@@ -118,150 +115,25 @@ img{display:block;max-width:100%;}
 .subpage-header h1 { font-family: 'Sarabun', serif; font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 10px; }
 .subpage-header p { color: var(--gold-lt); font-size: 1rem; }
 
-/* ================= โครงสร้างเนื้อหา: รายละเอียดรายงานตามไตรมาส ================= */
+/* ================= โครงสร้างเนื้อหาหน้าสำนักบริหารยุทธศาสตร์ ================= */
 .section-head { text-align: center; margin-bottom: 40px; }
+.section-head h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); color: var(--navy); line-height: 1.35; display: inline-block; padding-bottom: 10px; border-bottom: 3px solid var(--gold); }
 
-/* ปุ่มย้อนกลับ */
-.back-btn-container { text-align: left; margin-bottom: 20px; }
-.back-btn { display: inline-flex; align-items: center; color: var(--muted); font-size: 0.95rem; font-weight: 600; transition: color 0.2s; text-decoration: none;}
-.back-btn:hover { color: var(--navy); }
-.back-btn::before { content: "←"; margin-right: 8px; font-size: 1.2rem; }
-
-/* การ์ดประจำปีงบประมาณ */
-.year-card {
-  background: var(--white);
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(10, 30, 51, 0.08); 
-  border: 1px solid #eef2f6;
-  padding: 35px 40px;
-  margin-bottom: 30px;
-}
-.year-title {
-  font-family: 'Sarabun', serif;
-  color: var(--navy); /* เปลี่ยนจากสีแดงเป็นสีน้ำเงิน */
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin-bottom: 25px;
-  text-align: center;
-}
-/* เลย์เอาต์แบบ Grid 4 ช่องสำหรับ 4 ไตรมาส */
-.quarter-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-}
-
-/* กล่องย่อยแต่ละไตรมาส */
-.quarter-box {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 20px 15px;
-  text-align: center;
-  transition: all 0.2s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 160px;
-}
-.quarter-box:hover {
-  background: var(--blue-tint);
-  border-color: var(--navy);
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(13,38,68,0.08);
-}
-.q-title {
-  color: var(--navy);
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin-bottom: 5px;
-}
-.q-month {
-  color: var(--muted);
-  font-size: 0.85rem;
-  margin-bottom: 20px;
-}
-.q-btn {
-  display: inline-block;
-  background: #d32f2f; /* เปลี่ยนพื้นหลังเป็นสีแดง */
-  color: #ffffff;      /* เปลี่ยนตัวหนังสือเป็นสีขาว */
-  border: 1px solid #b71c1c;
-  padding: 8px 12px;
-  border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-  width: 100%;
-  cursor: pointer;
-  font-family: inherit;
-}
-.q-btn:hover {
-  background: #b71c1c; /* สีแดงเข้มขึ้นเมื่อเอาเมาส์ชี้ */
-  border-color: #b71c1c;
-}
-.q-btn.disabled {
-  background: #f1f5f9;
-  color: #94a3b8;
-  border-color: #e2e8f0;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-.q-btn.has-dropdown.active { 
-  background: #b71c1c; 
-  border-color: #b71c1c; 
-}
-
-/* ================= ระบบ Dropdown ไฟล์ย่อย ================= */
-.download-dropdown { position: relative; width: 100%; }
-.q-btn.has-dropdown { display: flex; align-items: center; justify-content: center; }
-.q-btn.has-dropdown::after { content: "▾"; font-size: 0.7rem; margin-left: 6px; transition: transform 0.2s; }
-.q-btn.has-dropdown.active { background: #ffebee; border-color: #ef5350; }
-.q-btn.has-dropdown.active::after { transform: rotate(180deg); }
-
-/* กล่องรายชื่อไฟล์ที่จะโผล่ลงมา */
-.file-list {
-  display: none; 
-  position: absolute; 
-  top: 100%; 
-  left: 0; 
-  width: 100%; 
-  background: #d32f2f; /* เปลี่ยนพื้นหลังกล่องเมนูเป็นสีแดง */
-  border: 1px solid #b71c1c; 
-  border-radius: 6px; 
-  margin-top: 4px; 
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  z-index: 10; 
-  flex-direction: column; 
-  overflow: hidden;
-}
-.file-list.active { display: flex; animation: slideDown 0.2s ease forwards; }
-@keyframes slideDown { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
-
-/* สไตล์ลิงก์ไฟล์ด้านใน */
-.file-link { 
-  padding: 10px 12px; 
-  color: #ffffff; /* เปลี่ยนตัวหนังสือเป็นสีขาว */
-  text-decoration: none; 
-  font-size: 0.85rem; 
-  border-bottom: 1px solid #b71c1c; /* เส้นคั่นระหว่างไฟล์ใช้สีแดงเข้ม */
-  transition: background 0.2s; 
-  text-align: left; 
-}
-.file-link:last-child { border-bottom: none; }
-.file-link:hover { 
-  background: #b71c1c; /* เวลาเอาเมาส์ชี้ให้พื้นหลังเป็นสีแดงเข้มขึ้น */
-  color: #ffffff; 
-  font-weight: 600; 
-}
+.content-card { background: var(--white); border-radius: 12px; box-shadow: 0 10px 30px rgba(10, 30, 51, 0.08); border: 1px solid #eef2f6; padding: 0; overflow: hidden; }
+/* สไตล์ตารางใหม่ให้เข้ากับธีม */
+.table-responsive { width: 100%; overflow-x: auto; border: none; border-radius: 0; }
+.strategy-table { width: 100%; border-collapse: collapse; min-width: 800px; text-align: left; }
+.strategy-table th { background: var(--navy); color: #fff; padding: 16px 20px; font-weight: 600; font-size: 1.05rem; white-space: nowrap; font-family: 'Sarabun', serif; text-align: center; border: 1px solid var(--line); }
+.strategy-table td { padding: 16px 20px; border: 1px solid var(--line); color: var(--ink); font-size: 1rem; vertical-align: middle; }
+.strategy-table tr:last-child td { border-bottom: none; }
+.strategy-table tr:hover { background: var(--cream); }
+.text-center { text-align: center; }
+.text-bold { font-weight: 600; color: var(--navy); }
+.highlight-text { color: var(--navy-3); font-weight: bold; } /* สีน้ำเงินเข้มสำหรับจังหวัดที่เป็นที่ตั้งสำนัก */
 
 @media (max-width: 768px) {
-  .year-card { padding: 25px 20px; }
-  .quarter-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } 
-  .quarter-box { min-height: 140px; }
-}
-@media (max-width: 500px) { 
-  .quarter-grid { grid-template-columns: 1fr; } 
+  .content-card { padding: 20px; }
+  .strategy-table td, .strategy-table th { padding: 12px 10px; font-size: 0.9rem; }
 }
 
 /* ================= CONTACT / FOOTER ================= */
@@ -279,7 +151,7 @@ img{display:block;max-width:100%;}
 .footer-bottom { margin-top: 80px; border-top: 1px solid rgba(255,255,255,.12); padding: 26px 20px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; }
 .footer-bottom p { font-size: .75rem; color: #8098b0; text-align: center; margin: 0; }
 
-/* สไตล์ปุ่มโซเชียล */
+/* ================= สไตล์ปุ่มโซเชียล F และ E ================= */
 .social-row { display: flex !important; flex-direction: row !important; gap: 14px; margin-top: 22px; }
 .social-row a.btn-fb { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #1877F2; border: 1px solid #1877F2; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
 .social-row a.btn-fb:hover { background-color: #145dbf; border-color: #145dbf; }
@@ -291,7 +163,7 @@ img{display:block;max-width:100%;}
 </head>
 <body>
 
-<!-- ============ NAV (แบบเต็มรูปแบบ 100%) ============ -->
+<!-- ============ NAV (อัปเดตให้ตรงกับหน้าหลัก) ============ -->
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="ict4.html" class="brand">
@@ -305,6 +177,7 @@ img{display:block;max-width:100%;}
     <ul class="nav-links nav-wrap">
       <li class="nav-item"><a href="ict4.html" class="top-link"><span class="ul-mark"></span>หน้าหลัก</a></li>
       
+      <!-- ================= 1. เกี่ยวกับหน่วยงาน ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>เกี่ยวกับหน่วยงาน<span class="chev">▾</span></a>
         <div class="dropdown-box">
@@ -324,8 +197,8 @@ img{display:block;max-width:100%;}
               <a href="contacts.html">หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
               
             </div>
-          </div>
-          <div class="dropdown-group">
+            </div>
+            <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">เครือข่าย Intranet สป.มท.</a>
             <div class="dropdown-sub">
               <a href="#">ศสส.สป./ศสข. 12 เขต</a>
@@ -340,6 +213,7 @@ img{display:block;max-width:100%;}
               <a href="#">กองการเจ้าหน้าที่ สป.</a>
               <a href="#">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a> 
               <a href="#">สำนักงาน ก.พ.ร.</a>
+              <a href="#">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a>
               <a href="#">กรมบัญชีกลาง สป.</a>             
             </div>
           </div>
@@ -356,6 +230,7 @@ img{display:block;max-width:100%;}
         </div>
       </li>
 
+      <!-- ================= 2. ข้อมูลและรายงาน ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>ข้อมูลและรายงาน<span class="chev">▾</span></a>
         <div class="dropdown-box">
@@ -381,10 +256,10 @@ img{display:block;max-width:100%;}
             </div>
           </div>
           <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">แผนงาน โครงการ และการพัฒนาระบบ</a> 
+            <a href="orders.html" class="dropdown-header direct-link">แผนงาน โครงการ และการพัฒนาระบบ</a> 
           </div>
           <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">การบริหารจัดการทั่วไป พัสดุ และการประเมิน</a> 
+            <a href="orders.html" class="dropdown-header direct-link">การบริหารจัดการทั่วไป พัสดุ และการประเมิน</a> 
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ระบบสารบรรณและจดหมายอิเล็กทรอนิกส์</a>
@@ -394,24 +269,26 @@ img{display:block;max-width:100%;}
               <a href="#">Mail moi.go.th</a> 
             </div>
           </div>
-        </div>
+        </div> <!-- แก้ไขเติมแท็กปิด /div ที่หายไปในไฟล์ ict4 -->
       </li>
 
+      <!-- ================= 3. คำสั่ง / ระเบียบ ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คำสั่ง / ระเบียบ<span class="chev">▾</span></a>
         <div class="dropdown-box">
          <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">คำสั่งการปฏิบัติงานและมอบหมายหน้าที่ ศสข.4</a>
+            <a href="orders.html" class="dropdown-header direct-link">คำสั่งการปฏิบัติงานและมอบหมายหน้าที่ ศสข.4</a>
           </div>
           <div class="dropdown-group">
-            <a href="regulations.html" class="dropdown-header">ระเบียบและข้อบังคับ</a>
+            <a href="regulations.html" class="dropdown-header direct-link">ระเบียบและข้อบังคับ</a>
           </div>
           <div class="dropdown-group">
-            <a href="policies.html" class="dropdown-header">นโยบาย ประกาศ และกฎหมายที่เกี่ยวข้อง</a>
+            <a href="policies.html" class="dropdown-header direct-link">นโยบาย ประกาศ และกฎหมายที่เกี่ยวข้อง</a>
           </div>
         </div>
       </li>
 
+      <!-- ================= 4. คู่มือ / ดาวน์โหลด ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คู่มือ / ดาวน์โหลด<span class="chev">▾</span></a>
         <div class="dropdown-box">
@@ -434,7 +311,7 @@ img{display:block;max-width:100%;}
             </div>
           </div>
            <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a> 
+            <a href="orders.html" class="dropdown-header direct-link">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a> 
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คู่มือด้านอุปกรณ์ เครือข่าย และชุมสายโทรศัพท์</a> 
@@ -457,11 +334,12 @@ img{display:block;max-width:100%;}
             </div>
           </div>
            <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a> 
+            <a href="orders.html" class="dropdown-header direct-link">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a> 
           </div>
         </div>
       </li>
 
+      <!-- ================= 5. E-Learning ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>E-Learning<span class="chev">▾</span></a>
         <div class="dropdown-box" style="width: 260px;">
@@ -483,7 +361,7 @@ img{display:block;max-width:100%;}
   </div>
 </nav>
 
-<!-- ============ MOBILE DRAWER ============ -->
+<!-- ============ MOBILE DRAWER (อัปเดตให้ตรงกับหน้าหลัก) ============ -->
 <div class="mobile-drawer" id="mobileDrawer">
   <button class="close-drawer" id="closeDrawer">×</button>
   <a href="ict4.html" class="m-top">หน้าหลัก</a>
@@ -494,7 +372,7 @@ img{display:block;max-width:100%;}
     <a href="history.html">ประวัติความเป็นมาและสถานที่ตั้ง</a>
     <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
     <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
-    <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
+    <a href="duties.html">แนะนำบุคลากรปัจจุบัน</a>
     <a href="duties.html">สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</a>
     <div class="m-group-title">ช่องทางการติดต่อ</div>
     <a href="contacts.html">หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
@@ -532,6 +410,7 @@ img{display:block;max-width:100%;}
     <a href="#">จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a>
     <a href="#">ข้อมูลทางด้านเทคนิค ระบบสื่อสารข้อมูล และ ระบบ ATM</a>
     <a href="#">Access Code เครือข่ายโทรศัพท์ มท.</a>
+    <!-- ลิงก์ตรงที่ไม่มีเมนูย่อย -->
     <a href="orders.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">แผนงาน โครงการ และการพัฒนาระบบ</a>
     <a href="orders.html" class="m-group-title" style="text-decoration:none;">การบริหารจัดการทั่วไป พัสดุ และการประเมิน</a>
     
@@ -543,6 +422,7 @@ img{display:block;max-width:100%;}
   
   <a href="javascript:void(0)" class="m-top" data-m="m3">คำสั่ง / ระเบียบ <span>▾</span></a>
   <div class="m-sub" id="m3">
+    <!-- เปลี่ยนจากตัวหนังสือธรรมดา ให้เป็นลิงก์ที่กดได้เลย -->
     <a href="orders.html" class="m-group-title" style="text-decoration:none;">คำสั่งการปฏิบัติงานและมอบหมายหน้าที่ ศสข.4</a>
     <a href="regulations.html" class="m-group-title" style="text-decoration:none;">ระเบียบและข้อบังคับ</a>
     <a href="policies.html" class="m-group-title" style="text-decoration:none;">นโยบาย ประกาศ และกฎหมายที่เกี่ยวข้อง</a>
@@ -562,6 +442,7 @@ img{display:block;max-width:100%;}
     <a href="#">แบบฟอร์มสมุดบันทึกการรับ-ส่งเวร ของ ศสข.4 (นม)</a>
     <a href="#">แบบฟอร์มแบบรายงานการปฏิบัติหน้าที่ รปภ.ของ ศสข.4 (นม)</a>
     
+    <!-- ลิงก์ตรงที่ไม่มีเมนูย่อย -->
     <a href="orders.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a>
     
     <div class="m-group-title" style="margin-top: 15px;">คู่มือด้านอุปกรณ์ เครือข่าย และชุมสายโทรศัพท์</div>
@@ -578,6 +459,7 @@ img{display:block;max-width:100%;}
     <a href="#">คู่มือการใช้งาน E-document</a>
     <a href="#">คู่มือการใช้งาน E-office</a>
     
+    <!-- ลิงก์ตรงที่ไม่มีเมนูย่อย -->
     <a href="orders.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a>
   </div>
 
@@ -595,163 +477,160 @@ img{display:block;max-width:100%;}
 <!-- ============ SUBPAGE HEADER ============ -->
 <header class="subpage-header">
   <div class="wrap reveal">
-    <h1>แบบ รต.3 - สถิติการใช้ระบบโทรศัพท์</h1>
+    <h1>สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</h1>
     <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</p>
   </div>
 </header>
 
-<!-- ============ CONTENT ============ -->
-<main class="page-container pad">
-  <div class="wrap reveal">
-    <!-- ปีงบประมาณ 2564 -->
-    <div class="year-card">
-      <h3 class="year-title">ปีงบประมาณ 2564</h3>
-      <div class="quarter-grid">
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 1</div>
-          <div class="q-month">ต.ค. - ธ.ค. 63</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 2</div>
-          <div class="q-month">ม.ค. - มี.ค. 64</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 3</div>
-          <div class="q-month">เม.ย. - มิ.ย. 64</div>
-         <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 4</div>
-          <div class="q-month">ก.ค. - ก.ย. 64</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
+<!-- ============ CONTENT: STRATEGIC OFFICE TABLE ============ -->
+<main class="pad">
+  <div class="wrap">
+    
+    <div class="reveal">
+      <div class="section-head">
+        <h2>สำนักบริหารยุทธศาสตร์กลุ่มจังหวัด</h2>
       </div>
-    </div>
 
-    <!-- ปีงบประมาณ 2563 -->
-    <div class="year-card">
-      <h3 class="year-title">ปีงบประมาณ 2563</h3>
-      <div class="quarter-grid">
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 1</div>
-          <div class="q-month">ต.ค. - ธ.ค. 62</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 2</div>
-          <div class="q-month">ม.ค. - มี.ค. 63</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 3</div>
-          <div class="q-month">เม.ย. - มิ.ย. 63</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 4</div>
-          <div class="q-month">ก.ค. - ก.ย. 63</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ปีงบประมาณ 2562 -->
-    <div class="year-card">
-      <h3 class="year-title">ปีงบประมาณ 2562</h3>
-      <div class="quarter-grid">
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 1</div>
-          <div class="q-month">ต.ค. - ธ.ค. 61</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 2</div>
-          <div class="q-month">ม.ค. - มี.ค. 62</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 3</div>
-          <div class="q-month">เม.ย. - มิ.ย. 62</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
-        </div>
-        <div class="quarter-box">
-          <div class="q-title">ไตรมาสที่ 4</div>
-          <div class="q-month">ก.ค. - ก.ย. 62</div>
-          <div class="download-dropdown">
-            <button class="q-btn has-dropdown" onclick="toggleFiles(event, this)">📄 ดาวน์โหลด (PDF)</button>
-            <div class="file-list">
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 1</a>
-              <a href="#" class="file-link">📄 ไฟล์เอกสาร 2</a>
-            </div>
-          </div>
+      <div class="content-card">
+        <div class="table-responsive">
+          <table class="strategy-table">
+            <thead>
+              <tr>
+                <th style="width: 8%;">ลำดับ</th>
+                <th style="width: 25%;">กลุ่มจังหวัด</th>
+                <th style="width: 45%;">จังหวัดในกลุ่ม</th>
+                <th style="width: 22%;">จังหวัดที่เป็นที่ตั้งสำนัก<br>บริหารยุทธศาสตร์<br>กลุ่มจังหวัด</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- ลำดับ 1 -->
+              <tr>
+                <td class="text-center">1</td>
+                <td class="text-bold">ภาคกลาง (ตอนบน 1)</td>
+                <td>นนทบุรี ปทุมธานี พระนครศรีอยุธยา สระบุรี</td>
+                <td class="text-center highlight-text">พระนครศรีอยุธยา</td>
+              </tr>
+              <!-- ลำดับ 2 -->
+              <tr>
+                <td class="text-center">2</td>
+                <td class="text-bold">ภาคกลาง (ตอนบน 2)</td>
+                <td>ชัยนาท ลพบุรี สิงห์บุรี อ่างทอง</td>
+                <td class="text-center highlight-text">ลพบุรี</td>
+              </tr>
+              <!-- ลำดับ 3 -->
+              <tr>
+                <td class="text-center">3</td>
+                <td class="text-bold">ภาคกลาง (ตอนกลาง)</td>
+                <td>ฉะเชิงเทรา ปราจีนบุรี สระแก้ว นครนายก สมุทรปราการ</td>
+                <td class="text-center highlight-text">ฉะเชิงเทรา</td>
+              </tr>
+              <!-- ลำดับ 4 -->
+              <tr>
+                <td class="text-center">4</td>
+                <td class="text-bold">ภาคกลาง (ตอนล่าง 1)</td>
+                <td>กาญจนบุรี นครปฐม ราชบุรี สุพรรณบุรี</td>
+                <td class="text-center highlight-text">นครปฐม</td>
+              </tr>
+              <!-- ลำดับ 5 -->
+              <tr>
+                <td class="text-center">5</td>
+                <td class="text-bold">ภาคกลาง (ตอนล่าง 2)</td>
+                <td>ประจวบคีรีขันธ์ เพชรบุรี สมุทรสาคร สมุทรสงคราม</td>
+                <td class="text-center highlight-text">เพชรบุรี</td>
+              </tr>
+              <!-- ลำดับ 6 -->
+              <tr>
+                <td class="text-center">6</td>
+                <td class="text-bold">ภาคใต้ (ฝั่งอ่าวไทย)</td>
+                <td>ชุมพร สุราษฎร์ธานี นครศรีธรรมราช พัทลุง</td>
+                <td class="text-center highlight-text">สุราษฎร์ธานี</td>
+              </tr>
+              <!-- ลำดับ 7 -->
+              <tr>
+                <td class="text-center">7</td>
+                <td class="text-bold">ภาคใต้ (ฝั่งอันดามัน)</td>
+                <td>ระนอง พังงา ภูเก็ต กระบี่ ตรัง</td>
+                <td class="text-center highlight-text">ภูเก็ต</td>
+              </tr>
+              <!-- ลำดับ 8 -->
+              <tr>
+                <td class="text-center">8</td>
+                <td class="text-bold">ภาคใต้ (ชายแดน)</td>
+                <td>สงขลา สตูล ปัตตานี ยะลา นราธิวาส</td>
+                <td class="text-center highlight-text">สงขลา</td>
+              </tr>
+              <!-- ลำดับ 9 -->
+              <tr>
+                <td class="text-center">9</td>
+                <td class="text-bold">ภาคตะวันออก</td>
+                <td>จันทบุรี ชลบุรี ระยอง ตราด</td>
+                <td class="text-center highlight-text">ชลบุรี</td>
+              </tr>
+              <!-- ลำดับ 10 -->
+              <tr>
+                <td class="text-center">10</td>
+                <td class="text-bold">ภาคตะวันออกเฉียงเหนือ (ตอนบน 1)</td>
+                <td>หนองคาย เลย อุดรธานี หนองบัวลำภู</td>
+                <td class="text-center highlight-text">อุดรธานี</td>
+              </tr>
+              <!-- ลำดับ 11 -->
+              <tr>
+                <td class="text-center">11</td>
+                <td class="text-bold">ภาคตะวันออกเฉียงเหนือ (ตอนบน 2)</td>
+                <td>นครพนม มุกดาหาร สกลนคร</td>
+                <td class="text-center highlight-text">สกลนคร</td>
+              </tr>
+              <!-- ลำดับ 12 -->
+              <tr>
+                <td class="text-center">12</td>
+                <td class="text-bold">ภาคตะวันออกเฉียงเหนือ (ตอนกลาง)</td>
+                <td>ร้อยเอ็ด ขอนแก่น มหาสารคาม กาฬสินธุ์</td>
+                <td class="text-center highlight-text">ขอนแก่น</td>
+              </tr>
+              <!-- ลำดับ 13 -->
+              <tr>
+                <td class="text-center">13</td>
+                <td class="text-bold">ภาคตะวันออกเฉียงเหนือ (ตอนล่าง 1)</td>
+                <td>อำนาจเจริญ ศรีสะเกษ ยโสธร อุบลราชธานี</td>
+                <td class="text-center highlight-text">อุบลราชธานี</td>
+              </tr>
+              <!-- ลำดับ 14 -->
+              <tr>
+                <td class="text-center">14</td>
+                <td class="text-bold">ภาคตะวันออกเฉียงเหนือ (ตอนล่าง 2)</td>
+                <td>สุรินทร์ นครราชสีมา บุรีรัมย์ ชัยภูมิ</td>
+                <td class="text-center highlight-text">นครราชสีมา</td>
+              </tr>
+              <!-- ลำดับ 15 -->
+              <tr>
+                <td class="text-center">15</td>
+                <td class="text-bold">ภาคเหนือ (ตอนบน 1)</td>
+                <td>เชียงใหม่ แม่ฮ่องสอน ลำปาง ลำพูน</td>
+                <td class="text-center highlight-text">เชียงใหม่</td>
+              </tr>
+              <!-- ลำดับ 16 -->
+              <tr>
+                <td class="text-center">16</td>
+                <td class="text-bold">ภาคเหนือ (ตอนบน 2)</td>
+                <td>น่าน พะเยา เชียงราย แพร่</td>
+                <td class="text-center highlight-text">เชียงราย</td>
+              </tr>
+              <!-- ลำดับ 17 -->
+              <tr>
+                <td class="text-center">17</td>
+                <td class="text-bold">ภาคเหนือ (ตอนล่าง 1)</td>
+                <td>ตาก พิษณุโลก สุโขทัย เพชรบูรณ์ อุตรดิตถ์</td>
+                <td class="text-center highlight-text">พิษณุโลก</td>
+              </tr>
+              <!-- ลำดับ 18 -->
+              <tr>
+                <td class="text-center">18</td>
+                <td class="text-bold">ภาคเหนือ (ตอนล่าง 2)</td>
+                <td>กำแพงเพชร พิจิตร นครสวรรค์ อุทัยธานี</td>
+                <td class="text-center highlight-text">นครสวรรค์</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -923,33 +802,6 @@ img{display:block;max-width:100%;}
       }
     });
   });
-
-  // ================= ควบคุมปุ่มดาวน์โหลดไฟล์ (Dropdown ไฟล์) =================
-  function toggleFiles(e, btn) {
-    e.preventDefault();
-    if(btn.classList.contains('disabled')) return;
-
-    let fileList = btn.nextElementSibling;
-    
-    if (fileList.classList.contains('active')) {
-      fileList.classList.remove('active');
-      btn.classList.remove('active');
-    } else {
-      document.querySelectorAll('.file-list').forEach(list => list.classList.remove('active'));
-      document.querySelectorAll('.download-dropdown .q-btn').forEach(button => button.classList.remove('active'));
-
-      fileList.classList.add('active');
-      btn.classList.add('active');
-    }
-  }
-
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.download-dropdown')) {
-      document.querySelectorAll('.file-list').forEach(list => list.classList.remove('active'));
-      document.querySelectorAll('.download-dropdown .q-btn').forEach(btn => btn.classList.remove('active'));
-    }
-  });
-
 </script>
 </body>
 </html>

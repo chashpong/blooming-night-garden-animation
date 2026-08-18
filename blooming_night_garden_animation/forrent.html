@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>เวรรักษาการณ์ฯ ประจำเดือน - หน้า 2</title>
+<title>วงจรเช่าทางไกลในข่าย ศสข.4 (นม) - ศสข.4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -23,7 +23,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Sarabun',sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-weight:300;overflow-x:hidden;}
+body{font-family:'Sarabun',sans-serif;background:#f4f7fa;color:var(--ink);line-height:1.6;font-weight:300;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
 h1,h2,h3,h4{font-family:'Sarabun',serif;font-weight:600;}
 img{display:block;max-width:100%;}
@@ -36,7 +36,7 @@ img{display:block;max-width:100%;}
 
 /* ================= NAV ================= */
 .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: background .4s ease, box-shadow .4s ease, padding .4s ease; padding: 26px 0; }
-.site-nav.solid { background: rgba(10,30,51,.97); box-shadow: 0 8px 30px rgba(0,0,0,.18); padding: 14px 0; backdrop-filter: blur(6px); }
+.site-nav.solid{background:linear-gradient(165deg, var(--navy-3) 0%, var(--navy) 60%, var(--navy-2));box-shadow:0 8px 30px rgba(0,0,0,.18);padding:14px 0;backdrop-filter:blur(6px);}
 .site-nav .nav-inner { max-width: 1220px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
 .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
 .brand-seal { width: 46px; height: 46px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; flex: none; transition: border-color .4s; background: transparent; overflow: hidden; }
@@ -110,131 +110,46 @@ img{display:block;max-width:100%;}
 .subpage-header h1 { font-family: 'Sarabun', serif; font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 10px; }
 .subpage-header p { color: var(--gold-lt); font-size: 1rem; }
 
-/* ================= โครงสร้างเนื้อหาแบบกล่อง 3 คอลัมน์ ================= */
-.content-card { background: var(--white); border-radius: 12px; box-shadow: 0 10px 30px rgba(10, 30, 51, 0.08); border: 1px solid #eef2f6; padding: 50px; }
-.page-header-text { text-align: center; margin-bottom: 40px; }
-.page-header-text h2 { font-size: clamp(1.4rem, 2.5vw, 1.8rem); color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
-.page-header-text p { color: var(--muted); font-size: 1.05rem; }
-.page-header-text .highlight-line { display: block; width: 80px; height: 3px; background: var(--gold); margin: 15px auto 0; border-radius: 2px; }
+/* ================= โครงสร้างเนื้อหาตาราง ================= */
+.content-card { background: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(10, 30, 51, 0.08); border: 1px solid #eef2f6; padding: 50px; }
+.page-header-text { text-align: center; margin-bottom: 30px; }
+.page-header-text h2 { font-size: clamp(1.3rem, 2vw, 1.6rem); color: var(--navy); line-height: 1.4; margin-bottom: 12px; }
+.page-header-text .highlight-line { display: block; width: 80px; height: 3px; background: var(--gold); margin: 0 auto; border-radius: 2px; }
 
-/* ตารางกล่อง 3 คอลัมน์ */
-.year-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-.report-box {
-  background: #f8fafc;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 30px 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(10, 30, 51, 0.03);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.report-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(10, 30, 51, 0.1);
-  border-color: var(--gold-lt);
-}
-.report-box svg {
-  width: 40px;
-  height: 40px;
-  color: var(--gold);
-  margin-bottom: 15px;
-}
-.report-box h3 {
-  font-size: 1.25rem;
-  color: var(--navy);
-  margin-bottom: 8px;
-}
-.report-box p {
-  color: var(--muted);
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-  line-height: 1.4;
-}
-.open-btn {
-  display: inline-block;
-  background: var(--navy);
-  color: #fff;
-  padding: 8px 24px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: 0.3s;
-  text-decoration: none;
-}
-.open-btn:hover {
-  background: var(--gold);
-  color: #fff;
-}
+/* สไตล์ตารางหลัก */
+.table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 40px; }
+.data-table { width: 100%; min-width: 900px; border-collapse: collapse; text-align: left; }
+.data-table th, .data-table td { padding: 14px 16px; border: 1px solid #e2e8f0; }
+.data-table thead th { background-color: var(--navy); color: #ffffff; font-weight: 500; font-size: 0.95rem; text-align: center; white-space: nowrap; }
+.data-table tbody td { font-size: 0.9rem; color: var(--ink); vertical-align: middle; }
+.data-table tbody tr:nth-child(even) { background-color: #f8fafc; }
+.data-table tbody tr:hover { background-color: #f1f5f9; }
+.data-table .text-center { text-align: center; }
+
+/* สไตล์ส่วนข้อมูล Customer Service และ Notes ด้านล่าง */
+.bottom-info-section { display: flex; flex-direction: column; gap: 15px; width: 100%; }
+
+/* เปลี่ยนพื้นหลังเป็นสีขาว และใช้ขอบแบบแข็ง */
+.cs-table-container { background: #ffffff; border-radius: 8px; padding: 24px; border: 1px solid #e2e8f0; width: 100%; overflow-x: auto; }
+.cs-title { font-size: 1.05rem; color: var(--navy); margin-bottom: 16px; font-weight: 600; display: inline-block; border-bottom: 2px solid var(--gold); padding-bottom: 4px; }
+.cs-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 400px; }
+
+/* เปลี่ยนจากเส้นประ (dashed) เป็นเส้นตรง (solid) */
+.cs-table th, .cs-table td { padding: 12px 14px; border-bottom: 1px solid #e2e8f0; text-align: center; } 
+.cs-table th { font-weight: 600; color: var(--navy); background: rgba(255,255,255,0.5); }
+.cs-table tbody th { text-align: right; white-space: nowrap; background: none; width: 25%; }
+.cs-table tr:last-child th, .cs-table tr:last-child td { border-bottom: none; }
+
+/* สไตล์กล่องหมายเหตุ (ไม่มีกรอบ) */
+.notes-simple { display: flex; flex-direction: column; gap: 8px; padding: 0 10px; color: var(--muted); font-size: 0.95rem; margin-top: 5px;}
+.notes-simple p { margin: 0; }
 
 @media (max-width: 900px) {
-  .year-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .content-card { padding: 30px 20px; }
-}
-@media (max-width: 500px) {
-  .year-grid { grid-template-columns: 1fr; }
-}
-
-/* ================= เลขหน้า (Pagination) ================= */
-.pagination-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 50px;
-  border-top: 1px dashed var(--line);
-  padding-top: 30px;
-}
-.page-num {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: #f1f5f9;
-  color: var(--navy);
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-.page-num.active {
-  background: var(--navy);
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(10, 30, 51, 0.2);
-}
-.page-num:hover:not(.active) {
-  background: var(--gold-pale);
-  color: var(--navy);
-}
-.page-next {
-  padding: 0 16px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: #f1f5f9;
-  color: var(--navy);
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-.page-next:hover {
-  background: var(--gold-pale);
 }
 
 /* ================= CONTACT / FOOTER ================= */
-.contact{background:linear-gradient(165deg,#081627,var(--navy) 60%,var(--navy-2));color:#fff;padding:100px 0 0; margin-top: 80px;}
+.contact{background:linear-gradient(165deg, var(--navy-3) 0%, var(--navy) 60%, var(--navy-2));color:#fff;padding:60px 0 0; margin-top: 0;}
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;}
 .contact-brand .th{font-family:'Sarabun',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
 .contact-brand p{color:#9db2c6;font-size:.85rem;max-width:340px;}
@@ -260,7 +175,7 @@ img{display:block;max-width:100%;}
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
+<!-- ============ NAV (เต็มรูปแบบ) ============ -->
 <nav class="site-nav" id="siteNav">
   <div class="nav-inner">
     <a href="ict4.html" class="brand">
@@ -274,6 +189,7 @@ img{display:block;max-width:100%;}
     <ul class="nav-links nav-wrap">
       <li class="nav-item"><a href="ict4.html" class="top-link"><span class="ul-mark"></span>หน้าหลัก</a></li>
       
+      <!-- ================= 1. เกี่ยวกับหน่วยงาน ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>เกี่ยวกับหน่วยงาน<span class="chev">▾</span></a>
         <div class="dropdown-box">
@@ -284,162 +200,169 @@ img{display:block;max-width:100%;}
               <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
               <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
               <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
-              <a href="duties.html">สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</a>
+              <a href="strategic_office.html">สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</a>
             </div>
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ช่องทางการติดต่อ</a>
             <div class="dropdown-sub">
               <a href="contacts.html">หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
-              <a href="contacts.html">โทรศัพท์และอีเมลของข้าราชการ ศสส.สป.</a>
             </div>
-          </div>
-          <div class="dropdown-group">
+            </div>
+            <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">เครือข่าย Intranet สป.มท.</a>
             <div class="dropdown-sub">
-              <a href="#">ศสส.สป./ศสข. 12 เขต</a>
-              <a href="#">Moinet</a> 
+              <a href="Frame_2.html">ศสส.สป./ศสข. 12 เขต</a> 
             </div>
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">หน่วยงานส่วนกลางและหน่วยงานที่เกี่ยวข้อง</a>
             <div class="dropdown-sub">
-              <a href="#">สำนักงานปลัดกระทรวงมหาดไทย</a>   
-              <a href="#">กระทรวงมหาดไทย</a> 
-              <a href="#">กองการเจ้าหน้าที่ สป.</a>
-              <a href="#">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a> 
-              <a href="#">สำนักงาน ก.พ.ร.</a>
-              <a href="#">กรมบัญชีกลาง สป.</a>             
-            </div>
+  <a href="https://smoi.moi.go.th/index.asp" target="_blank">สำนักงานปลัดกระทรวงมหาดไทย</a>
+  <a href="https://cims.moi.go.th/public/Home/Index" target="_blank">กระทรวงมหาดไทย</a>
+  <a href="https://personnel.moi.go.th/" target="_blank">กองการเจ้าหน้าที่ สป.</a>
+  <a href="https://www.cgd.go.th/cs/internet/internet/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%812.html?page_locale=th_TH" target="_blank">กรมบัญชีกลาง สป.</a>
+  <a href="http://www.moicoop.com/" target="_blank">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a>
+  <a href="https://www.opdc.go.th/" target="_blank">สำนักงาน ก.พ.ร.</a>          
+</div>
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">เว็บไซต์จังหวัดในพื้นที่</a>
             <div class="dropdown-sub">
-              <a href="#">จังหวัดนครราชสีมา</a>   
-              <a href="#">จังหวัดบุรีรัมย์</a> 
-              <a href="#">จังหวัดสุรินทร์</a>
-              <a href="#">จังหวัดศรีสะเกษ</a> 
-              <a href="#">จังหวัดอุบลราชธานี</a>           
-            </div>
+  <a href="https://www.nakhonratchasima.go.th/" target="_blank">จังหวัดนครราชสีมา</a>   
+  <a href="https://www.buriram.go.th/" target="_blank">จังหวัดบุรีรัมย์</a> 
+  <a href="https://www2.surin.go.th/frontpage" target="_blank">จังหวัดสุรินทร์</a>
+  <a href="https://www.sisaket.go.th/" target="_blank">จังหวัดศรีสะเกษ</a> 
+  <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>           
+</div>
+<div class="dropdown-group">
+  <a href="#" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
+</div>
           </div>
         </div>
       </li>
 
+      <!-- ================= 2. ข้อมูลและรายงาน ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>ข้อมูลและรายงาน<span class="chev">▾</span></a>
         <div class="dropdown-box">
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">รายงานสรุปผลการดำเนินงาน</a>
             <div class="dropdown-sub">
-              <a href="equipment.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
+              <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
               <a href="vcs_report.html">การประชุมผ่านระบบวีดิทัศน์ทางไกล (VCS)</a>
               <a href="ftdma_report.html">การปฏิบัติงานระบบสื่อสารผ่านดาวเทียม (FTDMA)</a>
-              <a href="guard_duty1.html">การรับ-ส่งข่าว</a>
-              <a href="guard_duty1.html">สถิติการใช้กระแสไฟฟ้า</a>
+              <a href="equipment.html">รายการตรวจสอบครุภัณฑ์</a>
+              <a href="summary.html">การจัดทำรายงานประจำปี</a>
+              <a href="guard_duty1.html">เวรรักษาการณ์สถานที่ราชการ</a>
+              <a href="message_report.html">การรับ-ส่งข่าว</a>
+              <a href="electric_report.html">สถิติการใช้กระแสไฟฟ้า</a>
             </div>
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ข้อมูลด้านเทคนิคและเครือข่าย</a>
             <div class="dropdown-sub">
-              <a href="e_reports_main.html">วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
-              <a href="#">ผู้ขอใช้บริการเครือข่าย Online</a> 
-              <a href="#">โทรศัพท์ มท.ในโคราชติดตั้งที่ใดบ้าง?</a> 
-              <a href="#">จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a> 
-              <a href="#">ข้อมูลทางด้านเทคนิค ระบบสื่อสารข้อมูล และ ระบบ ATM</a>
-              <a href="#">Access Code เครือข่ายโทรศัพท์ มท.</a>
+              <a href="forrent.html">วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
+              <a href="ip_address.html">ผู้ขอใช้บริการเครือข่าย Online</a> 
+              <a href="phone_install_korat.html">สถานที่ติดตั้งโทรศัพท์ มท. ในจังหวัดนครราชสีมา</a> 
+              <a href="phone_numbers_zone.html">จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a> 
+              <a href="access_code.html">Access Code เครือข่ายโทรศัพท์ มท.</a>
             </div>
           </div>
           <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">แผนงาน โครงการ และการพัฒนาระบบ</a> 
+            <a href="projects.html" class="dropdown-header direct-link">แผนงาน โครงการ และการพัฒนาระบบ</a> 
           </div>
-          <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">การบริหารจัดการทั่วไป พัสดุ และการประเมิน</a> 
-          </div>
-          <div class="dropdown-group">
+        <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ระบบสารบรรณและจดหมายอิเล็กทรอนิกส์</a>
             <div class="dropdown-sub">
-              <a href="e_reports_main.html">สำหรับเจ้าหน้าที่ E-Office</a>
-              <a href="#">สารบรรณอิเล็กทรอนิกส์ E-document</a> 
-              <a href="#">Mail moi.go.th</a> 
+              <a href="https://srb.moi.go.th/portal/home" target="_blank">สารบรรณอิเล็กทรอนิกส์ E-Document</a> 
+              <a href="https://mail.moi.go.th/" target="_blank">Mail moi.go.th</a>
+              <a href="back-office.html">Back office</a>  
             </div>
           </div>
-        </div>
       </li>
 
+      <!-- ================= 3. คำสั่ง / ระเบียบ ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คำสั่ง / ระเบียบ<span class="chev">▾</span></a>
         <div class="dropdown-box">
          <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">คำสั่งการปฏิบัติงานและมอบหมายหน้าที่ ศสข.4</a>
+            <!-- ลบ onclick ออก และใส่ลิงก์ไปหน้า orders.html โดยตรง -->
+            <a href="orders.html" class="dropdown-header direct-link">คำสั่งการปฏิบัติงานและมอบหมายหน้าที่ ศสข.4</a>
           </div>
           <div class="dropdown-group">
-            <a href="regulations.html" class="dropdown-header">ระเบียบและข้อบังคับ</a>
+            <a href="regulations.html" class="dropdown-header direct-link">ระเบียบและข้อบังคับ</a>
           </div>
           <div class="dropdown-group">
-            <a href="policies.html" class="dropdown-header">นโยบาย ประกาศ และกฎหมายที่เกี่ยวข้อง</a>
+            <a href="policies.html" class="dropdown-header direct-link">นโยบาย ประกาศ และกฎหมายที่เกี่ยวข้อง</a>
           </div>
         </div>
       </li>
 
+      <!-- ================= 4. คู่มือ / ดาวน์โหลด ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คู่มือ / ดาวน์โหลด<span class="chev">▾</span></a>
         <div class="dropdown-box">
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">โปรแกรมและซอฟต์แวร์สำหรับติดตั้ง</a> 
             <div class="dropdown-sub">
-              <a href="#">ESET Endpoint Antivirus V.6</a> 
-              <a href="#">ESET Endpoint Antivirus V.8</a> 
-              <a href="#">โปรแกรม SCAN VIRUS trojan</a> 
-              <a href="#">Download Jabber for PC</a> 
-              <a href="#">pebuilder สำหรับทำ Windows PE</a> 
+              <a href="eset_v6.html">ESET Endpoint Antivirus V.6</a> 
+              <a href="eset_v8.html">ESET Endpoint Antivirus V.8</a>  
+              <a href="https://www.download3k.com/#google_vignette" target="_blank">โปรแกรม SCAN VIRUS trojan</a> 
+              <a href="CiscoJabber-Install-ffr.12-1-2.zip">Download Jabber for PC</a> 
+              <a href="pebuilder3110a.zip">pebuilder สำหรับทำ Windows PE</a> 
             </div>
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">แบบฟอร์มการปฏิบัติงาน</a> 
             <div class="dropdown-sub">
-              <a href="#">แบบฟอร์มสมุดลงเวลาการปฏิบัติราชการ ของ ศสข.4 (นม)</a>
-              <a href="#">แบบฟอร์มสมุดบันทึกการรับ-ส่งเวร ของ ศสข.4 (นม)</a>
-              <a href="#">แบบฟอร์มแบบรายงานการปฏิบัติหน้าที่ รปภ.ของ ศสข.4 (นม)</a> 
+              <a href="book-time (1).xls">แบบฟอร์มสมุดลงเวลาการปฏิบัติราชการ ของ ศสข.4 (นม)</a>
+              <a href="check-van.rar">แบบฟอร์มสมุดบันทึกการรับ-ส่งเวร ของ ศสข.4 (นม)</a>
+              <a href="security.rar">แบบฟอร์มแบบรายงานการปฏิบัติหน้าที่ รปภ.ของ ศสข.4 (นม)</a>
+              <a href="front-office.html">แบบฟอร์ม Front office</a>  
             </div>
           </div>
            <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a> 
+            <a href="manual_comm.html" class="dropdown-header direct-link">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a> 
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คู่มือด้านอุปกรณ์ เครือข่าย และชุมสายโทรศัพท์</a> 
             <div class="dropdown-sub">
-              <a href="#">ระบบบริหารจัดการเครือข่าย MOI Network Manangment</a>
-              <a href="#">ระบบโทรศัพท์ IP (IP Phone)</a>
-              <a href="#">คู่มือ power supply ICOM IC-PS30</a> 
-              <a href="#">การควบคุมอุปกรณ์ MCU</a>
-              <a href="#">การใช้งานระบบ E-Broadcast</a>
-              <a href="#">Show Alarm PABX MD110</a>
-              <a href="#">PABX MD110 ไม่ใช่เรื่องยาก</a>
+              <a href="Network Manangment.pdf">ระบบบริหารจัดการเครือข่าย MOI Network Manangment</a>
+              <a href="ip_phone.html">ระบบโทรศัพท์ IP (IP Phone)</a>
+              <a href="power supply ICOM IC-PS30.pdf">คู่มือ power supply ICOM IC-PS30</a> 
+              <a href="Operation Manual MCU.pdf">การควบคุมอุปกรณ์ MCU</a>
+              <a href="E - broadcast.pdf">การใช้งานระบบ E-Broadcast</a>
+              <a href="product show alarm.pdf">Show Alarm PABX MD110</a>
             </div>
           </div>
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คู่มือระบบสารบรรณและการใช้งานระบบของหน่วยงาน</a> 
             <div class="dropdown-sub">
-              <a href="#">คู่มือ ใช้งานโปรแกรมระบบงานสารบรรณอิเล็กทรอนิกส์ จังหวัดนครราชสีมา</a>
-              <a href="#">คู่มือการใช้งาน E-document</a>
-              <a href="#">คู่มือการใช้งาน E-office</a> 
+              <a href="manual_edoc_korat.html">คู่มือ ใช้งานโปรแกรมระบบงานสารบรรณอิเล็กทรอนิกส์ จังหวัดนครราชสีมา</a>
+              <a href="edocument.pdf">คู่มือการใช้งาน E-Document</a>
+              <a href="eoffice.pdf">คู่มือการใช้งาน E-Office</a> 
             </div>
           </div>
            <div class="dropdown-group">
-            <a href="orders.html" class="dropdown-header">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a> 
+            <a href="basic_computer_troubleshooting.html" class="dropdown-header direct-link">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a> 
+          </div>
+           <div class="dropdown-group">
+            <a href="Government Website Standard.pdf" class="dropdown-header direct-link">มาตรฐานเว็บไซต์ภาครัฐ</a> 
           </div>
         </div>
       </li>
 
+      <!-- ================= 5. E-Learning (เพิ่มใหม่จากส่วนด้านล่าง) ================= -->
       <li class="nav-item has-dropdown">
         <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>E-Learning<span class="chev">▾</span></a>
         <div class="dropdown-box" style="width: 260px;">
           <div class="dropdown-group">
             <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">แหล่งเรียนรู้และพัฒนาบุคลากรภาครัฐ</a>
             <div class="dropdown-sub">
-              <a href="#">TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)]</a>
-              <a href="#">OCSC Learning Portal [สำนักงาน ก.พ.]</a>
-              <a href="#">Digital Government Learning Portal (TDGA) [สถาบันพัฒนาบุคลากรภาครัฐด้านดิจิทัล]</a>
+              <a href="https://e-training.tpqi.go.th/" target="_blank">TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)]</a>
+              <a href="https://learningportal.ocsc.go.th/learningportal" target="_blank">OCSC Learning Portal [สำนักงาน ก.พ.]</a>
+              <a href="https://tdga.dga.or.th/" target="_blank">Digital Government Learning Portal (TDGA) [สถาบันพัฒนาบุคลากรภาครัฐด้านดิจิทัล]</a>
             </div>
           </div>
         </div>
@@ -464,50 +387,55 @@ img{display:block;max-width:100%;}
     <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
     <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
     <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
-    <a href="duties.html">สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</a>
+    <a href="strategic_office.html">สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</a>
     <div class="m-group-title">ช่องทางการติดต่อ</div>
     <a href="contacts.html">หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
-    <a href="contacts.html">โทรศัพท์และอีเมลของข้าราชการ ศสส.สป.</a>
+    
     <div class="m-group-title">เครือข่าย Intranet สป.มท.</div>
-    <a href="#">ศสส.สป./ศสข. 12 เขต</a>
-    <a href="#">Moinet</a>
+    <a href="Frame_2.html">ศสส.สป./ศสข. 12 เขต</a>
+    
     <div class="m-group-title">หน่วยงานส่วนกลางและหน่วยงานที่เกี่ยวข้อง</div>
-    <a href="#">สำนักงานปลัดกระทรวงมหาดไทย</a>
-    <a href="#">กระทรวงมหาดไทย</a>
-    <a href="#">กองการเจ้าหน้าที่ สป.</a>
-    <a href="#">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a>
-    <a href="#">สำนักงาน ก.พ.ร.</a>
-    <a href="#">กรมบัญชีกลาง สป.</a>
+    <a href="https://smoi.moi.go.th/index.asp" target="_blank">สำนักงานปลัดกระทรวงมหาดไทย</a>
+    <a href="https://cims.moi.go.th/public/Home/Index" target="_blank">กระทรวงมหาดไทย</a>
+    <a href="https://personnel.moi.go.th/" target="_blank">กองการเจ้าหน้าที่ สป.</a>
+    <a href="https://www.cgd.go.th/cs/internet/internet/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%812.html?page_locale=th_TH" target="_blank">กรมบัญชีกลาง สป.</a>
+    <a href="http://www.moicoop.com/" target="_blank">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a>
+    <a href="https://www.opdc.go.th/" target="_blank">สำนักงาน ก.พ.ร.</a>
+
     <div class="m-group-title">เว็บไซต์จังหวัดในพื้นที่</div>
-    <a href="#">จังหวัดนครราชสีมา</a>
-    <a href="#">จังหวัดบุรีรัมย์</a>
-    <a href="#">จังหวัดสุรินทร์</a>
-    <a href="#">จังหวัดศรีสะเกษ</a>
-    <a href="#">จังหวัดอุบลราชธานี</a>
+    <a href="https://www.nakhonratchasima.go.th/" target="_blank">จังหวัดนครราชสีมา</a>   
+    <a href="https://www.buriram.go.th/" target="_blank">จังหวัดบุรีรัมย์</a> 
+    <a href="https://www2.surin.go.th/frontpage" target="_blank">จังหวัดสุรินทร์</a>
+    <a href="https://www.sisaket.go.th/" target="_blank">จังหวัดศรีสะเกษ</a> 
+    <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>
+
+    <div class="m-group-title">ระบบจองรถ ศสข.4</div>
+    <a href="#" target="_blank">จองรถ ศสข.4</a>
   </div>
+
   
   <a href="javascript:void(0)" class="m-top" data-m="m2">ข้อมูลและรายงาน <span>▾</span></a>
   <div class="m-sub" id="m2">
-    <div class="m-group-title">รายงานสรุปผลการดำเนินงาน</div>
-    <a href="equipment.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
-    <a href="vcs_report.html">การประชุมผ่านระบบวีดิทัศน์ทางไกล (VCS)</a>
-    <a href="ftdma_report.html">การปฏิบัติงานระบบสื่อสารผ่านดาวเทียม (FTDMA)</a>
-    <a href="guard_duty1.html">การรับ-ส่งข่าว</a>
-    <a href="guard_duty1.html">สถิติการใช้กระแสไฟฟ้า</a>
+              <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
+              <a href="vcs_report.html">การประชุมผ่านระบบวีดิทัศน์ทางไกล (VCS)</a>
+              <a href="ftdma_report.html">การปฏิบัติงานระบบสื่อสารผ่านดาวเทียม (FTDMA)</a>
+              <a href="equipment.html">รายการตรวจสอบครุภัณฑ์</a>
+              <a href="summary.html">การจัดทำรายงานประจำปี</a>
+              <a href="guard_duty1.html">เวรรักษาการณ์สถานที่ราชการ</a>
+              <a href="message_report.html">การรับ-ส่งข่าว</a>
+              <a href="electric_report.html">สถิติการใช้กระแสไฟฟ้า</a>
     <div class="m-group-title">ข้อมูลด้านเทคนิคและเครือข่าย</div>
-    <a href="e_reports_main.html">วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
-    <a href="#">ผู้ขอใช้บริการเครือข่าย Online</a>
-    <a href="#">โทรศัพท์ มท.ในโคราชติดตั้งที่ใดบ้าง?</a>
-    <a href="#">จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a>
-    <a href="#">ข้อมูลทางด้านเทคนิค ระบบสื่อสารข้อมูล และ ระบบ ATM</a>
-    <a href="#">Access Code เครือข่ายโทรศัพท์ มท.</a>
-    <a href="orders.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">แผนงาน โครงการ และการพัฒนาระบบ</a>
-    <a href="orders.html" class="m-group-title" style="text-decoration:none;">การบริหารจัดการทั่วไป พัสดุ และการประเมิน</a>
+              <a href="forrent.html">วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
+              <a href="ip_address.html">ผู้ขอใช้บริการเครือข่าย Online</a> 
+              <a href="phone_install_korat.html">สถานที่ติดตั้งโทรศัพท์ มท. ในจังหวัดนครราชสีมา</a> 
+              <a href="phone_numbers_zone.html">จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a> 
+              <a href="access_code.html">Access Code เครือข่ายโทรศัพท์ มท.</a>
+              <a href="projects.html">แผนงาน โครงการ และการพัฒนาระบบ</a> 
     
     <div class="m-group-title" style="margin-top: 15px;">ระบบสารบรรณและจดหมายอิเล็กทรอนิกส์</div>
-    <a href="e_reports_main.html">สำหรับเจ้าหน้าที่ E-Office</a>
-    <a href="#">สารบรรณอิเล็กทรอนิกส์ E-document</a>
-    <a href="#">Mail moi.go.th</a>
+              <a href="https://srb.moi.go.th/portal/home" target="_blank">สารบรรณอิเล็กทรอนิกส์ E-Document</a> 
+              <a href="https://mail.moi.go.th/" target="_blank">Mail moi.go.th</a>
+              <a href="back-office.html">Back office</a> 
   </div>
   
   <a href="javascript:void(0)" class="m-top" data-m="m3">คำสั่ง / ระเบียบ <span>▾</span></a>
@@ -520,42 +448,41 @@ img{display:block;max-width:100%;}
   <a href="javascript:void(0)" class="m-top" data-m="m4">คู่มือ / ดาวน์โหลด <span>▾</span></a>
   <div class="m-sub" id="m4">
     <div class="m-group-title">โปรแกรมและซอฟต์แวร์สำหรับติดตั้ง</div>
-    <a href="#">ESET Endpoint Antivirus V.6</a>
-    <a href="#">ESET Endpoint Antivirus V.8</a>
-    <a href="#">โปรแกรม SCAN VIRUS trojan</a>
-    <a href="#">Download Jabber for PC</a>
-    <a href="#">pebuilder สำหรับทำ Windows PE</a>
+              <a href="eset_v6.html">ESET Endpoint Antivirus V.6</a> 
+              <a href="eset_v8.html">ESET Endpoint Antivirus V.8</a>  
+              <a href="https://www.download3k.com/#google_vignette" target="_blank">โปรแกรม SCAN VIRUS trojan</a> 
+              <a href="CiscoJabber-Install-ffr.12-1-2.zip">Download Jabber for PC</a> 
+              <a href="pebuilder3110a.zip">pebuilder สำหรับทำ Windows PE</a> 
     
     <div class="m-group-title">แบบฟอร์มการปฏิบัติงาน</div>
-    <a href="#">แบบฟอร์มสมุดลงเวลาการปฏิบัติราชการ ของ ศสข.4 (นม)</a>
-    <a href="#">แบบฟอร์มสมุดบันทึกการรับ-ส่งเวร ของ ศสข.4 (นม)</a>
-    <a href="#">แบบฟอร์มแบบรายงานการปฏิบัติหน้าที่ รปภ.ของ ศสข.4 (นม)</a>
-    
-    <a href="orders.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a>
+              <a href="book-time (1).xls">แบบฟอร์มสมุดลงเวลาการปฏิบัติราชการ ของ ศสข.4 (นม)</a>
+              <a href="check-van.rar">แบบฟอร์มสมุดบันทึกการรับ-ส่งเวร ของ ศสข.4 (นม)</a>
+              <a href="security.rar">แบบฟอร์มแบบรายงานการปฏิบัติหน้าที่ รปภ.ของ ศสข.4 (นม)</a>
+              <a href="front-office.html">แบบฟอร์ม Front office</a>
     
     <div class="m-group-title" style="margin-top: 15px;">คู่มือด้านอุปกรณ์ เครือข่าย และชุมสายโทรศัพท์</div>
-    <a href="#">ระบบบริหารจัดการเครือข่าย MOI Network Manangment</a>
-    <a href="#">ระบบโทรศัพท์ IP (IP Phone)</a>
-    <a href="#">คู่มือ power supply ICOM IC-PS30</a>
-    <a href="#">การควบคุมอุปกรณ์ MCU</a>
-    <a href="#">การใช้งานระบบ E-Broadcast</a>
-    <a href="#">Show Alarm PABX MD110</a>
-    <a href="#">PABX MD110 ไม่ใช่เรื่องยาก</a>
+              <a href="Network Manangment.pdf">ระบบบริหารจัดการเครือข่าย MOI Network Manangment</a>
+              <a href="ip_phone.html">ระบบโทรศัพท์ IP (IP Phone)</a>
+              <a href="power supply ICOM IC-PS30.pdf">คู่มือ power supply ICOM IC-PS30</a> 
+              <a href="Operation Manual MCU.pdf">การควบคุมอุปกรณ์ MCU</a>
+              <a href="E - broadcast.pdf">การใช้งานระบบ E-Broadcast</a>
+              <a href="product show alarm.pdf">Show Alarm PABX MD110</a>
     
     <div class="m-group-title">คู่มือระบบสารบรรณและการใช้งานระบบของหน่วยงาน</div>
-    <a href="#">คู่มือ ใช้งานโปรแกรมระบบงานสารบรรณอิเล็กทรอนิกส์ จังหวัดนครราชสีมา</a>
-    <a href="#">คู่มือการใช้งาน E-document</a>
-    <a href="#">คู่มือการใช้งาน E-office</a>
-    
-    <a href="orders.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a>
-  </div>
+              <a href="manual_edoc_korat.html">คู่มือ ใช้งานโปรแกรมระบบงานสารบรรณอิเล็กทรอนิกส์ จังหวัดนครราชสีมา</a>
+              <a href="edocument.pdf">คู่มือการใช้งาน E-Document</a>
+              <a href="eoffice.pdf">คู่มือการใช้งาน E-Office</a>
+              <a href="Government Website Standard.pdf">มาตรฐานเว็บไซต์ภาครัฐ</a>  
+              <a href="basic_computer_troubleshooting.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a>
+              <a href="manual_comm.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a>
+    </div>
 
   <a href="javascript:void(0)" class="m-top" data-m="m5">E-Learning <span>▾</span></a>
   <div class="m-sub" id="m5">
     <div class="m-group-title">แหล่งเรียนรู้และพัฒนาบุคลากรภาครัฐ</div>
-    <a href="#">TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)]</a>
-    <a href="#">OCSC Learning Portal [สำนักงาน ก.พ.]</a>
-    <a href="#">Digital Government Learning Portal (TDGA) [สถาบันพัฒนาบุคลากรภาครัฐด้านดิจิทัล]</a>
+              <a href="https://e-training.tpqi.go.th/" target="_blank">TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)]</a>
+              <a href="https://learningportal.ocsc.go.th/learningportal" target="_blank">OCSC Learning Portal [สำนักงาน ก.พ.]</a>
+              <a href="https://tdga.dga.or.th/" target="_blank">Digital Government Learning Portal (TDGA) [สถาบันพัฒนาบุคลากรภาครัฐด้านดิจิทัล]</a>
   </div>
   
   <a href="#contact" class="m-top">ติดต่อเรา</a>
@@ -564,7 +491,7 @@ img{display:block;max-width:100%;}
 <!-- ============ SUBPAGE HEADER ============ -->
 <header class="subpage-header">
   <div class="wrap reveal">
-    <h1>ปฏิทินเข้าเวรรักษาการณ์ ประจำปีงบประมาณ 2567</h1>
+    <h1>วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</h1>
     <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</p>
   </div>
 </header>
@@ -575,45 +502,187 @@ img{display:block;max-width:100%;}
     
     <div class="content-card">
       <div class="page-header-text">
-        <h2>รายงานเวรรักษาการณ์สถานที่ราชการ</h2>
-        <p>รายงานข้อมูลสรุปประจำปีงบประมาณ 2567 หน้าที่ 2</p>
+        <h2>วงจรสื่อสัญญาณทางไกล (วงจรเช่า) ในเขตรับผิดชอบของ<br>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสารเขต 4 (นครราชสีมา)</h2>
         <span class="highlight-line"></span>
       </div>
 
-      <!-- Grid กล่อง 3 คอลัมน์ 2 แถว (รวม 6 รายการที่เหลือของปีงบประมาณ 2567) -->
-      <div class="year-grid">
+      <!-- ตารางข้อมูลหลัก -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ลำดับที่</th>
+              <th>เชื่อมระหว่าง ศสข.4 (นม) กับ...</th>
+              <th>Bit rate</th>
+              <th>Circuit ID (เช่าจากบริษัทฯ)</th>
+              <th>เชื่อมต่อกับอุปกรณ์</th>
+              <th>Solution</th>
+              <th>ลักษณะการใช้งาน</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Row 1 -->
+            <tr>
+              <td class="text-center">1</td>
+              <td>ศสส.สป.(กรุงเทพฯ)<br>วงจรที่ 1</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">7116 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/0<br>ch/0</td>
+              <td class="text-center">Ip/2 ima/0 lk/0</td>
+              <td rowspan="3" class="text-center" style="vertical-align: middle;">VCS (512 Kbps)<br>Data (ส่วนที่เหลือ)</td>
+            </tr>
+            <!-- Row 2 -->
+            <tr>
+              <td class="text-center">2</td>
+              <td>ศสส.สป.(กรุงเทพฯ)<br>วงจรที่ 2</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">P0954<br>(2005-sp-012503)<br>DataNet</td>
+              <td class="text-center">ATM Ip/2 e1/1<br>ch/0</td>
+              <td class="text-center">Ip/2 ima/0 lk/1</td>
+            </tr>
+            <!-- Row 3 -->
+            <tr>
+              <td class="text-center">3</td>
+              <td>ศสส.สป.(กรุงเทพฯ)<br>วงจรที่ 3</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">P0248<br>(2003-sp-0492)<br>DataNet</td>
+              <td class="text-center">ATM Ip/2 e1/2<br>ch/0</td>
+              <td class="text-center">Ip/2 ima/0 lk/2</td>
+            </tr>
+            <!-- Row 4 -->
+            <tr>
+              <td class="text-center">4</td>
+              <td>ศสส.สป.(กรุงเทพฯ)<br>วงจรที่ 4</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">P0953<br>(2005-sp-012273)<br>DataNet</td>
+              <td class="text-center">ATM Ip/2 e1/16<br>ch/0</td>
+              <td class="text-center">TRK/216</td>
+              <td class="text-center">Voice x 60 (16 kbps/Ch)</td>
+            </tr>
+            <!-- Row 5 -->
+            <tr>
+              <td class="text-center">5</td>
+              <td>ศสข.6 (ขก)</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">7070 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/28<br>ch/0</td>
+              <td class="text-center">TRK/218</td>
+              <td class="text-center">Voice x 30 (16 kbps/Ch)</td>
+            </tr>
+            <!-- Row 6 -->
+            <tr>
+              <td class="text-center">6</td>
+              <td>สสจ.บุรีรัมย์<br>วงจรที่ 1</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">21715 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/18<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/18 lk/0</td>
+              <td rowspan="2" class="text-center" style="vertical-align: middle;">VCS (512 kbps)<br>Voice x 30 (16 kbps/Ch)<br>Data (ส่วนที่เหลือ)</td>
+            </tr>
+            <!-- Row 7 -->
+            <tr>
+              <td class="text-center">7</td>
+              <td>สสจ.บุรีรัมย์<br>วงจรที่ 2</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">P1703 (DataNet)</td>
+              <td class="text-center">ATM Ip/2 e1/25<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/18 lk/1</td>
+            </tr>
+            <!-- Row 8 -->
+            <tr>
+              <td class="text-center">8</td>
+              <td>สสจ.สุรินทร์<br>วงจรที่ 1</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">21677 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/19<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/19 lk/0</td>
+              <td rowspan="2" class="text-center" style="vertical-align: middle;">VCS (512 kbps)<br>Voice x 30 (16 kbps/Ch)<br>Data (ส่วนที่เหลือ)</td>
+            </tr>
+            <!-- Row 9 -->
+            <tr>
+              <td class="text-center">9</td>
+              <td>สสจ.สุรินทร์<br>วงจรที่ 2</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">19830 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/26<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/19 lk/1</td>
+            </tr>
+            <!-- Row 10 -->
+            <tr>
+              <td class="text-center">10</td>
+              <td>สสจ.ศรีสะเกษ<br>วงจรที่ 1</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">21674 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/20<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/20 lk/0</td>
+              <td rowspan="2" class="text-center" style="vertical-align: middle;">VCS (512 kbps)<br>Voice x 30 (16 kbps/Ch)<br>Data (ส่วนที่เหลือ)</td>
+            </tr>
+            <!-- Row 11 -->
+            <tr>
+              <td class="text-center">11</td>
+              <td>สสจ.ศรีสะเกษ<br>วงจรที่ 2</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">19831 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/27<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/20 lk/1</td>
+            </tr>
+            <!-- Row 12 -->
+            <tr>
+              <td class="text-center">12</td>
+              <td>สสจ.อุบลราชธานี<br>วงจรที่ 1</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">21659 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/21<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/21 lk/0</td>
+              <td rowspan="2" class="text-center" style="vertical-align: middle;">VCS (512 kbps)<br>Voice x 30 (16 kbps/Ch)<br>Data (ส่วนที่เหลือ)</td>
+            </tr>
+            <!-- Row 13 -->
+            <tr>
+              <td class="text-center">13</td>
+              <td>สสจ.อุบลราชธานี<br>วงจรที่ 2</td>
+              <td class="text-center">2 Mbps</td>
+              <td class="text-center">18773 (UIH)</td>
+              <td class="text-center">ATM Ip/2 e1/28<br>ch/0</td>
+              <td class="text-center">Ip/1 ima/21 lk/1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ส่วน Customer Service และ Notes ด้านล่าง -->
+      <div class="bottom-info-section">
         
-        <!-- รายการ 1 (มีนาคม) -->
-        <div class="report-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          <h3>มีนาคม 2567</h3>
-          <p>เวรรักษาการณ์สถานที่ราชการ</p>
-          <a href="#" class="open-btn" target="_blank">เปิดเอกสาร ➔</a>
+        <!-- Customer Service Table -->
+        <div class="cs-table-container">
+          <h4 class="cs-title">Customer Service</h4>
+          <table class="cs-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>ส่วนกลาง</th>
+                <th>ส่วนภูมิภาค</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>บริษัทฯ UIH</th>
+                <td>0-2953-0191</td>
+                <td>0-4429-5245 ถึง 6 (กด 1)</td>
+              </tr>
+              <tr>
+                <th>บริษัทฯ Datanet</th>
+                <td>0-2255-2288</td>
+                <td>1-800-225558 (โทรฟรี)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <!-- รายการ 2 (กุมภาพันธ์) -->
-        <div class="report-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          <h3>กุมภาพันธ์ 2567</h3>
-          <p>เวรรักษาการณ์สถานที่ราชการ</p>
-          <a href="#" class="open-btn" target="_blank">เปิดเอกสาร ➔</a>
+        <!-- Notes / Updates แบบไม่มีกรอบ -->
+        <div class="notes-simple">
+          <p><strong>หมายเหตุ:</strong> เริ่มต้นใช้งาน 1 มกราคม 2549 เป็นต้นไป</p>
         </div>
 
-        <!-- รายการ 3 (มกราคม) -->
-        <div class="report-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-          <h3>มกราคม 2567</h3>
-          <p>เวรรักษาการณ์สถานที่ราชการ</p>
-          <a href="#" class="open-btn" target="_blank">เปิดเอกสาร ➔</a>
-        </div>
-
-      </div> <!-- ปิด year-grid -->
-
-      <!-- แถบ Pagination ไปหน้า 1 -->
-      <div class="pagination-wrap">
-        <a href="guard_duty2.html" class="page-next">« หน้าก่อนหน้า</a>
-        <a href="guard_duty2.html" class="page-num">1</a>
-        <a href="#" class="page-num active">2</a>
       </div>
 
     </div> <!-- ปิด content-card -->

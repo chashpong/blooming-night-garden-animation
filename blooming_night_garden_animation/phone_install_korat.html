@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>สถานที่ติดตั้งโทรศัพท์ มท. ในจังหวัดนครราชสีมา - ศสข.4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ================= CSS พื้นฐานและตัวแปรสี ================= */
+:root{
+  --navy:#0A1E33;
+  --navy-2:#122E4B;
+  --navy-3:#1B4269;
+  --gold:#B8863A;
+  --gold-lt:#D9B876;
+  --gold-pale:#F1E4C8;
+  --cream:#F7F4EC;
+  --paper:#FFFFFF;
+  --ink:#1C2430;
+  --muted:#6B7280;
+  --line:#E6E0D2;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Sarabun',sans-serif;background:#f4f7fa;color:var(--ink);line-height:1.6;font-weight:300;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{font-family:'Sarabun',serif;font-weight:600;}
+img{display:block;max-width:100%;}
+.wrap{max-width:1180px;margin:0 auto;padding-left:28px;padding-right:28px;}
+.pad{padding:80px 0;}
+
+/* ---------- อนิเมชันเลื่อนขึ้น ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
+.reveal.in{opacity:1;transform:translateY(0);}
+
+/* ================= NAV ================= */
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; transition: background .4s ease, box-shadow .4s ease, padding .4s ease; padding: 26px 0; }
+.site-nav.solid{background:linear-gradient(165deg, var(--navy-3) 0%, var(--navy) 60%, var(--navy-2));box-shadow:0 8px 30px rgba(0,0,0,.18);padding:14px 0;backdrop-filter:blur(6px);}
+.site-nav .nav-inner { max-width: 1220px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; }
+.brand { display: flex; align-items: center; gap: 12px; color: #fff; }
+.brand-seal { width: 46px; height: 46px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; flex: none; transition: border-color .4s; background: transparent; overflow: hidden; }
+.brand-seal img { width: 100%; height: 100%; object-fit: cover; padding: 0; }
+.brand-text { line-height: 1.3; }
+.brand-text .th { font-family: 'Sarabun', serif; font-size: .92rem; font-weight: 600; display: block; }
+.brand-text .en { font-size: .64rem; letter-spacing: .09em; opacity: .75; }
+
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.nav-links > li { position: relative; list-style: none; }
+.nav-links a.top-link { display: flex; align-items: center; gap: 6px; color: #fff; font-size: .85rem; font-weight: 400; letter-spacing: .02em; padding: 10px 16px; position: relative; cursor: pointer; border-radius: 20px; transition: background .3s ease, color .3s ease; }
+.nav-links a.top-link:hover { background: rgba(255,255,255,.08); }
+.nav-links a.top-link .chev { font-size: .6rem; color: var(--gold-lt); transition: transform .3s ease; display: inline-block; transform: translateY(1px); }
+.nav-links li.active a.top-link { background: rgba(217,184,118,.14); color: var(--gold-lt); }
+.nav-links li.active a.top-link .chev { transform: rotate(180deg) translateY(-1px); }
+.nav-links a.top-link .ul-mark { position: absolute; left: 16px; right: 16px; bottom: 5px; height: 1px; background: var(--gold-lt); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+.nav-links li:not(.active):hover a.top-link .ul-mark { transform: scaleX(1); }
+
+.dropdown-box { display: flex; position: absolute; top: 100%; left: 0; background: #ffffff; box-shadow: 0 10px 30px rgba(13,38,68,0.15); width: 280px; z-index: 999; border-radius: 0 0 8px 8px; overflow: hidden; flex-direction: column; border: 1px solid #eef2f6; border-top: 3px solid var(--gold); opacity: 0; visibility: hidden; transform: translateY(-10px); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; }
+.nav-item.active .dropdown-box { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+.nav-wrap .nav-item:nth-child(4) .dropdown-box, .nav-wrap .nav-item:nth-child(5) .dropdown-box, .nav-wrap .nav-item:nth-child(6) .dropdown-box { left: auto; right: 0; }
+.dropdown-group { border-bottom: 1px solid #f1f5f9; width: 100%; }
+.dropdown-group:last-child { border-bottom: none; }
+.dropdown-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; font-size: 0.85rem; font-weight: 700; color: var(--navy); background: #ffffff; cursor: pointer; transition: background 0.2s, color 0.2s; text-decoration: none; }
+.dropdown-header:hover { background: #f8fafc; color: var(--gold); }
+.dropdown-header::after { content: "▾"; font-size: 0.7rem; opacity: 0.5; transition: transform 0.3s; }
+.dropdown-header:not([href="javascript:void(0)"])::after { display: none; }
+.dropdown-group.active .dropdown-header { background: #f4f7fa; color: var(--navy); border-left: 3px solid var(--gold); padding-left: 15px; }
+.dropdown-group.active .dropdown-header::after { transform: rotate(180deg); }
+.dropdown-group.active .dropdown-header:not([href="javascript:void(0)"])::after { transform: none; display: none; }
+
+.dropdown-sub { display: flex; flex-direction: column; background: #ffffff; max-height: 0; padding: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, padding 0.4s ease, opacity 0.3s ease; }
+.dropdown-group.active .dropdown-sub { max-height: 500px; padding: 10px 0 14px; opacity: 1; overflow-y: auto; }
+.dropdown-sub a { display: block; padding: 10px 18px 10px 24px; color: var(--muted); font-size: 0.8rem; border-bottom: 1px dashed #e2e8f0; transition: all 0.2s ease; text-decoration: none; }
+.dropdown-sub a:last-child { border-bottom: none; }
+.dropdown-sub a:hover { color: var(--gold); background: #ffffff; padding-left: 28px; }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.menu-toggle span { width: 24px; height: 1px; background: #fff; transition: 0.3s; }
+
+/* ================= MOBILE DRAWER ================= */
+.mobile-drawer { position: fixed; inset: 0; background: var(--navy); z-index: 1500; display: block; padding: 80px 32px 120px; transform: translateX(100%); transition: transform .4s ease; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.mobile-drawer.open { transform: translateX(0); }
+.mobile-drawer .close-drawer { position: absolute; top: 26px; right: 26px; background: none; border: none; color: #fff; font-size: 1.6rem; cursor: pointer; transition: 0.3s; }
+.mobile-drawer .close-drawer:hover { color: var(--gold); }
+.mobile-drawer a.m-top { display: flex; justify-content: space-between; align-items: center; color: #fff; font-family: 'Sarabun', serif; font-size: 1.15rem; padding: 16px 12px; border-bottom: 1px solid rgba(255,255,255,.1); border-radius: 4px; transition: all 0.3s ease; }
+.mobile-drawer a.m-top span { font-size: 0.8rem; opacity: 0.5; transition: transform 0.4s; }
+.mobile-drawer a.m-top.active span { transform: rotate(180deg); color: var(--gold); opacity: 1; }
+.mobile-drawer .m-sub { display: block !important; flex-shrink: 0 !important; padding-left: 20px; background: rgba(0,0,0,0.15); border-radius: 4px; max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; margin-bottom: 0; transition: max-height 0.4s ease-in-out, opacity 0.3s ease, margin 0.3s ease; }
+.mobile-drawer .m-sub.open { opacity: 1; margin-top: 5px; margin-bottom: 10px; }
+.m-group-title { display: block; color: var(--gold-lt); font-size: 0.85rem; font-weight: 700; padding: 16px 20px 6px 10px; margin-top: 8px; border-top: 1px solid rgba(255,255,255,0.05); }
+.m-group-title:first-child { border-top: none; margin-top: 0; padding-top: 12px; }
+.mobile-drawer .m-sub a { display: block; color: #a9bdd0; font-size: 0.92rem; padding: 12px 12px 12px 16px; border-bottom: 1px dashed rgba(255,255,255,0.05); border-radius: 4px; transition: all 0.2s ease; }
+.mobile-drawer .m-sub a:last-child { border-bottom: none; }
+.mobile-drawer .m-sub a:hover { color: var(--gold); padding-left: 24px; background: rgba(255,255,255,0.02); }
+
+@media(max-width:980px){
+  .nav-links{display:none;}
+  .menu-toggle{display:flex;}
+  .contact-grid{grid-template-columns:1fr 1fr;gap:40px;}
+  .contact-brand{grid-column:span 2;}
+}
+@media(max-width:620px){
+  .contact-grid{grid-template-columns:1fr;}
+  .contact-brand{grid-column:span 1;}
+  .contact-col.two-col ul{columns:1;}
+}
+
+/* ================= HEADER หน้าจอย่อย ================= */
+.subpage-header { background: linear-gradient(160deg, var(--navy-3) 0%, var(--navy) 100%); color: #fff; padding: 160px 0 60px; text-align: center; border-bottom: 3px solid var(--gold); }
+.subpage-header h1 { font-family: 'Sarabun', serif; font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 10px; }
+.subpage-header p { color: var(--gold-lt); font-size: 1rem; }
+
+/* ================= โครงสร้างเนื้อหาตาราง ================= */
+.content-card { background: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(10, 30, 51, 0.08); border: 1px solid #eef2f6; padding: 50px; }
+.page-header-text { text-align: center; margin-bottom: 30px; }
+.page-header-text h2 { font-size: clamp(1.3rem, 2vw, 1.6rem); color: var(--navy); line-height: 1.4; margin-bottom: 12px; }
+.page-header-text .highlight-line { display: block; width: 80px; height: 3px; background: var(--gold); margin: 0 auto; border-radius: 2px; }
+
+/* สไตล์ตารางหลัก */
+.table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 40px; }
+.data-table { width: 100%; min-width: 800px; border-collapse: collapse; text-align: left; }
+.data-table th, .data-table td { padding: 12px 16px; border: 1px solid #e2e8f0; }
+.data-table thead th { background-color: var(--navy); color: #ffffff; font-weight: 500; font-size: 0.95rem; text-align: center; white-space: nowrap; }
+.data-table tbody td { font-size: 0.95rem; color: var(--ink); vertical-align: middle; }
+.data-table tbody tr:nth-child(even) { background-color: #f8fafc; }
+.data-table tbody tr:hover { background-color: #f1f5f9; }
+.data-table .text-center { text-align: center; }
+
+/* ปรับความกว้างคอลัมน์ */
+.col-num { width: 80px; }
+.col-number { width: 120px; font-weight: 600; }
+.col-user { width: auto; }
+.col-dept { width: 250px; }
+
+/* สไตล์ตารางสรุปด้านล่าง (แบบมีกรอบ) */
+.summary-container { 
+    background: #ffffff; 
+    padding: 30px; /* เพิ่ม padding เพื่อไม่ให้ข้อความชิดขอบ */
+    width: 100%; 
+    max-width: 800px; 
+    margin: 0 auto; 
+    border: 1px solid #e2e8f0; /* เพิ่มเส้นขอบสีเทาอ่อน */
+    border-radius: 12px; /* ขอบโค้งมน */
+    box-shadow: 0 4px 20px rgba(10, 30, 51, 0.05); /* เพิ่มเงาบางๆ ให้กล่องดูมีมิติ */
+}
+.summary-title { 
+    font-size: 1.1rem; 
+    color: var(--navy); 
+    margin-bottom: 20px; 
+    font-weight: 600; 
+    text-align: center; 
+}
+.summary-table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    font-size: 0.95rem; 
+}
+.summary-table th, .summary-table td { 
+    padding: 10px 14px; 
+    border-bottom: 1px solid #e2e8f0; 
+}
+.summary-table th { 
+    text-align: left; 
+    font-weight: 500; 
+    color: var(--ink); 
+    width: 60%; 
+}
+.summary-table td { 
+    text-align: right; 
+    color: var(--navy); 
+    font-weight: 600; 
+}
+.summary-table tr:last-child th, .summary-table tr:last-child td { 
+    border-bottom: none; 
+}
+
+@media (max-width: 900px) {
+  .content-card { padding: 30px 20px; }
+  .summary-container { padding: 20px 0; }
+}
+
+/* ================= CONTACT / FOOTER ================= */
+.contact{background:linear-gradient(165deg, var(--navy-3) 0%, var(--navy) 60%, var(--navy-2));color:#fff;padding:60px 0 0; margin-top: 0;}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;}
+.contact-brand .th{font-family:'Sarabun',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
+.contact-brand p{color:#9db2c6;font-size:.85rem;max-width:340px;}
+.contact-col h5{color:var(--gold-lt);font-size:.78rem;letter-spacing:.1em;margin-bottom:22px;}
+.contact-col ul{list-style:none;}
+.contact-col li{margin-bottom:13px;font-size:.84rem;}
+.contact-col a{color:#c7d4e2; transition: .3s;}
+.contact-col a:hover{color:var(--gold-lt);}
+.contact-col.two-col ul{columns:2;column-gap:24px;}
+.contact-col.two-col li{break-inside:avoid;}
+.footer-bottom { margin-top: 80px; border-top: 1px solid rgba(255,255,255,.12); padding: 26px 20px; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; align-items: center; }
+.footer-bottom p { font-size: .75rem; color: #8098b0; text-align: center; margin: 0; }
+
+/* สไตล์ปุ่มโซเชียล */
+.social-row { display: flex !important; flex-direction: row !important; gap: 14px; margin-top: 22px; }
+.social-row a.btn-fb { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #1877F2; border: 1px solid #1877F2; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
+.social-row a.btn-fb:hover { background-color: #145dbf; border-color: #145dbf; }
+.social-row a.btn-email { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #EA4335; border: 1px solid #EA4335; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
+.social-row a.btn-email:hover { background-color: #c53024; border-color: #c53024; }
+.social-row a.btn-map { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background-color: #66bb6a; border: 1px solid #66bb6a; color: #ffffff !important; font-family: Arial, sans-serif; font-weight: bold; font-size: 1.1rem; transition: .3s; text-decoration: none; }
+.social-row a.btn-map:hover { background-color: #43a047; border-color: #43a047; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV (เต็มรูปแบบ) ============ -->
+<nav class="site-nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="ict4.html" class="brand">
+      <span class="brand-seal"><img src="singh.webp" alt="โลโก้กระทรวงมหาดไทย"></span>
+      <span class="brand-text">
+        <span class="th">ศสข.4 (นครราชสีมา)</span>
+        <span class="en">ICT REGIONAL CENTER 4 · MOI</span>
+      </span>
+    </a>
+    
+    <ul class="nav-links nav-wrap">
+      <li class="nav-item"><a href="ict4.html" class="top-link"><span class="ul-mark"></span>หน้าหลัก</a></li>
+      
+      <!-- ================= 1. เกี่ยวกับหน่วยงาน ================= -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>เกี่ยวกับหน่วยงาน<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ข้อมูลทั่วไปของหน่วยงาน</a>
+            <div class="dropdown-sub">
+              <a href="history.html">ประวัติความเป็นมาและสถานที่ตั้ง</a>
+              <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
+              <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
+              <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
+              <a href="strategic_office.html">สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</a>
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ช่องทางการติดต่อ</a>
+            <div class="dropdown-sub">
+              <a href="contacts.html">หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
+            </div>
+            </div>
+            <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">เครือข่าย Intranet สป.มท.</a>
+            <div class="dropdown-sub">
+              <a href="Frame_2.html">ศสส.สป./ศสข. 12 เขต</a> 
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">หน่วยงานส่วนกลางและหน่วยงานที่เกี่ยวข้อง</a>
+            <div class="dropdown-sub">
+  <a href="https://smoi.moi.go.th/index.asp" target="_blank">สำนักงานปลัดกระทรวงมหาดไทย</a>
+  <a href="https://cims.moi.go.th/public/Home/Index" target="_blank">กระทรวงมหาดไทย</a>
+  <a href="https://personnel.moi.go.th/" target="_blank">กองการเจ้าหน้าที่ สป.</a>
+  <a href="https://www.cgd.go.th/cs/internet/internet/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%812.html?page_locale=th_TH" target="_blank">กรมบัญชีกลาง สป.</a>
+  <a href="http://www.moicoop.com/" target="_blank">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a>
+  <a href="https://www.opdc.go.th/" target="_blank">สำนักงาน ก.พ.ร.</a>          
+</div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">เว็บไซต์จังหวัดในพื้นที่</a>
+            <div class="dropdown-sub">
+  <a href="https://www.nakhonratchasima.go.th/" target="_blank">จังหวัดนครราชสีมา</a>   
+  <a href="https://www.buriram.go.th/" target="_blank">จังหวัดบุรีรัมย์</a> 
+  <a href="https://www2.surin.go.th/frontpage" target="_blank">จังหวัดสุรินทร์</a>
+  <a href="https://www.sisaket.go.th/" target="_blank">จังหวัดศรีสะเกษ</a> 
+  <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>           
+</div>
+<div class="dropdown-group">
+  <a href="#" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
+</div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ================= 2. ข้อมูลและรายงาน ================= -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>ข้อมูลและรายงาน<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">รายงานสรุปผลการดำเนินงาน</a>
+            <div class="dropdown-sub">
+              <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
+              <a href="vcs_report.html">การประชุมผ่านระบบวีดิทัศน์ทางไกล (VCS)</a>
+              <a href="ftdma_report.html">การปฏิบัติงานระบบสื่อสารผ่านดาวเทียม (FTDMA)</a>
+              <a href="equipment.html">รายการตรวจสอบครุภัณฑ์</a>
+              <a href="summary.html">การจัดทำรายงานประจำปี</a>
+              <a href="guard_duty1.html">เวรรักษาการณ์สถานที่ราชการ</a>
+              <a href="message_report.html">การรับ-ส่งข่าว</a>
+              <a href="electric_report.html">สถิติการใช้กระแสไฟฟ้า</a>
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ข้อมูลด้านเทคนิคและเครือข่าย</a>
+            <div class="dropdown-sub">
+              <a href="forrent.html">วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
+              <a href="ip_address.html">ผู้ขอใช้บริการเครือข่าย Online</a> 
+              <a href="phone_install_korat.html">สถานที่ติดตั้งโทรศัพท์ มท. ในจังหวัดนครราชสีมา</a> 
+              <a href="phone_numbers_zone.html">จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a> 
+              <a href="access_code.html">Access Code เครือข่ายโทรศัพท์ มท.</a>
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="projects.html" class="dropdown-header direct-link">แผนงาน โครงการ และการพัฒนาระบบ</a> 
+          </div>
+        <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">ระบบสารบรรณและจดหมายอิเล็กทรอนิกส์</a>
+            <div class="dropdown-sub">
+              <a href="https://srb.moi.go.th/portal/home" target="_blank">สารบรรณอิเล็กทรอนิกส์ E-Document</a> 
+              <a href="https://mail.moi.go.th/" target="_blank">Mail moi.go.th</a>
+              <a href="back-office.html">Back office</a>  
+            </div>
+          </div>
+      </li>
+
+      <!-- ================= 3. คำสั่ง / ระเบียบ ================= -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คำสั่ง / ระเบียบ<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+         <div class="dropdown-group">
+            <!-- ลบ onclick ออก และใส่ลิงก์ไปหน้า orders.html โดยตรง -->
+            <a href="orders.html" class="dropdown-header direct-link">คำสั่งการปฏิบัติงานและมอบหมายหน้าที่ ศสข.4</a>
+          </div>
+          <div class="dropdown-group">
+            <a href="regulations.html" class="dropdown-header direct-link">ระเบียบและข้อบังคับ</a>
+          </div>
+          <div class="dropdown-group">
+            <a href="policies.html" class="dropdown-header direct-link">นโยบาย ประกาศ และกฎหมายที่เกี่ยวข้อง</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- ================= 4. คู่มือ / ดาวน์โหลด ================= -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>คู่มือ / ดาวน์โหลด<span class="chev">▾</span></a>
+        <div class="dropdown-box">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">โปรแกรมและซอฟต์แวร์สำหรับติดตั้ง</a> 
+            <div class="dropdown-sub">
+              <a href="eset_v6.html">ESET Endpoint Antivirus V.6</a> 
+              <a href="eset_v8.html">ESET Endpoint Antivirus V.8</a>  
+              <a href="https://www.download3k.com/#google_vignette" target="_blank">โปรแกรม SCAN VIRUS trojan</a> 
+              <a href="CiscoJabber-Install-ffr.12-1-2.zip">Download Jabber for PC</a> 
+              <a href="pebuilder3110a.zip">pebuilder สำหรับทำ Windows PE</a> 
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">แบบฟอร์มการปฏิบัติงาน</a> 
+            <div class="dropdown-sub">
+              <a href="book-time (1).xls">แบบฟอร์มสมุดลงเวลาการปฏิบัติราชการ ของ ศสข.4 (นม)</a>
+              <a href="check-van.rar">แบบฟอร์มสมุดบันทึกการรับ-ส่งเวร ของ ศสข.4 (นม)</a>
+              <a href="security.rar">แบบฟอร์มแบบรายงานการปฏิบัติหน้าที่ รปภ.ของ ศสข.4 (นม)</a>
+              <a href="front-office.html">แบบฟอร์ม Front office</a>  
+            </div>
+          </div>
+           <div class="dropdown-group">
+            <a href="manual_comm.html" class="dropdown-header direct-link">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a> 
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คู่มือด้านอุปกรณ์ เครือข่าย และชุมสายโทรศัพท์</a> 
+            <div class="dropdown-sub">
+              <a href="Network Manangment.pdf">ระบบบริหารจัดการเครือข่าย MOI Network Manangment</a>
+              <a href="ip_phone.html">ระบบโทรศัพท์ IP (IP Phone)</a>
+              <a href="power supply ICOM IC-PS30.pdf">คู่มือ power supply ICOM IC-PS30</a> 
+              <a href="Operation Manual MCU.pdf">การควบคุมอุปกรณ์ MCU</a>
+              <a href="E - broadcast.pdf">การใช้งานระบบ E-Broadcast</a>
+              <a href="product show alarm.pdf">Show Alarm PABX MD110</a>
+            </div>
+          </div>
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">คู่มือระบบสารบรรณและการใช้งานระบบของหน่วยงาน</a> 
+            <div class="dropdown-sub">
+              <a href="manual_edoc_korat.html">คู่มือ ใช้งานโปรแกรมระบบงานสารบรรณอิเล็กทรอนิกส์ จังหวัดนครราชสีมา</a>
+              <a href="edocument.pdf">คู่มือการใช้งาน E-Document</a>
+              <a href="eoffice.pdf">คู่มือการใช้งาน E-Office</a> 
+            </div>
+          </div>
+           <div class="dropdown-group">
+            <a href="basic_computer_troubleshooting.html" class="dropdown-header direct-link">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a> 
+          </div>
+           <div class="dropdown-group">
+            <a href="Government Website Standard.pdf" class="dropdown-header direct-link">มาตรฐานเว็บไซต์ภาครัฐ</a> 
+          </div>
+        </div>
+      </li>
+
+      <!-- ================= 5. E-Learning (เพิ่มใหม่จากส่วนด้านล่าง) ================= -->
+      <li class="nav-item has-dropdown">
+        <a href="javascript:void(0)" class="top-link" onclick="toggleDropdown(event,this)"><span class="ul-mark"></span>E-Learning<span class="chev">▾</span></a>
+        <div class="dropdown-box" style="width: 260px;">
+          <div class="dropdown-group">
+            <a href="javascript:void(0)" class="dropdown-header" onclick="toggleSub(event,this)">แหล่งเรียนรู้และพัฒนาบุคลากรภาครัฐ</a>
+            <div class="dropdown-sub">
+              <a href="https://e-training.tpqi.go.th/" target="_blank">TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)]</a>
+              <a href="https://learningportal.ocsc.go.th/learningportal" target="_blank">OCSC Learning Portal [สำนักงาน ก.พ.]</a>
+              <a href="https://tdga.dga.or.th/" target="_blank">Digital Government Learning Portal (TDGA) [สถาบันพัฒนาบุคลากรภาครัฐด้านดิจิทัล]</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item"><a href="#contact" class="top-link"><span class="ul-mark"></span>ติดต่อเรา</a></li>
+    </ul>
+    
+    <button class="menu-toggle" id="menuToggle" aria-label="เปิดเมนู"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ MOBILE DRAWER ============ -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <button class="close-drawer" id="closeDrawer">×</button>
+  <a href="ict4.html" class="m-top">หน้าหลัก</a>
+  
+  <a href="javascript:void(0)" class="m-top" data-m="m1">เกี่ยวกับหน่วยงาน <span>▾</span></a>
+  <div class="m-sub" id="m1">
+    <div class="m-group-title">ข้อมูลทั่วไปของหน่วยงาน</div>
+    <a href="history.html">ประวัติความเป็นมาและสถานที่ตั้ง</a>
+    <a href="duties.html">อำนาจและหน้าที่ของ ศสข.</a>
+    <a href="executives.html">ทำเนียบผู้บริหาร ศสข.4 (นม)</a>
+    <a href="staff.html">แนะนำบุคลากรปัจจุบัน</a>
+    <a href="strategic_office.html">สำนักบริหารยุทธศาสตร์ 18 กลุ่มจังหวัด</a>
+    <div class="m-group-title">ช่องทางการติดต่อ</div>
+    <a href="contacts.html">หมายเลขโทรศัพท์และอีเมลของข้าราชการ</a>
+    
+    <div class="m-group-title">เครือข่าย Intranet สป.มท.</div>
+    <a href="Frame_2.html">ศสส.สป./ศสข. 12 เขต</a>
+    
+    <div class="m-group-title">หน่วยงานส่วนกลางและหน่วยงานที่เกี่ยวข้อง</div>
+    <a href="https://smoi.moi.go.th/index.asp" target="_blank">สำนักงานปลัดกระทรวงมหาดไทย</a>
+    <a href="https://cims.moi.go.th/public/Home/Index" target="_blank">กระทรวงมหาดไทย</a>
+    <a href="https://personnel.moi.go.th/" target="_blank">กองการเจ้าหน้าที่ สป.</a>
+    <a href="https://www.cgd.go.th/cs/internet/internet/%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A5%E0%B8%B1%E0%B8%812.html?page_locale=th_TH" target="_blank">กรมบัญชีกลาง สป.</a>
+    <a href="http://www.moicoop.com/" target="_blank">สหกรณ์ออมทรัพย์กระทรวงมหาดไทย</a>
+    <a href="https://www.opdc.go.th/" target="_blank">สำนักงาน ก.พ.ร.</a>
+
+    <div class="m-group-title">เว็บไซต์จังหวัดในพื้นที่</div>
+    <a href="https://www.nakhonratchasima.go.th/" target="_blank">จังหวัดนครราชสีมา</a>   
+    <a href="https://www.buriram.go.th/" target="_blank">จังหวัดบุรีรัมย์</a> 
+    <a href="https://www2.surin.go.th/frontpage" target="_blank">จังหวัดสุรินทร์</a>
+    <a href="https://www.sisaket.go.th/" target="_blank">จังหวัดศรีสะเกษ</a> 
+    <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>
+
+    <div class="m-group-title">ระบบจองรถ ศสข.4</div>
+    <a href="#" target="_blank">จองรถ ศสข.4</a>
+  </div>
+
+  
+  <a href="javascript:void(0)" class="m-top" data-m="m2">ข้อมูลและรายงาน <span>▾</span></a>
+  <div class="m-sub" id="m2">
+              <a href="e_reports_main.html">การปฏิบัติงานรายไตรมาส (รต.1-8)</a>
+              <a href="vcs_report.html">การประชุมผ่านระบบวีดิทัศน์ทางไกล (VCS)</a>
+              <a href="ftdma_report.html">การปฏิบัติงานระบบสื่อสารผ่านดาวเทียม (FTDMA)</a>
+              <a href="equipment.html">รายการตรวจสอบครุภัณฑ์</a>
+              <a href="summary.html">การจัดทำรายงานประจำปี</a>
+              <a href="guard_duty1.html">เวรรักษาการณ์สถานที่ราชการ</a>
+              <a href="message_report.html">การรับ-ส่งข่าว</a>
+              <a href="electric_report.html">สถิติการใช้กระแสไฟฟ้า</a>
+    <div class="m-group-title">ข้อมูลด้านเทคนิคและเครือข่าย</div>
+              <a href="forrent.html">วงจรเช่าทางไกลในข่าย ศสข.4 (นม)</a>
+              <a href="ip_address.html">ผู้ขอใช้บริการเครือข่าย Online</a> 
+              <a href="phone_install_korat.html">สถานที่ติดตั้งโทรศัพท์ มท. ในจังหวัดนครราชสีมา</a> 
+              <a href="phone_numbers_zone.html">จำนวนเลขหมายโทรศัพท์ในเขตรับผิดชอบ</a> 
+              <a href="access_code.html">Access Code เครือข่ายโทรศัพท์ มท.</a>
+              <a href="projects.html">แผนงาน โครงการ และการพัฒนาระบบ</a> 
+    
+    <div class="m-group-title" style="margin-top: 15px;">ระบบสารบรรณและจดหมายอิเล็กทรอนิกส์</div>
+              <a href="https://srb.moi.go.th/portal/home" target="_blank">สารบรรณอิเล็กทรอนิกส์ E-Document</a> 
+              <a href="https://mail.moi.go.th/" target="_blank">Mail moi.go.th</a>
+              <a href="back-office.html">Back office</a> 
+  </div>
+  
+  <a href="javascript:void(0)" class="m-top" data-m="m3">คำสั่ง / ระเบียบ <span>▾</span></a>
+  <div class="m-sub" id="m3">
+    <a href="orders.html" class="m-group-title" style="text-decoration:none;">คำสั่งการปฏิบัติงานและมอบหมายหน้าที่ ศสข.4</a>
+    <a href="regulations.html" class="m-group-title" style="text-decoration:none;">ระเบียบและข้อบังคับ</a>
+    <a href="policies.html" class="m-group-title" style="text-decoration:none;">นโยบาย ประกาศ และกฎหมายที่เกี่ยวข้อง</a>
+  </div>
+  
+  <a href="javascript:void(0)" class="m-top" data-m="m4">คู่มือ / ดาวน์โหลด <span>▾</span></a>
+  <div class="m-sub" id="m4">
+    <div class="m-group-title">โปรแกรมและซอฟต์แวร์สำหรับติดตั้ง</div>
+              <a href="eset_v6.html">ESET Endpoint Antivirus V.6</a> 
+              <a href="eset_v8.html">ESET Endpoint Antivirus V.8</a>  
+              <a href="https://www.download3k.com/#google_vignette" target="_blank">โปรแกรม SCAN VIRUS trojan</a> 
+              <a href="CiscoJabber-Install-ffr.12-1-2.zip">Download Jabber for PC</a> 
+              <a href="pebuilder3110a.zip">pebuilder สำหรับทำ Windows PE</a> 
+    
+    <div class="m-group-title">แบบฟอร์มการปฏิบัติงาน</div>
+              <a href="book-time (1).xls">แบบฟอร์มสมุดลงเวลาการปฏิบัติราชการ ของ ศสข.4 (นม)</a>
+              <a href="check-van.rar">แบบฟอร์มสมุดบันทึกการรับ-ส่งเวร ของ ศสข.4 (นม)</a>
+              <a href="security.rar">แบบฟอร์มแบบรายงานการปฏิบัติหน้าที่ รปภ.ของ ศสข.4 (นม)</a>
+              <a href="front-office.html">แบบฟอร์ม Front office</a>
+    
+    <div class="m-group-title" style="margin-top: 15px;">คู่มือด้านอุปกรณ์ เครือข่าย และชุมสายโทรศัพท์</div>
+              <a href="Network Manangment.pdf">ระบบบริหารจัดการเครือข่าย MOI Network Manangment</a>
+              <a href="ip_phone.html">ระบบโทรศัพท์ IP (IP Phone)</a>
+              <a href="power supply ICOM IC-PS30.pdf">คู่มือ power supply ICOM IC-PS30</a> 
+              <a href="Operation Manual MCU.pdf">การควบคุมอุปกรณ์ MCU</a>
+              <a href="E - broadcast.pdf">การใช้งานระบบ E-Broadcast</a>
+              <a href="product show alarm.pdf">Show Alarm PABX MD110</a>
+    
+    <div class="m-group-title">คู่มือระบบสารบรรณและการใช้งานระบบของหน่วยงาน</div>
+              <a href="manual_edoc_korat.html">คู่มือ ใช้งานโปรแกรมระบบงานสารบรรณอิเล็กทรอนิกส์ จังหวัดนครราชสีมา</a>
+              <a href="edocument.pdf">คู่มือการใช้งาน E-Document</a>
+              <a href="eoffice.pdf">คู่มือการใช้งาน E-Office</a>
+              <a href="Government Website Standard.pdf">มาตรฐานเว็บไซต์ภาครัฐ</a>  
+              <a href="basic_computer_troubleshooting.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">เทคนิคและการแก้ปัญหาคอมพิวเตอร์เบื้องต้น</a>
+              <a href="manual_comm.html" class="m-group-title" style="text-decoration:none; margin-top: 15px;">คู่มือระบบการประชุมและการสื่อสาร (Jabber/Webex/VCS)</a>
+    </div>
+
+  <a href="javascript:void(0)" class="m-top" data-m="m5">E-Learning <span>▾</span></a>
+  <div class="m-sub" id="m5">
+    <div class="m-group-title">แหล่งเรียนรู้และพัฒนาบุคลากรภาครัฐ</div>
+              <a href="https://e-training.tpqi.go.th/" target="_blank">TPQI E-Training [สถาบันคุณวุฒิวิชาชีพ (องค์การมหาชน)]</a>
+              <a href="https://learningportal.ocsc.go.th/learningportal" target="_blank">OCSC Learning Portal [สำนักงาน ก.พ.]</a>
+              <a href="https://tdga.dga.or.th/" target="_blank">Digital Government Learning Portal (TDGA) [สถาบันพัฒนาบุคลากรภาครัฐด้านดิจิทัล]</a>
+  </div>
+  
+  <a href="#contact" class="m-top">ติดต่อเรา</a>
+</div>
+
+<!-- ============ SUBPAGE HEADER ============ -->
+<header class="subpage-header">
+  <div class="wrap reveal">
+    <h1>สถานที่ติดตั้งโทรศัพท์ มท. ในจังหวัดนครราชสีมา</h1>
+    <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</p>
+  </div>
+</header>
+
+<!-- ============ CONTENT ============ -->
+<main class="page-container pad">
+  <div class="wrap reveal">
+    
+    <div class="content-card">
+      <div class="page-header-text">
+        <h2>หมายเลขโทรศัพท์ที่เปิดใช้งานในข่าย สป.มท. ของชุมสาย ศสข.4 (นม)</h2>
+        <span class="highlight-line"></span>
+      </div>
+
+      <!-- ตารางข้อมูลหลัก (เรียงต่อกัน ไม่มีเส้นคั่นหมวดหมู่) -->
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="col-num">ลำดับที่</th>
+              <th class="col-number">หมายเลข</th>
+              <th class="col-user">ผู้ใช้</th>
+              <th class="col-dept">กระทรวง</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td class="text-center" style="font-weight: 600;">36480</td>
+              <td>สำนักงานแม่ทัพภาคที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">2</td>
+              <td class="text-center" style="font-weight: 600;">36481</td>
+              <td>บ้านพักแม่ทัพภาคที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">3</td>
+              <td class="text-center" style="font-weight: 600;">36482</td>
+              <td>ปพส.กกร.กอ.รมน.ภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">4</td>
+              <td class="text-center" style="font-weight: 600;">36483</td>
+              <td>กอ.รมน.ภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">5</td>
+              <td class="text-center" style="font-weight: 600;">36484</td>
+              <td>ชุมสายโทรศัพท์ กองทัพภาคที่ 2 (ตู้กลาง)</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">6</td>
+              <td class="text-center" style="font-weight: 600;">36485</td>
+              <td>ศูนย์ ทสปช. (กร)</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">7</td>
+              <td class="text-center" style="font-weight: 600;">36486</td>
+              <td>ส่วนการข่าว กอ.รมน.</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">8</td>
+              <td class="text-center" style="font-weight: 600;">36487</td>
+              <td>ชุมสายโทรศัพท์ กอ.รมน.ภาค 2 (ศูนย์อัศวิน)</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">9</td>
+              <td class="text-center" style="font-weight: 600;">36488</td>
+              <td>ชุมสายโทรศัพท์ กอ.รมน.ภาค 2 (ศูนย์อัศวิน)</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">10</td>
+              <td class="text-center" style="font-weight: 600;">36489</td>
+              <td>ผบ.ส.พัน 22 ค่ายสุรนารี กองทัพภาคที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">11</td>
+              <td class="text-center" style="font-weight: 600;">36580</td>
+              <td>สัสดีจังหวัด นม.</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">12</td>
+              <td class="text-center" style="font-weight: 600;">36581</td>
+              <td>สัสดีอำเภอเมือง นม.</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">13</td>
+              <td class="text-center" style="font-weight: 600;">36582</td>
+              <td>ศูนย์การสื่อสาร กอ.รมน.ภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">14</td>
+              <td class="text-center" style="font-weight: 600;">36583</td>
+              <td>ศูนย์ปฏิบัติการทางยุทธวิธี กองทัพภาคที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">15</td>
+              <td class="text-center" style="font-weight: 600;">36584</td>
+              <td>ชุมสายโทรศัพท์ กองทัพภาคที่ 2 (ตู้กลาง)</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">16</td>
+              <td class="text-center" style="font-weight: 600;">36585</td>
+              <td>ชุมสายโทรศัพท์ กองทัพภาคที่ 2 (ตู้กลาง)</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">17</td>
+              <td class="text-center" style="font-weight: 600;">36586</td>
+              <td>ฝ่ายการสื่อสาร กองทัพภาคที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">18</td>
+              <td class="text-center" style="font-weight: 600;">36587</td>
+              <td>ผบ.ศูนย์ต่อสู้ป้องกันภัยทางอากาศ ทภ.2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">19</td>
+              <td class="text-center" style="font-weight: 600;">36588</td>
+              <td>หน.ส่วนปฏิบัติการศูนย์ป้องกันภัยทางอากาศ กองทัพบกที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">20</td>
+              <td class="text-center" style="font-weight: 600;">36589</td>
+              <td>ส่วนปฏิบัติการศูนย์ป้องกันภัยทางอากาศ กองทัพบกที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">21</td>
+              <td class="text-center" style="font-weight: 600;">36628</td>
+              <td>ศูนย์การเรียนรู้ภาคตะวันออกเฉียงเหนือ</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">22</td>
+              <td class="text-center" style="font-weight: 600;">36629</td>
+              <td>ศูนย์การเรียนรู้ภาคตะวันออกเฉียงเหนือ</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">23</td>
+              <td class="text-center" style="font-weight: 600;">36680</td>
+              <td>สำนักงาน แม่ทัพน้อยที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">24</td>
+              <td class="text-center" style="font-weight: 600;">36681</td>
+              <td>กองกำลังพล กองทัพภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">25</td>
+              <td class="text-center" style="font-weight: 600;">36682</td>
+              <td>กองข่าว กองทัพภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">26</td>
+              <td class="text-center" style="font-weight: 600;">36683</td>
+              <td>ศูนย์ปฏิบัติการทางยุทธวิธี กองทัพน้อยที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">27</td>
+              <td class="text-center" style="font-weight: 600;">36684</td>
+              <td>ผู้บัญชาการกองพลทหารราบที่ 3</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">28</td>
+              <td class="text-center" style="font-weight: 600;">36685</td>
+              <td>ศูนย์ประสานงานทหารกองหนุนแห่งชาติ ภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">29</td>
+              <td class="text-center" style="font-weight: 600;">36686</td>
+              <td>รองผู้บัญชาการกองพลทหารราบที่ 3</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">30</td>
+              <td class="text-center" style="font-weight: 600;">36687</td>
+              <td>ศูนย์ปฏิบัติการทางยุทธวิธี กองพลทหารราบที่ 3</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">31</td>
+              <td class="text-center" style="font-weight: 600;">36688</td>
+              <td>ฝ่ายกิจการพลเรือน กองพลทหารราบที่ 3</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">32</td>
+              <td class="text-center" style="font-weight: 600;">36689</td>
+              <td>ผู้บังคับกองพันทหารสื่อสารที่ 3</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">33</td>
+              <td class="text-center" style="font-weight: 600;">36690</td>
+              <td>ตอนสื่อสาร กองพลทหารราบที่ 3</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">34</td>
+              <td class="text-center" style="font-weight: 600;">36692</td>
+              <td>สำนักงานกองยุทธการ กองทัพภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">35</td>
+              <td class="text-center" style="font-weight: 600;">36693</td>
+              <td>กองส่งกำลังบำรุง กองทัพภาคที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">36</td>
+              <td class="text-center" style="font-weight: 600;">36694</td>
+              <td>ศูนย์อำนวยการประสานงานป้องกันและปราบปรามยาเสพติดตามแนวชายแดน ภาคตะวันออกเฉียงเหนือ กองบัญชาการ กองทัพภาคที่ 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">37</td>
+              <td class="text-center" style="font-weight: 600;">36695</td>
+              <td>ศูนย์ข่าวเฉพาะกิจ ททบ.5/ส.พัน.22</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">38</td>
+              <td class="text-center" style="font-weight: 600;">36696</td>
+              <td>ศกนช.ภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">39</td>
+              <td class="text-center" style="font-weight: 600;">36697</td>
+              <td>ศูนย์กรรมวิธีข้อมูล กองทัพภาคที่ 2/กอ.รมน.ภาค 2</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">40</td>
+              <td class="text-center" style="font-weight: 600;">36698</td>
+              <td>สัสดี กองทัพภาคที่ 2 จังหวัดนครราชสีมา</td>
+              <td class="text-center">กลาโหม</td>
+            </tr>
+            <tr>
+              <td class="text-center">41</td>
+              <td class="text-center" style="font-weight: 600;">36457</td>
+              <td>คลังจังหวัด นม.</td>
+              <td class="text-center">การคลัง</td>
+            </tr>
+            <tr>
+              <td class="text-center">42</td>
+              <td class="text-center" style="font-weight: 600;">36463</td>
+              <td>ธนารักษ์พื้นที่นครราชสีมา (ราชพัสดุจังหวัด นม.)</td>
+              <td class="text-center">การคลัง</td>
+            </tr>
+            <tr>
+              <td class="text-center">43</td>
+              <td class="text-center" style="font-weight: 600;">36557</td>
+              <td>สำนักงานคลังเขต 3</td>
+              <td class="text-center">การคลัง</td>
+            </tr>
+            <tr>
+              <td class="text-center">44</td>
+              <td class="text-center" style="font-weight: 600;">36631</td>
+              <td>สรรพสามิตจังหวัดนครราชสีมา</td>
+              <td class="text-center">การคลัง</td>
+            </tr>
+            <tr>
+              <td class="text-center">45</td>
+              <td class="text-center" style="font-weight: 600;">36469</td>
+              <td>การท่องเที่ยวแห่งประเทศไทย ภาคตะวันออกเฉียงเหนือ เขต 1</td>
+              <td class="text-center">การท่องเที่ยวและกีฬา</td>
+            </tr>
+            <tr>
+              <td class="text-center">46</td>
+              <td class="text-center" style="font-weight: 600;">36458</td>
+              <td>สำนักงานเกษตรจังหวัด นม.</td>
+              <td class="text-center">เกษตรและสหกรณ์</td>
+            </tr>
+            <tr>
+              <td class="text-center">47</td>
+              <td class="text-center" style="font-weight: 600;">36459</td>
+              <td>สำนักงานเกษตรและสหกรณ์จังหวัด นม.</td>
+              <td class="text-center">เกษตรและสหกรณ์</td>
+            </tr>
+            <tr>
+              <td class="text-center">48</td>
+              <td class="text-center" style="font-weight: 600;">36551</td>
+              <td>สำนักงานตรวจบัญชีสหกรณ์ภูมิภาค 3</td>
+              <td class="text-center">เกษตรและสหกรณ์</td>
+            </tr>
+            <tr>
+              <td class="text-center">49</td>
+              <td class="text-center" style="font-weight: 600;">36552</td>
+              <td>สำนักงานตรวจบัญชีสหกรณ์จังหวัดนครราชสีมา</td>
+              <td class="text-center">เกษตรและสหกรณ์</td>
+            </tr>
+            <tr>
+              <td class="text-center">50</td>
+              <td class="text-center" style="font-weight: 600;">36558</td>
+              <td>สำนักงานสหกรณ์จังหวัด</td>
+              <td class="text-center">เกษตรและสหกรณ์</td>
+            </tr>
+            <tr>
+              <td class="text-center">51</td>
+              <td class="text-center" style="font-weight: 600;">36658</td>
+              <td>สำนักงานสหกรณ์จังหวัดนครราชสีมา (ONLINE)</td>
+              <td class="text-center">เกษตรและสหกรณ์</td>
+            </tr>
+            <tr>
+              <td class="text-center">52</td>
+              <td class="text-center" style="font-weight: 600;">36452</td>
+              <td>สำนักงานพัฒนาสังคมและสวัสดิการจังหวัด</td>
+              <td class="text-center">การพัฒนาสังคมและความมั่นคงของมนุษย์</td>
+            </tr>
+            <tr>
+              <td class="text-center">53</td>
+              <td class="text-center" style="font-weight: 600;">36590</td>
+              <td>สำนักงานคณะกรรมการการเลือกตั้งประจำจังหวัด</td>
+              <td class="text-center">คณะกรรมการเลือกตั้ง</td>
+            </tr>
+            <tr>
+              <td class="text-center">54</td>
+              <td class="text-center" style="font-weight: 600;">36591</td>
+              <td>สำนักงานคณะกรรมการการเลือกตั้งประจำจังหวัด</td>
+              <td class="text-center">คณะกรรมการเลือกตั้ง</td>
+            </tr>
+            <tr>
+              <td class="text-center">55</td>
+              <td class="text-center" style="font-weight: 600;">36409</td>
+              <td>สถานีโทรคมนาคม องค์การโทรศัพท์ฯ (TOT)</td>
+              <td class="text-center">เทคโนโลยีสารสนเทศและการสื่อสาร</td>
+            </tr>
+            <tr>
+              <td class="text-center">56</td>
+              <td class="text-center" style="font-weight: 600;">36427</td>
+              <td>สำนักงานสถิติจังหวัดนครราชสีมา</td>
+              <td class="text-center">เทคโนโลยีสารสนเทศและการสื่อสาร</td>
+            </tr>
+            <tr>
+              <td class="text-center">57</td>
+              <td class="text-center" style="font-weight: 600;">36454</td>
+              <td>สำนักงานสถิติจังหวัดนครราชสีมา</td>
+              <td class="text-center">เทคโนโลยีสารสนเทศและการสื่อสาร</td>
+            </tr>
+            <tr>
+              <td class="text-center">58</td>
+              <td class="text-center" style="font-weight: 600;">36400</td>
+              <td>OPERATOR ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">59</td>
+              <td class="text-center" style="font-weight: 600;">36401</td>
+              <td>ห้องเครื่องสื่อสาร ATM ACCESS SWITCH ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">60</td>
+              <td class="text-center" style="font-weight: 600;">36405</td>
+              <td>พนักงานขับรถยนต์ ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">61</td>
+              <td class="text-center" style="font-weight: 600;">36406</td>
+              <td>เจ้าหน้าที่บริการสารสนเทศ(นายวินะรุตฯ) ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">62</td>
+              <td class="text-center" style="font-weight: 600;">36407</td>
+              <td>เจ้าหน้าที่บริการสารสนเทศ(นายรังสรรค์ฯ) ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">63</td>
+              <td class="text-center" style="font-weight: 600;">36408</td>
+              <td>ช่างเครื่องกลและไฟฟ้ากำลัง ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">64</td>
+              <td class="text-center" style="font-weight: 600;">36410</td>
+              <td>บ้านพัก ผู้ว่าราชการจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">65</td>
+              <td class="text-center" style="font-weight: 600;">36411</td>
+              <td>ผู้ว่าราชการจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">66</td>
+              <td class="text-center" style="font-weight: 600;">36412</td>
+              <td>รองผู้ว่าราชการจังหวัด นม. (2)รองสุชาติ</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">67</td>
+              <td class="text-center" style="font-weight: 600;">36413</td>
+              <td>รองผู้ว่าราชการจังหวัด นม. (3)รองสกลสฤษฎ์</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">68</td>
+              <td class="text-center" style="font-weight: 600;">36414</td>
+              <td>รองผู้ว่าราชการจังหวัด นม. (1)รองชยาวุธ</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">69</td>
+              <td class="text-center" style="font-weight: 600;">36415</td>
+              <td>ผู้ตรวจราชการกระทรวงมหาดไทย เขต 5</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">70</td>
+              <td class="text-center" style="font-weight: 600;">36416</td>
+              <td>บ้านพัก รองผู้ว่าราชการจังหวัด นม. (2) รองสุชาติ</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">71</td>
+              <td class="text-center" style="font-weight: 600;">36417</td>
+              <td>บ้านพัก รองผู้ว่าราชการจังหวัด นม. (1) รองชยาวุธ</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">72</td>
+              <td class="text-center" style="font-weight: 600;">36418</td>
+              <td>บ้านพัก รองผู้ว่าราชการจังหวัด นม. (3) รองสกลสฤษฎ์</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">73</td>
+              <td class="text-center" style="font-weight: 600;">36420</td>
+              <td>หัวหน้าสำนักงานจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">74</td>
+              <td class="text-center" style="font-weight: 600;">36421</td>
+              <td>หัวหน้าฝ่ายอำนวยการ สำนักงานจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">75</td>
+              <td class="text-center" style="font-weight: 600;">36422</td>
+              <td>ศูนย์ข้อมูล สำนักงานจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">76</td>
+              <td class="text-center" style="font-weight: 600;">36423</td>
+              <td>กลุ่มงานยุทธศาสตร์พัฒนาจังหวัดนครราชสีมา</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">77</td>
+              <td class="text-center" style="font-weight: 600;">36424</td>
+              <td>โทรสาร สำนักงานจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">78</td>
+              <td class="text-center" style="font-weight: 600;">36426</td>
+              <td>บ้านพัก หัวหน้าสำนักงานจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">79</td>
+              <td class="text-center" style="font-weight: 600;">36428</td>
+              <td>ห้องควบคุมเครื่องเสียงหอประชุมเปรมฯ</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">80</td>
+              <td class="text-center" style="font-weight: 600;">36429</td>
+              <td>หัวหน้ากลุ่มงานข้อมูลสารสนเทศและการสื่อสาร</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">81</td>
+              <td class="text-center" style="font-weight: 600;">36430</td>
+              <td>ปลัดจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">82</td>
+              <td class="text-center" style="font-weight: 600;">36431</td>
+              <td>จ่าจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">83</td>
+              <td class="text-center" style="font-weight: 600;">36432</td>
+              <td>กลุ่มงานส่งเสริมการปกครองท้องถิ่นจังหวัดนครราชสีมา</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">84</td>
+              <td class="text-center" style="font-weight: 600;">36433</td>
+              <td>ห้องสื่อสาร ศาลากลางจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">85</td>
+              <td class="text-center" style="font-weight: 600;">36434</td>
+              <td>ป้องกันจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">86</td>
+              <td class="text-center" style="font-weight: 600;">36435</td>
+              <td>เสมียนตราจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">87</td>
+              <td class="text-center" style="font-weight: 600;">36436</td>
+              <td>บ้านพัก ปลัดจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">88</td>
+              <td class="text-center" style="font-weight: 600;">36437</td>
+              <td>อำเภอเมือง นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">89</td>
+              <td class="text-center" style="font-weight: 600;">36438</td>
+              <td>ส่วนโยธา องค์การบริหารส่วนจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">90</td>
+              <td class="text-center" style="font-weight: 600;">36440</td>
+              <td>หัวหน้าศูนย์เทคโนโลยีสารสนเทศและการสื่อสารเขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">91</td>
+              <td class="text-center" style="font-weight: 600;">36441</td>
+              <td>หัวหน้าฝ่ายเทคโนโลยีการสื่อสาร ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">92</td>
+              <td class="text-center" style="font-weight: 600;">36442</td>
+              <td>หัวหน้าฝ่ายเทคโนโลยีสารสนเทศ ศูนย์สื่อสารเขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">93</td>
+              <td class="text-center" style="font-weight: 600;">36443</td>
+              <td>ธุรการ ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">94</td>
+              <td class="text-center" style="font-weight: 600;">36444</td>
+              <td>ห้องชุมสายโทรศัพท์ ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">95</td>
+              <td class="text-center" style="font-weight: 600;">36445</td>
+              <td>ช่างดาวเทียม ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">96</td>
+              <td class="text-center" style="font-weight: 600;">36446</td>
+              <td>ช่าง ONLINE ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">97</td>
+              <td class="text-center" style="font-weight: 600;">36447</td>
+              <td>ช่างอุปกรณ์และสายตอนนอก ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">98</td>
+              <td class="text-center" style="font-weight: 600;">36448</td>
+              <td>ช่างโทรศัพท์ ศูนย์เทคโนโลยีฯ เขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">99</td>
+              <td class="text-center" style="font-weight: 600;">36449</td>
+              <td>บ้านพัก หน.ศสข.4 (ABB)</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">100</td>
+              <td class="text-center" style="font-weight: 600;">36453</td>
+              <td>สำนักงานโยธาธิการจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">101</td>
+              <td class="text-center" style="font-weight: 600;">36455</td>
+              <td>ห้องปฏิบัติการสื่อสาร ศูนย์เทคโนโลยีฯ เขต 4 (FAX 1)</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">102</td>
+              <td class="text-center" style="font-weight: 600;">36456</td>
+              <td>พัฒนาชุมชนจังหวัด นม. (ONLINE)</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">103</td>
+              <td class="text-center" style="font-weight: 600;">36466</td>
+              <td>ห้องปฏิบัติการสื่อสาร ศูนย์เทคโนโลยีฯ เขต 4 (FAX 2)</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">104</td>
+              <td class="text-center" style="font-weight: 600;">36499</td>
+              <td>MODEM RAS (ROUTE FINDER)</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">105</td>
+              <td class="text-center" style="font-weight: 600;">36500</td>
+              <td>OPERATOR ( 2 ) ศสข.4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">106</td>
+              <td class="text-center" style="font-weight: 600;">36501</td>
+              <td>GROGP HUNTING RAS</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">107</td>
+              <td class="text-center" style="font-weight: 600;">36502</td>
+              <td>MODEM RAS ( 2 )</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">108</td>
+              <td class="text-center" style="font-weight: 600;">36503</td>
+              <td>MODEM RAS ( 3 )</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">109</td>
+              <td class="text-center" style="font-weight: 600;">36504</td>
+              <td>MODEM RAS ( 4 )</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">110</td>
+              <td class="text-center" style="font-weight: 600;">36507</td>
+              <td>MODEM RAS ( 7 )</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">111</td>
+              <td class="text-center" style="font-weight: 600;">36508</td>
+              <td>MODEM RAS ( 8 )</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">112</td>
+              <td class="text-center" style="font-weight: 600;">36532</td>
+              <td>ศูนย์ป้องกันและบรรเทาสาธารณภัยเขต 5</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">113</td>
+              <td class="text-center" style="font-weight: 600;">36533</td>
+              <td>ศูนย์ประเมินผลการทะเบียน ภาค 3</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">114</td>
+              <td class="text-center" style="font-weight: 600;">36534</td>
+              <td>ศูนย์ประเมินผลการทะเบียน ภาค 3</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">115</td>
+              <td class="text-center" style="font-weight: 600;">36535</td>
+              <td>ศูนย์ป้องกันและบรรเทาสาธารณภัยเขต 5</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">116</td>
+              <td class="text-center" style="font-weight: 600;">36536</td>
+              <td>ศูนย์ป้องกันและบรรเทาสาธารณภัยเขต 5</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">117</td>
+              <td class="text-center" style="font-weight: 600;">36537</td>
+              <td>ป้องกันและบรรเทาสาธารณภัยจังหวัดนครราชสีมา</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">118</td>
+              <td class="text-center" style="font-weight: 600;">36538</td>
+              <td>ส่วนการคลัง องค์การบริหารส่วนจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">119</td>
+              <td class="text-center" style="font-weight: 600;">36539</td>
+              <td>สำนักงานเลขา องค์การบริหารส่วนจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">120</td>
+              <td class="text-center" style="font-weight: 600;">36540</td>
+              <td>PC Maintennace ฝ่ายเทคโนโลยีการสื่อสาร ศสข.4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">121</td>
+              <td class="text-center" style="font-weight: 600;">36541</td>
+              <td>MODEM Online หัวหน้าฝ่ายเทคโนโลยีการสื่อสาร ศสข.4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">122</td>
+              <td class="text-center" style="font-weight: 600;">36542</td>
+              <td>เครื่องไร้สาย ฝ่ายเทคโนโลยีการสื่อสาร ศสข.4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">123</td>
+              <td class="text-center" style="font-weight: 600;">36544</td>
+              <td>เจ้าหน้าที่ควบคุม MCU ฝ่ายเทคโนโลยีสารสนเทศ ศสข.4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">124</td>
+              <td class="text-center" style="font-weight: 600;">36545</td>
+              <td>สำนักงานที่ดินจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">125</td>
+              <td class="text-center" style="font-weight: 600;">36554</td>
+              <td>สำนักงานที่ดินจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">126</td>
+              <td class="text-center" style="font-weight: 600;">36556</td>
+              <td>พัฒนาชุมชนจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">127</td>
+              <td class="text-center" style="font-weight: 600;">36561</td>
+              <td>ห้องรับ-ส่งหนังสือ ศาลากลางจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">128</td>
+              <td class="text-center" style="font-weight: 600;">36566</td>
+              <td>ห้องปฏิบัติการสื่อสาร ศูนย์เทคโนโลยีฯ (FAX 3)</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">129</td>
+              <td class="text-center" style="font-weight: 600;">36592</td>
+              <td>สำนักงานผังเมืองจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">130</td>
+              <td class="text-center" style="font-weight: 600;">36595</td>
+              <td>เครื่องตอบรับโทรศัพท์อัตโนมัติ MAX - VOICE</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">131</td>
+              <td class="text-center" style="font-weight: 600;">36596</td>
+              <td>เครื่องตอบรับโทรศัพท์อัตโนมัติ MAX - VOICE</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">132</td>
+              <td class="text-center" style="font-weight: 600;">36597</td>
+              <td>สำนักงานผังเมืองจังหวัด นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">133</td>
+              <td class="text-center" style="font-weight: 600;">36672</td>
+              <td>MULTISUNS</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">134</td>
+              <td class="text-center" style="font-weight: 600;">36673</td>
+              <td>MULTISUNS</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">135</td>
+              <td class="text-center" style="font-weight: 600;">36602</td>
+              <td>ศูนย์ปฏิบัติการต่อสู้เพื่อเอาชนะยาเสพติดท้าวสุรนารี จว.นม.</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">136</td>
+              <td class="text-center" style="font-weight: 600;">36699</td>
+              <td>ห้องชุมสายโทรศัพท์ งานช่างศูนย์สื่อสารเขต 4</td>
+              <td class="text-center">มหาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">137</td>
+              <td class="text-center" style="font-weight: 600;">36505</td>
+              <td>MODEM สำนักงานคุมประพฤติจังหวัดนครราชสีมา</td>
+              <td class="text-center">ยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">138</td>
+              <td class="text-center" style="font-weight: 600;">36506</td>
+              <td>MODEM สำนักงานคุมประพฤติจังหวัดนครราชสีมา</td>
+              <td class="text-center">ยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">139</td>
+              <td class="text-center" style="font-weight: 600;">36651</td>
+              <td>ผู้อำนวยการสำนักงานคุมประพฤติภาค 3 นครราชสีมา</td>
+              <td class="text-center">ยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">140</td>
+              <td class="text-center" style="font-weight: 600;">36652</td>
+              <td>ศูนย์ทะเบียนประวัติสำนักงานคุมประพฤติภาค 3</td>
+              <td class="text-center">ยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">141</td>
+              <td class="text-center" style="font-weight: 600;">36653</td>
+              <td>สำนักงานคุมประพฤติจังหวัดนครราชสีมา</td>
+              <td class="text-center">ยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">142</td>
+              <td class="text-center" style="font-weight: 600;">36654</td>
+              <td>สำนักงานคุมประพฤติอำเภอสีคิ้ว</td>
+              <td class="text-center">ยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">143</td>
+              <td class="text-center" style="font-weight: 600;">36464</td>
+              <td>ผู้พิพากษา ศาลเยาวชนและครอบครัวจังหวัด นม.</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">144</td>
+              <td class="text-center" style="font-weight: 600;">36465</td>
+              <td>งานสารบัญศาลเยาวชนและครอบครัวจังหวัด นม.</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">145</td>
+              <td class="text-center" style="font-weight: 600;">36467</td>
+              <td>ผู้พิพากษา ศาลจังหวัด นม.</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">146</td>
+              <td class="text-center" style="font-weight: 600;">36511</td>
+              <td>ผู้อำนวยการประจำศาลยุติธรรมประจำภาค 3</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">147</td>
+              <td class="text-center" style="font-weight: 600;">36512</td>
+              <td>กลุ่มแผนงานสำนักงานศาลยุติธรรมภาค 3</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">148</td>
+              <td class="text-center" style="font-weight: 600;">36513</td>
+              <td>เลขานุการสำนักศาลยุติธรรมประจำภาค 3</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">149</td>
+              <td class="text-center" style="font-weight: 600;">36562</td>
+              <td>อธิบดีผู้พิพากษาภาค 3 จังหวัดนครราชสีมา</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">150</td>
+              <td class="text-center" style="font-weight: 600;">36563</td>
+              <td>ฝ่ายบริหารงานทั่วไป สำนักงานอธิบดีผู้พิพากษาภาค 3</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">151</td>
+              <td class="text-center" style="font-weight: 600;">36567</td>
+              <td>ผู้พิพากษาหัวหน้าศาลแขวงนครราชสีมา</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">152</td>
+              <td class="text-center" style="font-weight: 600;">36568</td>
+              <td>ผู้อำนวยการประจำสำนักงานศาลแขวงนครราชสีมา</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">153</td>
+              <td class="text-center" style="font-weight: 600;">36569</td>
+              <td>เครื่องโทรสาร ศาลแขวงนครราชสีมา</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">154</td>
+              <td class="text-center" style="font-weight: 600;">36660</td>
+              <td>ผู้พิพากษาหัวหน้าศาลจังหวัดบัวใหญ่</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">155</td>
+              <td class="text-center" style="font-weight: 600;">36661</td>
+              <td>ผู้อำนวยการประจำสำนักงานศาลจังหวัดบัวใหญ่</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">156</td>
+              <td class="text-center" style="font-weight: 600;">36662</td>
+              <td>ศาลแขวงจังหวัดนครราชสีมา(สาขาพิมาย)</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">157</td>
+              <td class="text-center" style="font-weight: 600;">36664</td>
+              <td>ผู้อำนวยการประจำสำนักงานศาลเยาวชนและครอบครัว</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">158</td>
+              <td class="text-center" style="font-weight: 600;">36665</td>
+              <td>ผู้พิพากษาหัวหน้าศาลเยาวชนและครอบครัว</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">159</td>
+              <td class="text-center" style="font-weight: 600;">36666</td>
+              <td>ผู้พิพากษาศาลจังหวัดสีคิ้ว</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">160</td>
+              <td class="text-center" style="font-weight: 600;">36667</td>
+              <td>ผู้อำนวยการประจำสำนักงานศาลจังหวัดสีคิ้ว</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">161</td>
+              <td class="text-center" style="font-weight: 600;">36668</td>
+              <td>ผู้อำนวยการประจำสำนักงานศาลจังหวัดนครราชสีมา</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">162</td>
+              <td class="text-center" style="font-weight: 600;">36669</td>
+              <td>ชุมสายศาลจังหวัดนครราชสีมา</td>
+              <td class="text-center">สำนักงานศาลยุติธรรม</td>
+            </tr>
+            <tr>
+              <td class="text-center">163</td>
+              <td class="text-center" style="font-weight: 600;">36450</td>
+              <td>สวัสดิการและคุ้มครองแรงงานจังหวัด นม.</td>
+              <td class="text-center">แรงงานและสวัสดิการสังคม</td>
+            </tr>
+            <tr>
+              <td class="text-center">164</td>
+              <td class="text-center" style="font-weight: 600;">36451</td>
+              <td>สำนักงานแรงงานและสวัสดิการสังคมจังหวัด นม.</td>
+              <td class="text-center">แรงงานและสวัสดิการสังคม</td>
+            </tr>
+            <tr>
+              <td class="text-center">165</td>
+              <td class="text-center" style="font-weight: 600;">36460</td>
+              <td>สำนักงานจัดหางานจังหวัด นม.</td>
+              <td class="text-center">แรงงานและสวัสดิการสังคม</td>
+            </tr>
+            <tr>
+              <td class="text-center">166</td>
+              <td class="text-center" style="font-weight: 600;">36550</td>
+              <td>ศูนย์ความปลอดภัยในการทำงาน นม.</td>
+              <td class="text-center">แรงงานและสวัสดิการสังคม</td>
+            </tr>
+            <tr>
+              <td class="text-center">167</td>
+              <td class="text-center" style="font-weight: 600;">36560</td>
+              <td>สำนักงานประกันสังคมจังหวัดนครราชสีมา</td>
+              <td class="text-center">แรงงานและสวัสดิการสังคม</td>
+            </tr>
+            <tr>
+              <td class="text-center">168</td>
+              <td class="text-center" style="font-weight: 600;">36553</td>
+              <td>สำนักงานสิ่งแวดล้อมภาคที่ 11 (นม)</td>
+              <td class="text-center">ทรัพยากรธรรมชาติและสิ่งแวดล้อม</td>
+            </tr>
+            <tr>
+              <td class="text-center">169</td>
+              <td class="text-center" style="font-weight: 600;">36648</td>
+              <td>สำนักงานเขตพื้นที่การศึกษานครราชสีมาเขต 4 อำเภอสีคิ้ว</td>
+              <td class="text-center">ศึกษาธิการ</td>
+            </tr>
+            <tr>
+              <td class="text-center">170</td>
+              <td class="text-center" style="font-weight: 600;">36649</td>
+              <td>สำนักผู้ตรวจราชการ ประจำเขตตรวจราชการที่ 8 อำเภอเมือง</td>
+              <td class="text-center">ศึกษาธิการ</td>
+            </tr>
+            <tr>
+              <td class="text-center">171</td>
+              <td class="text-center" style="font-weight: 600;">36650</td>
+              <td>สำนักงานคุรุสภาจังหวัดนครราชสีมา</td>
+              <td class="text-center">ศึกษาธิการ</td>
+            </tr>
+            <tr>
+              <td class="text-center">172</td>
+              <td class="text-center" style="font-weight: 600;">36495</td>
+              <td>สถานีกาชาดที่ 4</td>
+              <td class="text-center">สภากาชาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">173</td>
+              <td class="text-center" style="font-weight: 600;">36496</td>
+              <td>สำนักงานเหล่ากาชาดจังหวัด นม.</td>
+              <td class="text-center">สภากาชาดไทย</td>
+            </tr>
+            <tr>
+              <td class="text-center">174</td>
+              <td class="text-center" style="font-weight: 600;">36509</td>
+              <td>ศูนย์ควบคุมโรคติดต่อ เขต 5 นครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">175</td>
+              <td class="text-center" style="font-weight: 600;">36547</td>
+              <td>สำนักงานสาธารณสุขจังหวัดนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">176</td>
+              <td class="text-center" style="font-weight: 600;">36548</td>
+              <td>สำนักงานสาธารณสุขจังหวัดนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">177</td>
+              <td class="text-center" style="font-weight: 600;">36564</td>
+              <td>ศูนย์วิทยาศาสตร์การแพทย์ นครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">178</td>
+              <td class="text-center" style="font-weight: 600;">36525</td>
+              <td>โรงพยาบาลมหาราชนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">179</td>
+              <td class="text-center" style="font-weight: 600;">36565</td>
+              <td>โรงพยาบาลมหาราชนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">180</td>
+              <td class="text-center" style="font-weight: 600;">36593</td>
+              <td>โรงพยาบาลจิตเวชนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">181</td>
+              <td class="text-center" style="font-weight: 600;">36594</td>
+              <td>โรงพยาบาลจิตเวชนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">182</td>
+              <td class="text-center" style="font-weight: 600;">36604</td>
+              <td>ศูนย์ควบคุมโรคติดต่อนำโดยแมลงที่ 15 นครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">183</td>
+              <td class="text-center" style="font-weight: 600;">36605</td>
+              <td>ศูนย์ควบคุมโรคติดต่อนำโดยแมลงที่ 17 ปากช่อง</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">184</td>
+              <td class="text-center" style="font-weight: 600;">36607</td>
+              <td>ศูนย์ส่งเสริมสุขภาพเขต 5 จว.นม.</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">185</td>
+              <td class="text-center" style="font-weight: 600;">36608</td>
+              <td>ศูนย์ระบาดวิทยาภาคตะวันออกเฉียงเหนือ</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">186</td>
+              <td class="text-center" style="font-weight: 600;">36609</td>
+              <td>ศูนย์ช่างบำรุงที่ 5 นครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">187</td>
+              <td class="text-center" style="font-weight: 600;">36610</td>
+              <td>สำนักงานสาธารณสุขเขต 13 จังหวัดนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">188</td>
+              <td class="text-center" style="font-weight: 600;">36611</td>
+              <td>สำนักงานสาธารณสุขเขต 13 จังหวัดนครราชสีมา</td>
+              <td class="text-center">สาธารณสุข</td>
+            </tr>
+            <tr>
+              <td class="text-center">189</td>
+              <td class="text-center" style="font-weight: 600;">36491</td>
+              <td>สำนักงานตรวจเงินแผ่นดินภูมิภาคที่ 4</td>
+              <td class="text-center">สำนักงานการตรวจเงินแผ่นดิน</td>
+            </tr>
+            <tr>
+              <td class="text-center">190</td>
+              <td class="text-center" style="font-weight: 600;">36494</td>
+              <td>สำนักงานตรวจเงินแผ่นดินภูมิภาคที่ 4</td>
+              <td class="text-center">สำนักงานการตรวจเงินแผ่นดิน</td>
+            </tr>
+            <tr>
+              <td class="text-center">191</td>
+              <td class="text-center" style="font-weight: 600;">36470</td>
+              <td>ผู้บัญชาการตำรวจภูธร ภาค 3</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">192</td>
+              <td class="text-center" style="font-weight: 600;">36471</td>
+              <td>นายเวร ผู้บัญชาการตำรวจภูธร ภาค 3</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">193</td>
+              <td class="text-center" style="font-weight: 600;">36472</td>
+              <td>ผู้บังคับการตำรวจภูธรจังหวัด นม.</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">194</td>
+              <td class="text-center" style="font-weight: 600;">36473</td>
+              <td>กองกำกับการตำรวจภูธร อ.เมืองนครราชสีมา</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">195</td>
+              <td class="text-center" style="font-weight: 600;">36474</td>
+              <td>ศูนย์สื่อสาร 4 (สื่อสารตำรวจ-ในเมือง)</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">196</td>
+              <td class="text-center" style="font-weight: 600;">36475</td>
+              <td>ศูนย์ปฏิบัติการสื่อสาร ตำรวจภูธรจังหวัด นม. (FAX)</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">197</td>
+              <td class="text-center" style="font-weight: 600;">36476</td>
+              <td>ผู้บังคับการอำนวยการ ตำรวจภูธรภาค 3</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">198</td>
+              <td class="text-center" style="font-weight: 600;">36477</td>
+              <td>ห้องสื่อสาร ตำรวจภูธรภาค 3 (FAX)</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">199</td>
+              <td class="text-center" style="font-weight: 600;">36478</td>
+              <td>ชุมสายโทรศัพท์ ตำรวจภูธรภาค 3</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">200</td>
+              <td class="text-center" style="font-weight: 600;">36479</td>
+              <td>งาน 2 กองกำกับการ 2 กองตำรวจสันติบาล 1</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">201</td>
+              <td class="text-center" style="font-weight: 600;">36517</td>
+              <td>หน่วยบินตำรวจ</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">202</td>
+              <td class="text-center" style="font-weight: 600;">36570</td>
+              <td>งาน 4 กองกำกับ 4 กองบังคับการอำนวยการ ตร.ภ. ภาค 3</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">203</td>
+              <td class="text-center" style="font-weight: 600;">36571</td>
+              <td>งานกำลังพล ตำรวจภูธรจังหวัด นม.</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">204</td>
+              <td class="text-center" style="font-weight: 600;">36572</td>
+              <td>งานส่งกำลังบำรุง ตำรวจภูธรจังหวัด นม.</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">205</td>
+              <td class="text-center" style="font-weight: 600;">36573</td>
+              <td>งานการเงินและบัญชี ตำรวจภูธรจังหวัด นม.</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">206</td>
+              <td class="text-center" style="font-weight: 600;">36574</td>
+              <td>ศูนย์สื่อสาร 4 (สื่อสารตำรวจ - จอหอ)</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">207</td>
+              <td class="text-center" style="font-weight: 600;">36575</td>
+              <td>ศูนย์ปฏิบัติการสื่อสาร ตำรวจภูธรจังหวัด นม.</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">208</td>
+              <td class="text-center" style="font-weight: 600;">36576</td>
+              <td>ห้องสื่อสาร ตำรวจภูธรจังหวัด นม.</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">209</td>
+              <td class="text-center" style="font-weight: 600;">36577</td>
+              <td>ผู้กำกับการอำนวยการ ตำรวจภูธรจังหวัด นม.</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">210</td>
+              <td class="text-center" style="font-weight: 600;">36578</td>
+              <td>กองกำกับการ กองวิทยาการเขต 4</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">211</td>
+              <td class="text-center" style="font-weight: 600;">36579</td>
+              <td>กองวิทยาการ ภาค 2 (สนง.ผบก.วท.2)</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">212</td>
+              <td class="text-center" style="font-weight: 600;">36670</td>
+              <td>ศูนย์สารนิเทศ ตำรวจภูธรภาค 3</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">213</td>
+              <td class="text-center" style="font-weight: 600;">36671</td>
+              <td>รองผู้บัญชาการตำรวจภูธรภาค 3</td>
+              <td class="text-center">สำนักงานตำรวจแห่งชาติ</td>
+            </tr>
+            <tr>
+              <td class="text-center">214</td>
+              <td class="text-center" style="font-weight: 600;">36490</td>
+              <td>สำนักข่าวกรองแห่งชาติจังหวัด นม.</td>
+              <td class="text-center">สำนักนายกรัฐมนตรี</td>
+            </tr>
+            <tr>
+              <td class="text-center">215</td>
+              <td class="text-center" style="font-weight: 600;">36461</td>
+              <td>ประชาสัมพันธ์จังหวัด นม.</td>
+              <td class="text-center">สำนักนายกรัฐมนตรี</td>
+            </tr>
+            <tr>
+              <td class="text-center">216</td>
+              <td class="text-center" style="font-weight: 600;">36462</td>
+              <td>สถานีวิทยุกระจายเสียงแห่งประเทศไทย</td>
+              <td class="text-center">สำนักนายกรัฐมนตรี</td>
+            </tr>
+            <tr>
+              <td class="text-center">217</td>
+              <td class="text-center" style="font-weight: 600;">36468</td>
+              <td>อัยการจังหวัดนครราชสีมา</td>
+              <td class="text-center">อัยการสูงสุด</td>
+            </tr>
+            <tr>
+              <td class="text-center">218</td>
+              <td class="text-center" style="font-weight: 600;">36493</td>
+              <td>สำนักงานอุตสาหกรรมจังหวัด นม.</td>
+              <td class="text-center">อุตสาหกรรม</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ตารางสรุปข้อมูล -->
+      <div class="summary-container mt-4">
+        <h3 class="summary-title">สรุปจำนวนเลขหมายที่ติดตั้งแล้วแบ่งตามกระทรวง/หน่วยงาน</h3>
+        <table class="summary-table">
+          <tbody>
+            <tr>
+              <th>กระทรวงกลาโหม</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 40 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงการคลัง</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 4 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงการท่องเที่ยวและกีฬา</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 1 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงเกษตรและสหกรณ์</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 7 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงการพัฒนาสังคมและความมั่นคงของมนุษย์</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 1 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>คณะกรรมการเลือกตั้ง</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 2 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงเทคโนโลยีสารสนเทศและการสื่อสาร</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 3 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงมหาดไทย</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 79 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงยุติธรรม</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 6 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>สำนักงานศาลยุติธรรม</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 20 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงแรงงานและสวัสดิการสังคม</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 5 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงทรัพยากรธรรมชาติและสิ่งแวดล้อม</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 1 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงศึกษาธิการ</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 3 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>สภากาชาดไทย</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 2 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงสาธารณสุข</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 15 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>สำนักงานตรวจเงินแผ่นดิน</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 2 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>สำนักงานตำรวจแห่งชาติ</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 23 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>สำนักนายกรัฐมนตรี</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 3 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>อัยการสูงสุด</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 1 เลขหมาย</td>
+            </tr>
+            <tr>
+              <th>กระทรวงอุตสาหกรรม</th>
+              <td>ติดตั้งไปแล้วทั้งหมดจำนวน 1 เลขหมาย</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div> <!-- ปิด content-card -->
+
+  </div>
+</main>
+
+<!-- ============ CONTACT / FOOTER ============ -->
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-brand">
+        <div class="th">ศูนย์เทคโนโลยีสารสนเทศ<br>และการสื่อสาร เขต 4 (นครราชสีมา)</div>
+        <p>ถ.กำแหงสงคราม ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา 30000</p>
+        <p style="margin-top:10px;">โทร. (มท) 36443 | (TOT) 0-4424-2995<br>อีเมล: zonel4@moi.go.th</p>
+        
+        <!-- ไอคอนโซเชียลเป็นแบบ SVG -->
+        <div class="social-row">
+          <a href="https://www.facebook.com/share/1EwudMQhZi/" class="btn-fb" aria-label="Facebook" target="_blank">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="mailto:zonel4@moi.go.th" class="btn-email" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="https://maps.app.goo.gl/6r1vtkxExDf5j2U77" target="_blank" class="btn-map" aria-label="Map">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="contact-col">
+        <h5>ระบบงานออนไลน์</h5>
+        <ul>
+          <li><a href="#">E-Office ศสข.4</a></li>
+          <li><a href="#">สารบรรณอิเล็กทรอนิกส์</a></li>
+          <li><a href="#">Mail moi.go.th</a></li>
+          <li><a href="#">www.live.moi.go.th (VCS)</a></li>
+        </ul>
+      </div>
+      <div class="contact-col two-col">
+        <h5>หน่วยงานเครือข่าย</h5>
+        <ul>
+          <li><a href="http://zone1.moi.go.th" target="_blank">ศสข.1 (อยุธยา)</a></li>
+          <li><a href="http://zone2.moi.go.th" target="_blank">ศสข.2 (ชลบุรี)</a></li>
+          <li><a href="http://zone3.moi.go.th" target="_blank">ศสข.3 (นครปฐม)</a></li>
+          <li><a href="http://zone4.moi.go.th" target="_blank">ศสข.4 (นครราชสีมา)</a></li>
+          <li><a href="http://zone5.moi.go.th" target="_blank">ศสข.5 (อุดรธานี)</a></li>
+          <li><a href="http://zone6.moi.go.th" target="_blank">ศสข.6 (ขอนแก่น)</a></li>
+          <li><a href="http://zone7.moi.go.th" target="_blank">ศสข.7 (เชียงใหม่)</a></li>
+          <li><a href="http://zone8.moi.go.th" target="_blank">ศสข.8 (พิษณุโลก)</a></li>
+          <li><a href="http://zone9.moi.go.th" target="_blank">ศสข.9 (นครสวรรค์)</a></li>
+          <li><a href="http://zone10.moi.go.th" target="_blank">ศสข.10 (สุราษฎร์ธานี)</a></li>
+          <li><a href="http://zone11.moi.go.th" target="_blank">ศสข.11 (นครศรีธรรมราช)</a></li>
+          <li><a href="http://zone12.moi.go.th" target="_blank">ศสข.12 (สงขลา)</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) — สำนักงานปลัดกระทรวงมหาดไทย</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ================= SCROLL NAV =================
+  const nav = document.getElementById('siteNav');
+  function handleScroll(){
+    if(window.scrollY > 60){ nav.classList.add('solid'); } else { nav.classList.remove('solid'); }
+  }
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+
+  // ================= REVEAL ANIMATION (ตั้งค่า 0 ให้แสดงเลยไม่ต้องเลื่อน) =================
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold: 0, rootMargin: "0px 0px 50px 0px"});
+  revealEls.forEach(el=>io.observe(el));
+
+  // บังคับแสดงทันทีเพื่อป้องกันตารางยาวแล้วจอใหญ่ไม่ถึง
+  setTimeout(() => {
+    revealEls.forEach(el => el.classList.add('in'));
+  }, 100);
+
+  // ================= ACCORDION NAV LOGIC =================
+  function toggleDropdown(e, btn) {
+    e.preventDefault();
+    e.stopPropagation();
+    let currentItem = btn.closest('.nav-item');
+    document.querySelectorAll('.nav-item').forEach(item => {
+      if (item !== currentItem) {
+        item.classList.remove('active');
+        item.querySelectorAll('.dropdown-group').forEach(group => group.classList.remove('active'));
+      }
+    });
+    currentItem.classList.toggle('active');
+  }
+
+  function toggleSub(e, header) {
+    e.preventDefault();
+    e.stopPropagation();
+    let currentGroup = header.closest('.dropdown-group');
+    let parentBox = header.closest('.dropdown-box');
+    parentBox.querySelectorAll('.dropdown-group').forEach(group => {
+      if (group !== currentGroup) {
+        group.classList.remove('active');
+      }
+    });
+    currentGroup.classList.toggle('active');
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+        item.querySelectorAll('.dropdown-group').forEach(group => group.classList.remove('active'));
+      });
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-item').forEach(item => {
+        item.classList.remove('active');
+        item.querySelectorAll('.dropdown-group').forEach(group => group.classList.remove('active'));
+      });
+    }
+  });
+
+  // ================= ควบคุม Sidebar โหมดมือถือ =================
+  const drawer = document.getElementById('mobileDrawer');
+  document.getElementById('menuToggle').addEventListener('click', ()=> drawer.classList.add('open'));
+  document.getElementById('closeDrawer').addEventListener('click', ()=> {
+      drawer.classList.remove('open');
+      setTimeout(() => {
+        drawer.querySelectorAll('.m-sub.open').forEach(sub => { sub.classList.remove('open'); });
+        drawer.querySelectorAll('a.m-top.active').forEach(activeBtn => { activeBtn.classList.remove('active'); });
+      }, 400);
+  });
+  
+  drawer.querySelectorAll('[data-m]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetSub = document.getElementById(btn.dataset.m);
+      const isOpen = targetSub.classList.contains('open');
+
+      drawer.querySelectorAll('.m-sub.open').forEach(sub => { sub.classList.remove('open'); });
+      drawer.querySelectorAll('a.m-top.active').forEach(activeBtn => { activeBtn.classList.remove('active'); });
+
+      if (!isOpen) {
+        targetSub.classList.add('open');
+        btn.classList.add('active'); 
+      }
+    });
+  });
+
+  drawer.querySelectorAll('a.m-top:not([data-m])').forEach(a => {
+    a.addEventListener('click', () => drawer.classList.remove('open'));
+  });
+
+  drawer.querySelectorAll('.m-sub a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      if (href && href !== '#' && !href.startsWith('javascript:')) {
+        // ให้ลิงก์ทำงานปกติ
+      } else {
+        drawer.classList.remove('open');
+      }
+    });
+  });
+</script>
+</body>
+</html>

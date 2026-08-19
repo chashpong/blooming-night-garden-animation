@@ -128,6 +128,7 @@ img{display:block;max-width:100%;}
   transition: transform 0.3s, box-shadow 0.3s; 
   background: var(--line); 
   box-shadow: 0 10px 20px rgba(10,30,51,0.1); 
+  cursor: pointer;
 }
 .pr-card-new:hover { 
   transform: translateY(-5px); 
@@ -162,6 +163,7 @@ img{display:block;max-width:100%;}
   margin-bottom: 8px; 
   font-family: 'Sarabun', sans-serif; 
   transition: color 0.3s; 
+  pointer-events: none;
 }
 .pr-card-new:hover .pr-title-new { 
   color: var(--gold-lt); 
@@ -174,9 +176,59 @@ img{display:block;max-width:100%;}
   align-items: center; 
   gap: 6px; 
   transition: gap 0.3s; 
+  pointer-events: none;
 }
 .pr-card-new:hover .pr-arrow-new { 
   gap: 12px; 
+}
+
+/* ================= ป๊อปอัป (Modal) สไตล์ ================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); 
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s; 
+    z-index: 9999;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.modal-box {
+    box-sizing: border-box; background: rgba(20, 30, 50, 0.45); backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3); border-left: 1px solid rgba(255, 255, 255, 0.3);
+    padding: clamp(20px, 4vw, 40px); border-radius: 20px; width: min(850px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px); box-shadow: 0 25px 45px rgba(0,0,0,0.5); position: relative;
+    transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform; 
+}
+.modal-overlay.active .modal-box { transform: translateY(0); }
+
+/* ปุ่มปิด Modal */
+.close-modal-btn {
+    position: absolute; top: 15px; right: 20px; background: none; border: none; 
+    font-size: 28px; color: #fff; cursor: pointer; opacity: 0.6; transition: 0.3s; z-index: 10;
+}
+.close-modal-btn:hover { opacity: 1; color: var(--gold-lt); transform: scale(1.1); }
+
+.modal-content-wrapper { display: flex; gap: 40px; align-items: stretch; text-align: left; }
+.modal-left { flex: 0 0 40%; display: flex; flex-direction: column; gap: 20px; }
+.modal-image-frame { padding: 0; border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); display: flex; justify-content: center; align-items: center; }
+.modal-image-frame img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+
+.modal-right { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.modal-title { margin: 0 0 14px 0; color: #ffffff; font-size: 32px; line-height: 1.7; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.modal-subtitle { margin: 0 0 15px 0; color: #00e5ff; font-size: 20px; font-weight: normal; line-height: 1.6; } 
+.modal-divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.15); margin: 0 0 20px 0; width: 100%; } 
+.modal-desc { color: rgba(255, 255, 255, 0.85); line-height: 1.8; font-size: 16px; white-space: pre-line; }
+
+@media (max-width: 700px) {
+    .modal-content-wrapper { flex-direction: column; gap: 18px; text-align: center; }
+    .modal-left { flex: none; }
+    .modal-image-frame img { aspect-ratio: 16/10; }
+    .modal-title { font-size: 22px; margin-bottom: 8px; }
+    .modal-subtitle { font-size: 16px; }
+    .modal-desc { font-size: 14px; line-height: 1.7; }
 }
 
 /* ================= PAGINATION STYLES ================= */
@@ -213,7 +265,7 @@ img{display:block;max-width:100%;}
 }
 
 /* ================= CONTACT / FOOTER ================= */
-.contact{background:linear-gradient(165deg,#081627,var(--navy) 60%,var(--navy-2));color:#fff;padding:100px 0 0; margin-top: 40px;}
+.contact{background:linear-gradient(165deg, var(--navy-3) 0%, var(--navy) 60%, var(--navy-2));color:#fff;padding:60px 0 0; margin-top: 0;}
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;}
 .contact-brand .th{font-family:'Sarabun',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
 .contact-brand p{color:#9db2c6;font-size:.85rem;max-width:340px;}
@@ -300,7 +352,7 @@ img{display:block;max-width:100%;}
   <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>           
 </div>
 <div class="dropdown-group">
-  <a href="#" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
+  <a href="http://ict4.moi.go.th/ict4car_booking/public/login" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
 </div>
           </div>
         </div>
@@ -474,7 +526,7 @@ img{display:block;max-width:100%;}
     <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>
 
     <div class="m-group-title">ระบบจองรถ ศสข.4</div>
-    <a href="#" target="_blank">จองรถ ศสข.4</a>
+    <a href="http://ict4.moi.go.th/ict4car_booking/public/login" target="_blank">ระบบจองรถ ศสข.4</a>
   </div>
 
   
@@ -569,122 +621,158 @@ img{display:block;max-width:100%;}
       
       <!-- หน้า 1 (รายการ 1-9) -->
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="แผนพัฒนาเศรษฐกิจและสังคมแห่งชาติ ฉบับที่ 14"
+           data-subtitle="ประเทศไทยต้องไปต่อ"
+           data-desc="รายละเอียดของแผนพัฒนาเศรษฐกิจและสังคมแห่งชาติ ฉบับที่ 14..."
+           data-img="ใส่ลิงก์รูปภาพ1.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #c8dff0, #8fb8d8);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">แผนพัฒนาเศรษฐกิจและสังคมแห่งชาติ ฉบับที่ 14 ประเทศไทยต้องไปต่อ</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="พระราชบัญญัติมาตรฐานทางจริยธรรม"
+           data-subtitle="พ.ศ. 2562"
+           data-desc="รายละเอียดเกี่ยวกับมาตรฐานทางจริยธรรมของเจ้าหน้าที่ของรัฐ..."
+           data-img="ใส่ลิงก์รูปภาพ2.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #e8ddc8, #d9b876);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">พระราชบัญญัติมาตรฐานทางจริยธรรม พ.ศ. 2562</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="โครงการปลูกจิตสำนึก"
+           data-subtitle="ธงไตรรงค์ ธำรงไทย"
+           data-desc="รายละเอียดโครงการรณรงค์เพื่อส่งเสริมความภาคภูมิใจในชาติ..."
+           data-img="ใส่ลิงก์รูปภาพ3.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #d4dde3, #a4b5c2);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">โครงการปลูกจิตสำนึก ธงไตรรงค์ ธำรงไทย</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="คู่มือการรักษาความมั่นคงปลอดภัยไซเบอร์"
+           data-subtitle="Cybersecurity"
+           data-desc="ข้อแนะนำสำหรับการรักษาความปลอดภัยทางไซเบอร์ในหน่วยงาน..."
+           data-img="ใส่ลิงก์รูปภาพ4.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #d6e8d8, #a2ccab);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">คู่มือการรักษาความมั่นคงปลอดภัยไซเบอร์ (Cybersecurity)</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="ประกาศนโยบายการคุ้มครองข้อมูลส่วนบุคคล"
+           data-subtitle="PDPA"
+           data-desc="นโยบายความเป็นส่วนตัวและแนวทางการปฏิบัติเกี่ยวกับการเก็บข้อมูล..."
+           data-img="ใส่ลิงก์รูปภาพ5.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #f4d9e0, #cf9ba9);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">ประกาศนโยบายการคุ้มครองข้อมูลส่วนบุคคล (PDPA)</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="ประชาสัมพันธ์ ระบบสารบรรณอิเล็กทรอนิกส์รูปแบบใหม่"
+           data-subtitle="E-Document"
+           data-desc="การเปลี่ยนแปลงและข้อควรทราบเกี่ยวกับการใช้งานระบบสารบรรณแบบใหม่..."
+           data-img="ใส่ลิงก์รูปภาพ6.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #dfd8f4, #a49bc7);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">ประชาสัมพันธ์ ระบบสารบรรณอิเล็กทรอนิกส์รูปแบบใหม่</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="แนวทางการใช้เทคโนโลยีคลาวด์ภาครัฐ"
+           data-subtitle="Government Cloud"
+           data-desc="ข้อบังคับและคำแนะนำในการนำระบบคลาวด์มาใช้กับข้อมูลภาครัฐ..."
+           data-img="ใส่ลิงก์รูปภาพ7.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #c8dff0, #8fb8d8);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">แนวทางการใช้เทคโนโลยีคลาวด์ภาครัฐ (Government Cloud)</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="โครงการพัฒนาระบบบริการประชาชน"
+           data-subtitle="e-Service"
+           data-desc="รายละเอียดของแผนงานบริการประชาชนผ่านระบบอิเล็กทรอนิกส์..."
+           data-img="ใส่ลิงก์รูปภาพ8.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #e8ddc8, #d9b876);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">โครงการพัฒนาระบบบริการประชาชน (e-Service)</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="คู่มือการใช้งานระบบจองรถส่วนกลางออนไลน์"
+           data-subtitle="Vehicle Booking System"
+           data-desc="ขั้นตอนในการทำเรื่องขออนุญาตใช้รถยนต์ส่วนกลางผ่านระบบออนไลน์..."
+           data-img="ใส่ลิงก์รูปภาพ9.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #d4dde3, #a4b5c2);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">คู่มือการใช้งานระบบจองรถส่วนกลางออนไลน์</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <!-- หน้า 2 (รายการ 10-12) -->
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="สรุปผลการดำเนินงาน ศสข.4"
+           data-subtitle="ไตรมาสที่ 1"
+           data-desc="รายงานผลสัมฤทธิ์และกิจกรรมต่างๆ ประจำไตรมาสแรกของปีงบประมาณ..."
+           data-img="ใส่ลิงก์รูปภาพ10.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #d6e8d8, #a2ccab);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">สรุปผลการดำเนินงาน ศสข.4 ไตรมาสที่ 1</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="กิจกรรมจิตอาสาพัฒนาชุมชนและสิ่งแวดล้อม"
+           data-subtitle="โครงการส่งเสริมสังคม"
+           data-desc="ภาพบรรยากาศและรายละเอียดของการจัดกิจกรรมจิตอาสาในหน่วยงาน..."
+           data-img="ใส่ลิงก์รูปภาพ11.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #f4d9e0, #cf9ba9);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">กิจกรรมจิตอาสาพัฒนาชุมชนและสิ่งแวดล้อม</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
 
       <div class="pr-item-card">
-        <a href="#" target="_blank" class="pr-card-new">
+        <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+           data-name="ประกาศจัดซื้อจัดจ้าง ประจำเดือน"
+           data-subtitle="จัดซื้อจัดจ้าง"
+           data-desc="รายการสรุปการจัดซื้อจัดจ้างและการใช้จ่ายงบประมาณของศูนย์ฯ..."
+           data-img="ใส่ลิงก์รูปภาพ12.jpg">
           <div class="pr-img-new" style="background: linear-gradient(150deg, #dfd8f4, #a49bc7);"></div>
           <div class="pr-overlay">
             <div class="pr-title-new">ประกาศจัดซื้อจัดจ้าง ประจำเดือน</div>
-            <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
           </div>
         </a>
       </div>
@@ -698,6 +786,26 @@ img{display:block;max-width:100%;}
 
   </div>
 </main>
+
+<!-- ============ ป๊อปอัป Modal ============ -->
+<div class="modal-overlay" id="modal">
+    <div class="modal-box">
+        <button class="close-modal-btn" id="closeModalBtn">×</button>
+        <div class="modal-content-wrapper">
+            <div class="modal-left">
+                <div class="modal-image-frame">
+                    <img src="" id="modal-image" alt="ภาพสถานที่">
+                </div>
+            </div>
+            <div class="modal-right">
+                <h2 id="modal-title" class="modal-title">ชื่อหัวข้อหลัก</h2>
+                <h4 id="modal-subtitle" class="modal-subtitle">คำอธิบายย่อย</h4>
+                <hr class="modal-divider">
+                <div id="modal-desc" class="modal-desc">รายละเอียดเนื้อหา...</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ============ CONTACT / FOOTER ============ -->
 <footer class="contact" id="contact">
@@ -732,27 +840,26 @@ img{display:block;max-width:100%;}
       <div class="contact-col">
         <h5>ระบบงานออนไลน์</h5>
         <ul>
-          <li><a href="#">E-Office ศสข.4</a></li>
-          <li><a href="#">สารบรรณอิเล็กทรอนิกส์</a></li>
-          <li><a href="#">Mail moi.go.th</a></li>
-          <li><a href="#">www.live.moi.go.th (VCS)</a></li>
+          <li><a href="https://srb.moi.go.th/portal/home" target="_blank">สารบรรณอิเล็กทรอนิกส์</a></li>
+          <li><a href="https://mail.moi.go.th/" target="_blank">Mail moi.go.th</a></li>
+          <li><a href="https://live.moi.go.th/#!/" target="_blank">www.live.moi.go.th (VCS)</a></li>
         </ul>
       </div>
       <div class="contact-col two-col">
         <h5>หน่วยงานเครือข่าย</h5>
         <ul>
-          <li><a href="http://zone1.moi.go.th" target="_blank">ศสข.1 (อยุธยา)</a></li>
-          <li><a href="http://zone2.moi.go.th" target="_blank">ศสข.2 (ชลบุรี)</a></li>
-          <li><a href="http://zone3.moi.go.th" target="_blank">ศสข.3 (นครปฐม)</a></li>
-          <li><a href="http://zone4.moi.go.th" target="_blank">ศสข.4 (นครราชสีมา)</a></li>
-          <li><a href="http://zone5.moi.go.th" target="_blank">ศสข.5 (อุดรธานี)</a></li>
-          <li><a href="http://zone6.moi.go.th" target="_blank">ศสข.6 (ขอนแก่น)</a></li>
-          <li><a href="http://zone7.moi.go.th" target="_blank">ศสข.7 (เชียงใหม่)</a></li>
-          <li><a href="http://zone8.moi.go.th" target="_blank">ศสข.8 (พิษณุโลก)</a></li>
-          <li><a href="http://zone9.moi.go.th" target="_blank">ศสข.9 (นครสวรรค์)</a></li>
-          <li><a href="http://zone10.moi.go.th" target="_blank">ศสข.10 (สุราษฎร์ธานี)</a></li>
-          <li><a href="http://zone11.moi.go.th" target="_blank">ศสข.11 (นครศรีธรรมราช)</a></li>
-          <li><a href="http://zone12.moi.go.th" target="_blank">ศสข.12 (สงขลา)</a></li>
+          <li><a href="https://ict1.moi.go.th/" target="_blank">ศสข.1 (อยุธยา)</a></li>
+          <li><a href="http://ict2.moi.go.th/" target="_blank">ศสข.2 (ชลบุรี)</a></li>
+          <li><a href="http://ict3.moi.go.th/2020/index2.html" target="_blank">ศสข.3 (นครปฐม)</a></li>
+          <li><a href="http://ict4.moi.go.th/zonel4/web_zonel4/index4.htm" target="_blank">ศสข.4 (นครราชสีมา)</a></li>
+          <li><a href="http://ict5.moi.go.th/index1.php" target="_blank">ศสข.5 (อุดรธานี)</a></li>
+          <li><a href="http://ict6.moi.go.th/" target="_blank">ศสข.6 (ขอนแก่น)</a></li>
+          <li><a href="http://ict7.moi.go.th/web1/GCMS-main/index.php" target="_blank">ศสข.7 (เชียงใหม่)</a></li>
+          <li><a href="https://ict8.moi.go.th/ict8/site/home.html" target="_blank">ศสข.8 (พิษณุโลก)</a></li>
+          <li><a href="https://ict9.moi.go.th/gcms/" target="_blank">ศสข.9 (นครสวรรค์)</a></li>
+          <li><a href="http://ict10.moi.go.th/ict10j/index.php" target="_blank">ศสข.10 (สุราษฎร์ธานี)</a></li>
+          <li><a href="http://ict11.moi.go.th/index.php/th/" target="_blank">ศสข.11 (นครศรีธรรมราช)</a></li>
+          <li><a href="http://ict12.moi.go.th/homePage.html" target="_blank">ศสข.12 (สงขลา)</a></li>
         </ul>
       </div>
     </div>
@@ -867,6 +974,40 @@ img{display:block;max-width:100%;}
       }
     });
   });
+
+  // ================= MODAL SCRIPT (ป๊อปอัปสำหรับ PR) =================
+  const modal = document.getElementById('modal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+
+  function openZoneModal(data) {
+      document.getElementById('modal-title').innerText = data.name;
+      document.getElementById('modal-subtitle').innerText = data.subtitle || "";
+      document.getElementById('modal-desc').innerText = data.desc || "";
+      document.getElementById('modal-image').src = data.img || ""; 
+      
+      modal.classList.add('active');
+  }
+
+  // เรียกใช้ Modal เมื่อกดที่ PR Banners
+  document.querySelectorAll('.modal-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          openZoneModal({
+              name: trigger.getAttribute('data-name'),
+              subtitle: trigger.getAttribute('data-subtitle'),
+              desc: trigger.getAttribute('data-desc'),
+              img: trigger.getAttribute('data-img')
+          });
+      });
+  });
+
+  function closeModal() { modal.classList.remove('active'); }
+  
+  if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', closeModal);
+  }
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
 
   // ================= SCRIPT สำหรับ PAGINATION (แบ่งหน้า) =================
   document.addEventListener("DOMContentLoaded", function() {

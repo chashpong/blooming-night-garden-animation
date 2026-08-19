@@ -123,6 +123,7 @@ img{display:block;max-width:100%;}
   flex-direction: column;
   text-decoration: none;
   height: 100%;
+  cursor: pointer;
 }
 .mission-card:hover .mission-thumb {
   transform: translateY(-5px);
@@ -181,6 +182,55 @@ img{display:block;max-width:100%;}
   line-height: 1.6;
 }
 
+/* ================= ป๊อปอัป (Modal) สไตล์ ================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); 
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s; 
+    z-index: 9999;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.modal-box {
+    box-sizing: border-box; background: rgba(20, 30, 50, 0.45); backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3); border-left: 1px solid rgba(255, 255, 255, 0.3);
+    padding: clamp(20px, 4vw, 40px); border-radius: 20px; width: min(850px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px); box-shadow: 0 25px 45px rgba(0,0,0,0.5); position: relative;
+    transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform; 
+}
+.modal-overlay.active .modal-box { transform: translateY(0); }
+
+/* ปุ่มปิด Modal */
+.close-modal-btn {
+    position: absolute; top: 15px; right: 20px; background: none; border: none; 
+    font-size: 28px; color: #fff; cursor: pointer; opacity: 0.6; transition: 0.3s; z-index: 10;
+}
+.close-modal-btn:hover { opacity: 1; color: var(--gold-lt); transform: scale(1.1); }
+
+.modal-content-wrapper { display: flex; gap: 40px; align-items: stretch; text-align: left; }
+.modal-left { flex: 0 0 40%; display: flex; flex-direction: column; gap: 20px; }
+.modal-image-frame { padding: 0; border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); display: flex; justify-content: center; align-items: center; }
+.modal-image-frame img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+
+.modal-right { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.modal-title { margin: 0 0 14px 0; color: #ffffff; font-size: 32px; line-height: 1.7; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.modal-subtitle { margin: 0 0 15px 0; color: #00e5ff; font-size: 20px; font-weight: normal; line-height: 1.6; } 
+.modal-divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.15); margin: 0 0 20px 0; width: 100%; } 
+.modal-desc { color: rgba(255, 255, 255, 0.85); line-height: 1.8; font-size: 16px; white-space: pre-line; }
+
+@media (max-width: 700px) {
+    .modal-content-wrapper { flex-direction: column; gap: 18px; text-align: center; }
+    .modal-left { flex: none; }
+    .modal-image-frame img { aspect-ratio: 16/10; }
+    .modal-title { font-size: 22px; margin-bottom: 8px; }
+    .modal-subtitle { font-size: 16px; }
+    .modal-desc { font-size: 14px; line-height: 1.7; }
+}
+
 /* ================= PAGINATION STYLES ================= */
 .pagination-container {
   display: flex;
@@ -215,7 +265,7 @@ img{display:block;max-width:100%;}
 }
 
 /* ================= CONTACT / FOOTER ================= */
-.contact{background:linear-gradient(165deg,#081627,var(--navy) 60%,var(--navy-2));color:#fff;padding:100px 0 0; margin-top: 40px;}
+.contact{background:linear-gradient(165deg, var(--navy-3) 0%, var(--navy) 60%, var(--navy-2));color:#fff;padding:60px 0 0; margin-top: 0;}
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:60px;}
 .contact-brand .th{font-family:'Sarabun',serif;font-size:1.4rem;line-height:1.5;margin-bottom:18px;}
 .contact-brand p{color:#9db2c6;font-size:.85rem;max-width:340px;}
@@ -302,7 +352,7 @@ img{display:block;max-width:100%;}
   <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>           
 </div>
 <div class="dropdown-group">
-  <a href="#" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
+  <a href="http://ict4.moi.go.th/ict4car_booking/public/login" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
 </div>
           </div>
         </div>
@@ -476,7 +526,7 @@ img{display:block;max-width:100%;}
     <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>
 
     <div class="m-group-title">ระบบจองรถ ศสข.4</div>
-    <a href="#" target="_blank">จองรถ ศสข.4</a>
+    <a href="http://ict4.moi.go.th/ict4car_booking/public/login" target="_blank">ระบบจองรถ ศสข.4</a>
   </div>
 
   
@@ -571,7 +621,11 @@ img{display:block;max-width:100%;}
       
       <!-- หน้า 1 (รายการ 1-9) -->
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="วางเครือข่ายสื่อสารเคลื่อนที่เร็ว (4G/5G)"
+           data-subtitle="ถวายความปลอดภัย ณ เดอะมอลล์ นครราชสีมา (11 เม.ย. 2567)"
+           data-desc="สนับสนุนภารกิจสมเด็จพระกนิษฐาธิราชเจ้าฯ พระราชทานเหรียญกาชาดสมนาคุณ ชั้นที่ 1"
+           data-img="ใส่รูปลงตรงนี้1.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-blue"></div>
             <span class="mission-date">11 เม.ย. 2567</span>
@@ -582,7 +636,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="วางเครือข่ายสื่อสาร ณ ม.ราชภัฏอุบลราชธานี"
+           data-subtitle="ถวายความปลอดภัย (22 ก.พ. 2567)"
+           data-desc="เสด็จทอดพระเนตรนิทรรศการงานหัตถกรรมชุมชนภูมิปัญญาไทย"
+           data-img="ใส่รูปลงตรงนี้2.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-gold"></div>
             <span class="mission-date">22 ก.พ. 2567</span>
@@ -593,7 +651,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="สนับสนุนภารกิจพระราชทานปริญญาบัตร"
+           data-subtitle="มหาวิทยาลัยอุบลราชธานี (8 ก.พ. 2567)"
+           data-desc="เชื่อมโยงวางเครือข่ายสื่อสารถวายความปลอดภัย"
+           data-img="ใส่รูปลงตรงนี้3.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-grey"></div>
             <span class="mission-date">8 ก.พ. 2567</span>
@@ -604,7 +666,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="การทดสอบระบบสื่อสารผ่านดาวเทียมประจำเดือน"
+           data-subtitle="15 ม.ค. 2567"
+           data-desc="เพื่อเตรียมความพร้อมรับมือสถานการณ์ฉุกเฉินและสาธารณภัยในเขตพื้นที่"
+           data-img="ใส่รูปลงตรงนี้4.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-green"></div>
             <span class="mission-date">15 ม.ค. 2567</span>
@@ -615,7 +681,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="สนับสนุนเครือข่ายสื่อสารภารกิจสำคัญ"
+           data-subtitle="ณ ศาลากลางจังหวัดสุรินทร์ (4 ธ.ค. 2566)"
+           data-desc="อำนวยความสะดวกด้านการสื่อสารและประสานงานระหว่างหน่วยงาน"
+           data-img="ใส่รูปลงตรงนี้5.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-pink"></div>
             <span class="mission-date">4 ธ.ค. 2566</span>
@@ -626,7 +696,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="ภารกิจร่วมกับกรมป้องกันและบรรเทาสาธารณภัย (ปภ.)"
+           data-subtitle="18 พ.ย. 2566"
+           data-desc="ศูนย์ฝึกปฏิบัติการร่วมเพื่อการกู้ภัย ณ จังหวัดบุรีรัมย์"
+           data-img="ใส่รูปลงตรงนี้6.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-purple"></div>
             <span class="mission-date">18 พ.ย. 2566</span>
@@ -637,7 +711,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="ติดตั้งระบบสื่อสารเคลื่อนที่เร็ว รองรับงานประเพณีประจำปี"
+           data-subtitle="5 ต.ค. 2566"
+           data-desc="จังหวัดศรีสะเกษ เพื่อให้การติดต่อประสานงานเป็นไปอย่างราบรื่น"
+           data-img="ใส่รูปลงตรงนี้7.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-blue"></div>
             <span class="mission-date">5 ต.ค. 2566</span>
@@ -648,7 +726,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="ทดสอบระบบประชุมทางไกล (VCS) ร่วมกับจังหวัดต่างๆ"
+           data-subtitle="21 ก.ย. 2566"
+           data-desc="ผ่านรถสื่อสารดาวเทียม เพื่อทดสอบความเสถียรของสัญญาณภาพและเสียง"
+           data-img="ใส่รูปลงตรงนี้8.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-gold"></div>
             <span class="mission-date">21 ก.ย. 2566</span>
@@ -659,7 +741,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="สนับสนุนภารกิจเฉลิมพระเกียรติสมเด็จพระนางเจ้าสิริกิติ์ฯ"
+           data-subtitle="12 ส.ค. 2566"
+           data-desc="เชื่อมโยงเครือข่ายถ่ายทอดสดพิธีการสำคัญระดับจังหวัด"
+           data-img="ใส่รูปลงตรงนี้9.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-grey"></div>
             <span class="mission-date">12 ส.ค. 2566</span>
@@ -671,7 +757,11 @@ img{display:block;max-width:100%;}
 
       <!-- หน้า 2 (รายการ 10-12) -->
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="ลงพื้นที่ตรวจสอบและบำรุงรักษารถสื่อสารดาวเทียม"
+           data-subtitle="30 ก.ค. 2566"
+           data-desc="ตามวงรอบการบำรุงรักษาประจำปี เพื่อให้พร้อมใช้งาน 100%"
+           data-img="ใส่รูปลงตรงนี้10.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-green"></div>
             <span class="mission-date">30 ก.ค. 2566</span>
@@ -682,7 +772,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="สาธิตการใช้งานรถสื่อสารดาวเทียมให้แก่หน่วยงานท้องถิ่น"
+           data-subtitle="14 มิ.ย. 2566"
+           data-desc="ถ่ายทอดองค์ความรู้และเทคโนโลยีสารสนเทศแก่ส่วนราชการอื่น"
+           data-img="ใส่รูปลงตรงนี้11.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-pink"></div>
             <span class="mission-date">14 มิ.ย. 2566</span>
@@ -693,7 +787,11 @@ img{display:block;max-width:100%;}
       </div>
 
       <div class="mission-item-card">
-        <a href="#" class="mission-card">
+        <a href="javascript:void(0)" class="mission-card modal-trigger"
+           data-name="ภารกิจร่วมกับจิตอาสาพระราชทาน 904"
+           data-subtitle="5 พ.ค. 2566"
+           data-desc="จัดตั้งศูนย์บัญชาการชั่วคราวเพื่ออำนวยความสะดวกในพื้นที่"
+           data-img="ใส่รูปลงตรงนี้12.jpg">
           <div class="mission-thumb">
             <div class="bg-grad bg-purple"></div>
             <span class="mission-date">5 พ.ค. 2566</span>
@@ -712,6 +810,26 @@ img{display:block;max-width:100%;}
 
   </div>
 </main>
+
+<!-- ============ ป๊อปอัป Modal ============ -->
+<div class="modal-overlay" id="modal">
+    <div class="modal-box">
+        <button class="close-modal-btn" id="closeModalBtn">×</button>
+        <div class="modal-content-wrapper">
+            <div class="modal-left">
+                <div class="modal-image-frame">
+                    <img src="" id="modal-image" alt="ภาพสถานที่">
+                </div>
+            </div>
+            <div class="modal-right">
+                <h2 id="modal-title" class="modal-title">ชื่อหัวข้อหลัก</h2>
+                <h4 id="modal-subtitle" class="modal-subtitle">คำอธิบายย่อย</h4>
+                <hr class="modal-divider">
+                <div id="modal-desc" class="modal-desc">รายละเอียดเนื้อหา...</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ============ CONTACT / FOOTER ============ -->
 <footer class="contact" id="contact">
@@ -746,27 +864,26 @@ img{display:block;max-width:100%;}
       <div class="contact-col">
         <h5>ระบบงานออนไลน์</h5>
         <ul>
-          <li><a href="#">E-Office ศสข.4</a></li>
-          <li><a href="#">สารบรรณอิเล็กทรอนิกส์</a></li>
-          <li><a href="#">Mail moi.go.th</a></li>
-          <li><a href="#">www.live.moi.go.th (VCS)</a></li>
+          <li><a href="https://srb.moi.go.th/portal/home" target="_blank">สารบรรณอิเล็กทรอนิกส์</a></li>
+          <li><a href="https://mail.moi.go.th/" target="_blank">Mail moi.go.th</a></li>
+          <li><a href="https://live.moi.go.th/#!/" target="_blank">www.live.moi.go.th (VCS)</a></li>
         </ul>
       </div>
       <div class="contact-col two-col">
         <h5>หน่วยงานเครือข่าย</h5>
         <ul>
-          <li><a href="http://zone1.moi.go.th" target="_blank">ศสข.1 (อยุธยา)</a></li>
-          <li><a href="http://zone2.moi.go.th" target="_blank">ศสข.2 (ชลบุรี)</a></li>
-          <li><a href="http://zone3.moi.go.th" target="_blank">ศสข.3 (นครปฐม)</a></li>
-          <li><a href="http://zone4.moi.go.th" target="_blank">ศสข.4 (นครราชสีมา)</a></li>
-          <li><a href="http://zone5.moi.go.th" target="_blank">ศสข.5 (อุดรธานี)</a></li>
-          <li><a href="http://zone6.moi.go.th" target="_blank">ศสข.6 (ขอนแก่น)</a></li>
-          <li><a href="http://zone7.moi.go.th" target="_blank">ศสข.7 (เชียงใหม่)</a></li>
-          <li><a href="http://zone8.moi.go.th" target="_blank">ศสข.8 (พิษณุโลก)</a></li>
-          <li><a href="http://zone9.moi.go.th" target="_blank">ศสข.9 (นครสวรรค์)</a></li>
-          <li><a href="http://zone10.moi.go.th" target="_blank">ศสข.10 (สุราษฎร์ธานี)</a></li>
-          <li><a href="http://zone11.moi.go.th" target="_blank">ศสข.11 (นครศรีธรรมราช)</a></li>
-          <li><a href="http://zone12.moi.go.th" target="_blank">ศสข.12 (สงขลา)</a></li>
+          <li><a href="https://ict1.moi.go.th/" target="_blank">ศสข.1 (อยุธยา)</a></li>
+          <li><a href="http://ict2.moi.go.th/" target="_blank">ศสข.2 (ชลบุรี)</a></li>
+          <li><a href="http://ict3.moi.go.th/2020/index2.html" target="_blank">ศสข.3 (นครปฐม)</a></li>
+          <li><a href="http://ict4.moi.go.th/zonel4/web_zonel4/index4.htm" target="_blank">ศสข.4 (นครราชสีมา)</a></li>
+          <li><a href="http://ict5.moi.go.th/index1.php" target="_blank">ศสข.5 (อุดรธานี)</a></li>
+          <li><a href="http://ict6.moi.go.th/" target="_blank">ศสข.6 (ขอนแก่น)</a></li>
+          <li><a href="http://ict7.moi.go.th/web1/GCMS-main/index.php" target="_blank">ศสข.7 (เชียงใหม่)</a></li>
+          <li><a href="https://ict8.moi.go.th/ict8/site/home.html" target="_blank">ศสข.8 (พิษณุโลก)</a></li>
+          <li><a href="https://ict9.moi.go.th/gcms/" target="_blank">ศสข.9 (นครสวรรค์)</a></li>
+          <li><a href="http://ict10.moi.go.th/ict10j/index.php" target="_blank">ศสข.10 (สุราษฎร์ธานี)</a></li>
+          <li><a href="http://ict11.moi.go.th/index.php/th/" target="_blank">ศสข.11 (นครศรีธรรมราช)</a></li>
+          <li><a href="http://ict12.moi.go.th/homePage.html" target="_blank">ศสข.12 (สงขลา)</a></li>
         </ul>
       </div>
     </div>
@@ -882,6 +999,34 @@ img{display:block;max-width:100%;}
       }
     });
   });
+
+  // ================= MODAL SCRIPT =================
+  const modal = document.getElementById('modal');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+
+  function openZoneModal(data) {
+      document.getElementById('modal-title').innerText = data.name;
+      document.getElementById('modal-subtitle').innerText = data.subtitle || "";
+      document.getElementById('modal-desc').innerText = data.desc || "";
+      document.getElementById('modal-image').src = data.img || ""; 
+      modal.classList.add('active');
+  }
+
+  document.querySelectorAll('.modal-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          openZoneModal({
+              name: trigger.getAttribute('data-name'),
+              subtitle: trigger.getAttribute('data-subtitle'),
+              desc: trigger.getAttribute('data-desc'),
+              img: trigger.getAttribute('data-img')
+          });
+      });
+  });
+
+  function closeModal() { modal.classList.remove('active'); }
+  if (closeModalBtn) { closeModalBtn.addEventListener('click', closeModal); }
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
 
   // ================= SCRIPT สำหรับ PAGINATION (แบ่งหน้า) =================
   document.addEventListener("DOMContentLoaded", function() {

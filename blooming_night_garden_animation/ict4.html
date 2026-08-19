@@ -175,7 +175,7 @@ img{display:block;max-width:100%;}
   width: 100%;
   background: 
     linear-gradient(180deg, rgba(10, 30, 51, 0.2) 0%, rgba(10, 30, 51, 0.95) 100%),
-    url('car6.png') center/cover no-repeat;
+    url('car8.png') center/cover no-repeat;
   color: #fff;
   border-bottom: 3px solid var(--gold);
   min-height: 550px; 
@@ -461,6 +461,7 @@ section{position:relative;}
   justify-content: center; align-items: flex-start; text-align: left; color: #fff;
 }
 .hero-glow { position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 20%, rgba(217,184,118,.25), transparent 55%); z-index: 0; }
+.hero-slide img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; z-index: 1; }
 .hero-royal-badge { 
   position: absolute; top: 40px; right: max(5%, calc((100% - 1180px) / 2)); 
   width: 85px; height: 85px; border-radius: 50%; 
@@ -499,6 +500,7 @@ section{position:relative;}
   position: relative; display: block; border-radius: 6px; overflow: hidden;
   aspect-ratio: 4 / 3 !important; width: 100%;
   transition: transform 0.3s; background: var(--line); 
+  cursor: pointer; /* เพิ่ม cursor pointer เพื่อบอกให้รู้ว่ากดได้ */
 }
 .pr-card-new:hover { transform: translateY(-4px); }
 .pr-img-new { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); }
@@ -508,9 +510,9 @@ section{position:relative;}
   background: linear-gradient(to top, rgba(10,30,51,0.95) 0%, rgba(10,30,51,0.3) 50%, transparent 100%);
   display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; z-index: 1;
 }
-.pr-title-new { color: #fff; font-size: 1rem; font-weight: 600; line-height: 1.4; margin-bottom: 8px; font-family: 'Sarabun', sans-serif; transition: color 0.3s; }
+.pr-title-new { color: #fff; font-size: 1rem; font-weight: 600; line-height: 1.4; margin-bottom: 8px; font-family: 'Sarabun', sans-serif; transition: color 0.3s; pointer-events: none;}
 .pr-card-new:hover .pr-title-new { color: var(--gold-lt); }
-.pr-arrow-new { color: #FFFFFF !important; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px; opacity: 1 !important; transition: opacity 0.3s, gap 0.3s; }
+.pr-arrow-new { color: #FFFFFF !important; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 6px; opacity: 1 !important; transition: opacity 0.3s, gap 0.3s; pointer-events: none;}
 .pr-card-new:hover .pr-arrow-new { opacity: 1; gap: 12px; }
 
 /* ================= INTERACTIVE MINI MAP ================= */
@@ -781,6 +783,58 @@ section{position:relative;}
   accent-color: var(--gold-lt);
 }
 
+/* ================= ป๊อปอัป (Modal) สำหรับแผนที่ 3D และ PR ================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); 
+    display: flex; justify-content: center; align-items: center;
+    opacity: 0; visibility: hidden; 
+    transition: opacity 0.3s ease, visibility 0.3s; 
+    z-index: 9999;
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+
+.modal-box {
+    box-sizing: border-box; background: rgba(20, 30, 50, 0.45); backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(255, 255, 255, 0.3); border-left: 1px solid rgba(255, 255, 255, 0.3);
+    padding: clamp(20px, 4vw, 40px); border-radius: 20px; width: min(850px, calc(100vw - 32px));
+    max-width: calc(100vw - 32px); box-shadow: 0 25px 45px rgba(0,0,0,0.5); position: relative;
+    transform: translateY(30px); transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform; 
+}
+.modal-overlay.active .modal-box { transform: translateY(0); }
+
+/* สไตล์ปุ่มปิด Modal */
+.close-modal-btn {
+    position: absolute; top: 15px; right: 20px; background: none; border: none; 
+    font-size: 28px; color: #fff; cursor: pointer; opacity: 0.6; transition: 0.3s; z-index: 10;
+}
+.close-modal-btn:hover { opacity: 1; color: var(--gold-lt); transform: scale(1.1); }
+
+.modal-content-wrapper { display: flex; gap: 40px; align-items: stretch; text-align: left; }
+.modal-left { flex: 0 0 40%; display: flex; flex-direction: column; gap: 20px; }
+.modal-image-frame { padding: 0; border: 1px solid rgba(0, 229, 255, 0.3); border-radius: 15px; overflow: hidden; box-shadow: 0 0 20px rgba(0, 229, 255, 0.1); display: flex; justify-content: center; align-items: center; }
+.modal-image-frame img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+.visit-btn { display: block; padding: 15px; background: rgba(0, 229, 255, 0.1); color: #00e5ff; text-align: center; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 20px; border: 1px solid rgba(0, 229, 255, 0.4); transition: 0.3s; }
+.visit-btn:hover { background: rgba(0, 229, 255, 0.9); color: #000; box-shadow: 0 0 20px rgba(0, 229, 255, 0.6); }
+
+.modal-right { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.modal-title { margin: 0 0 14px 0; color: #ffffff; font-size: 32px; line-height: 1.7; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+.modal-subtitle { margin: 0 0 15px 0; color: #00e5ff; font-size: 20px; font-weight: normal; line-height: 1.6; } 
+.modal-divider { border: none; border-top: 1px solid rgba(255, 255, 255, 0.15); margin: 0 0 20px 0; width: 100%; } 
+.modal-desc { color: rgba(255, 255, 255, 0.85); line-height: 1.8; font-size: 16px; white-space: pre-line; }
+
+@media (max-width: 700px) {
+    .modal-content-wrapper { flex-direction: column; gap: 18px; text-align: center; }
+    .modal-left { flex: none; }
+    .modal-image-frame img { aspect-ratio: 16/10; }
+    .modal-title { font-size: 22px; margin-bottom: 8px; }
+    .modal-subtitle { font-size: 16px; }
+    .modal-desc { font-size: 14px; line-height: 1.7; }
+    .visit-btn { font-size: 16px; padding: 12px; }
+}
+
 </style>
 </head>
 <body>
@@ -846,7 +900,7 @@ section{position:relative;}
   <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>           
 </div>
 <div class="dropdown-group">
-  <a href="#" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
+  <a href="http://ict4.moi.go.th/ict4car_booking/public/login" class="dropdown-header direct-link" target="_blank">ระบบจองรถ ศสข.4</a> 
 </div>
           </div>
         </div>
@@ -1020,7 +1074,7 @@ section{position:relative;}
     <a href="https://www.ubonratchathani.go.th/" target="_blank">จังหวัดอุบลราชธานี</a>
 
     <div class="m-group-title">ระบบจองรถ ศสข.4</div>
-    <a href="#" target="_blank">จองรถ ศสข.4</a>
+    <a href="http://ict4.moi.go.th/ict4car_booking/public/login" target="_blank">ระบบจองรถ ศสข.4</a>
   </div>
 
   
@@ -1111,6 +1165,7 @@ section{position:relative;}
     <p>"มุ่งสู่การเป็นองค์กรอัจฉริยะด้วยระบบบริหารจัดการเทคโนโลยีสารสนเทศและการสื่อสารที่เป็นสากลและธรรมาภิบาลเพื่อบูรณาการการบริหารจัดการของกระทรวงมหาดไทยและจังหวัด"</p>
   </div>
 </header>
+
 <!-- ============ HERO SLIDER BOX (5 สไลด์) ============ -->
 <section class="hero-slider-section">
   <div class="hero-slider-wrapper reveal">
@@ -1118,24 +1173,34 @@ section{position:relative;}
       
       <div class="hero-track" id="heroTrack">
         
+        <!-- สไลด์ที่ 1 -->
         <div class="hero-slide">
           <div class="hero-glow"></div>
+          <img src="photo-output_SnapseedCopy.jpg" alt="รูปที่ 1"> <!-- ใส่รูปตรงนี้ -->
         </div>
 
+        <!-- สไลด์ที่ 2 -->
         <div class="hero-slide">
           <div class="hero-glow"></div>
+          <img src="ชื่อไฟล์รูปที่2.jpg" alt="รูปที่ 2"> <!-- ใส่รูปตรงนี้ -->
         </div>
 
+        <!-- สไลด์ที่ 3 -->
         <div class="hero-slide">
           <div class="hero-glow"></div>
+          <img src="ชื่อไฟล์รูปที่3.jpg" alt="รูปที่ 3"> <!-- ใส่รูปตรงนี้ -->
         </div>
 
+        <!-- สไลด์ที่ 4 -->
         <div class="hero-slide">
           <div class="hero-glow"></div>
+          <img src="ชื่อไฟล์รูปที่4.jpg" alt="รูปที่ 4"> <!-- ใส่รูปตรงนี้ -->
         </div>
 
+        <!-- สไลด์ที่ 5 -->
         <div class="hero-slide">
           <div class="hero-glow"></div>
+          <img src="ชื่อไฟล์รูปที่5.jpg" alt="รูปที่ 5"> <!-- ใส่รูปตรงนี้ -->
         </div>
 
       </div> <!-- ปิด hero-track -->
@@ -1168,26 +1233,44 @@ section{position:relative;}
       <a class="more" href="pr_banners.html">ดูเพิ่มเติม →</a>
     </div>
 
+    <!-- แก้ไขตรงนี้: เปลี่ยน href เป็น javascript:void(0) และใส่คลาส modal-trigger พร้อมชุดข้อมูล -->
     <div class="pr-grid-new">
-      <a href="https://14thplan.nesdc.go.th" target="_blank" class="pr-card-new">
+      <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+         data-name="แผนพัฒนาเศรษฐกิจและสังคมแห่งชาติ ฉบับที่ 14"
+         data-subtitle="ประเทศไทยต้องไปต่อ"
+         data-desc="รายละเอียดของแผนพัฒนาเศรษฐกิจและสังคมแห่งชาติ ฉบับที่ 14 (พ.ศ. 2566 - 2570) มุ่งเน้นการพลิกโฉมประเทศไทยสู่สังคมก้าวหน้า เศรษฐกิจสร้างมูลค่า อย่างยั่งยืน"
+         data-img="ใส่รูปลงตรงนี้.jpg"
+         data-link="https://14thplan.nesdc.go.th">
         <div class="pr-img-new" style="background: linear-gradient(150deg, #c8dff0, #8fb8d8);"></div>
         <div class="pr-overlay">
           <div class="pr-title-new">แผนพัฒนาเศรษฐกิจและสังคมแห่งชาติ ฉบับที่ 14 ประเทศไทยต้องไปต่อ</div>
-          <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
+          
         </div>
       </a>
-      <a href="#" class="pr-card-new">
+      
+      <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+         data-name="พระราชบัญญัติมาตรฐานทางจริยธรรม"
+         data-subtitle="พ.ศ. 2562"
+         data-desc="รายละเอียดเกี่ยวกับมาตรฐานทางจริยธรรมของเจ้าหน้าที่ของรัฐ เพื่อให้การปฏิบัติงานเป็นไปอย่างโปร่งใส มีธรรมาภิบาล และเป็นที่เชื่อถือไว้วางใจของประชาชน"
+         data-img="ใส่รูปลงตรงนี้.jpg"
+         data-link="#">
         <div class="pr-img-new" style="background: linear-gradient(150deg, #e8ddc8, #d9b876);"></div>
         <div class="pr-overlay">
           <div class="pr-title-new">พระราชบัญญัติมาตรฐานทางจริยธรรม พ.ศ. 2562</div>
-          <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
+          
         </div>
       </a>
-      <a href="#" class="pr-card-new">
+      
+      <a href="javascript:void(0)" class="pr-card-new modal-trigger"
+         data-name="โครงการปลูกจิตสำนึก"
+         data-subtitle="ธงไตรรงค์ ธำรงไทย"
+         data-desc="รายละเอียดโครงการรณรงค์เพื่อส่งเสริมความภาคภูมิใจในชาติและการประดับธงชาติไทยอย่างถูกต้องเหมาะสม"
+         data-img="ใส่รูปลงตรงนี้.jpg"
+         data-link="#">
         <div class="pr-img-new" style="background: linear-gradient(150deg, #d4dde3, #a4b5c2);"></div>
         <div class="pr-overlay">
           <div class="pr-title-new">โครงการปลูกจิตสำนึก ธงไตรรงค์ ธำรงไทย</div>
-          <div class="pr-arrow-new">รายละเอียดเพิ่มเติม <span>→</span></div>
+          
         </div>
       </a>
     </div>
@@ -1233,7 +1316,10 @@ section{position:relative;}
 <!-- ============ STORY : HISTORY ============ -->
 <section class="pad" style="background: var(--paper);">
   <div class="wrap story reveal">
-    <div class="story-media-frame"><div class="ph1"></div></div>
+    <div class="story-media-frame">
+      <!-- ใส่รูปภาพตรงนี้แทนที่กล่อง ph1 -->
+      <img src="photo-output_SnapseedCopy.jpg" alt="ภาพประวัติความเป็นมา" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
     <div class="story-text">
       <h2>ภารกิจด้านการสื่อสารเพื่อกระทรวงมหาดไทย</h2>
       <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) เป็นหน่วยงานในสังกัดสำนักงานปลัดกระทรวงมหาดไทย มีภารกิจหลักในการวางระบบเครือข่ายสื่อสาร สนับสนุนการประชุมทางไกล และดูแลความมั่นคงปลอดภัยด้านสารสนเทศให้แก่หน่วยงานราชการในเขตพื้นที่รับผิดชอบ</p>
@@ -1249,7 +1335,8 @@ section{position:relative;}
 <section class="pad">
   <div class="wrap spot reveal">
     <div class="spot-frame">
-      <div class="ph-img"></div>
+      <!-- ใส่รูปภาพตรงนี้แทนที่กล่อง ph-img -->
+      <img src="photo-output_SnapseedCopy.jpg" alt="ภาพผู้อำนวยการ" style="width: 100%; height: 100%; object-fit: cover;">
       <div class="spot-overlay">
         <div class="spot-name">นายศุภชัย ศรีแสง</div>
         <div class="spot-title">ผู้อำนวยการศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา)</div>
@@ -1316,15 +1403,15 @@ section{position:relative;}
 <section class="pad" style="background: var(--paper);">
   <div class="wrap story reveal">
     <div class="story-media-frame video-inline-frame">
-      <video controls preload="metadata" poster="ใส่รูปปกวิดีโอตรงนี้.jpg">
-        <source src="ชื่อไฟล์วิดีโอของคุณ.mp4" type="video/mp4">
+      <video controls preload="metadata" poster="photo-output_SnapseedCopy.jpg">
+        <source src="video-output-CDF5955C-22EE-4867-A40B-D563906B3456-1.mp4" type="video/mp4">
         เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ HTML5
       </video>
     </div>
     <div class="story-text">
-      <h2>เราภูมิใจในความสำเร็จของศูนย์เทคโนฯ สป.มท.</h2>
-      <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) เป็นหน่วยงานในสังกัดสำนักงานปลัดกระทรวงมหาดไทย มีภารกิจหลักในการวางระบบเครือข่ายสื่อสาร สนับสนุนการประชุมทางไกล และดูแลความมั่นคงปลอดภัยด้านสารสนเทศ</p>
-      <p>วีดิทัศน์นำเสนอผลการดำเนินงาน สรุปภาพรวมความสำเร็จและการให้บริการเครือข่ายแก่หน่วยงานราชการในเขตพื้นที่รับผิดชอบ</p>
+      <h2>วีดิทัศน์แนะนำสถานที่ ศสข.4 (นครราชสีมา)</h2>
+      <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) เป็นหน่วยงานศูนย์กลางระดับภูมิภาคในสังกัดสำนักงานปลัดกระทรวงมหาดไทย ที่มีความพร้อมทั้งด้านอาคารสถานที่และอุปกรณ์เทคโนโลยีการสื่อสารที่ทันสมัย</p>
+      <p>ขอเชิญรับชมวีดิทัศน์เพื่อสัมผัสบรรยากาศการปฏิบัติงาน และทำความรู้จักกับพื้นที่ภายในศูนย์ฯ ซึ่งเป็นเบื้องหลังสำคัญในการขับเคลื่อนและสนับสนุนระบบเครือข่ายให้แก่หน่วยงานราชการในพื้นที่รับผิดชอบ</p>
     </div>
   </div>
 </section>
@@ -1332,64 +1419,89 @@ section{position:relative;}
 <!-- ============ หน้าจองรถ ============ -->
 <section class="pad" style="background: var(--paper);">
   <div class="wrap story reveal">
-    <div class="story-media-frame"><div class="ph1"></div></div>
+    <div class="story-media-frame">
+      <!-- ใส่รูปภาพตรงนี้แทนที่กล่อง ph1 -->
+      <img src="photo-output_SnapseedCopy.jpg" alt="ระบบบริหารจัดการยานพาหนะ" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
     <div class="story-text">
       <h2>ระบบบริหารจัดการยานพาหนะ</h2>
       <p>ศูนย์เทคโนโลยีสารสนเทศและการสื่อสาร เขต 4 (นครราชสีมา) ได้นำระบบบริหารจัดการยานพาหนะราชการแบบดิจิทัลเข้ามาประยุกต์ใช้ เพื่อยกระดับกระบวนการทำงานภายในหน่วยงานให้สอดคล้องกับนโยบายรัฐบาลดิจิทัล โดยเปลี่ยนผ่านจากการใช้เอกสารกระดาษมาสู่แพลตฟอร์มออนไลน์ที่รวดเร็วและปลอดภัย</p>
       <p>บุคลากรสามารถใช้ระบบนี้ในการตรวจสอบตารางรถว่าง ยื่นคำขออนุญาตใช้รถส่วนกลาง และติดตามสถานะการอนุมัติได้แบบเรียลไทม์ เพื่ออำนวยความสะดวกในการเดินทางไปปฏิบัติภารกิจในพื้นที่รับผิดชอบ และช่วยให้การบริหารจัดการทรัพยากรของศูนย์ฯ เกิดประสิทธิภาพสูงสุด</p>
       <div class="spot-quick" style="margin-top:22px;">
-        <a href="#" class="primary">จองรถ</a>
+        <a href="http://ict4.moi.go.th/ict4car_booking/public/login" class="primary">ระบบจองรถ</a>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- ============ NEWS ============ -->
+<!-- ============ NEWS (ประมวลภาพภารกิจรถสื่อสาร) ============ -->
 <section class="pad-sm" style="background:var(--paper);">
   <div class="wrap reveal">
+    
     <div class="news-head">
       <div>
         <h2 style="color:var(--navy);font-size:clamp(1.4rem,2.6vw,2rem);">ประมวลภาพภารกิจรถสื่อสารดาวเทียม</h2>
       </div>
       <a class="more" href="mission_gallery.html">ดูข่าวทั้งหมด →</a>
     </div>
+
     <div class="news-grid">
   
-  <article class="news-card">
-    <a href="#" style="display: block; text-decoration: none; color: inherit; height: 100%;">
-      <div class="news-thumb">
-        <div class="nt1"></div>
-        <span class="news-date">11 เม.ย. 2567</span>
-      </div>
-      <h3>วางเครือข่ายสื่อสารเคลื่อนที่เร็ว (4G/5G) ถวายความปลอดภัย ณ เดอะมอลล์ นครราชสีมา</h3>
-      <p>สนับสนุนภารกิจสมเด็จพระกนิษฐาธิราชเจ้าฯ พระราชทานเหรียญกาชาดสมนาคุณ ชั้นที่ 1</p>
-    </a>
-  </article>
+      <!-- การ์ดข่าวที่ 1 -->
+      <article class="news-card">
+        <!-- เพิ่มคลาส modal-trigger และ data-* สำหรับดึงไปโชว์ในป๊อปอัป -->
+        <a href="javascript:void(0)" class="modal-trigger" style="display: block; text-decoration: none; color: inherit; height: 100%;"
+           data-name="วางเครือข่ายสื่อสารเคลื่อนที่เร็ว (4G/5G)"
+           data-subtitle="ณ เดอะมอลล์ นครราชสีมา (11 เม.ย. 2567)"
+           data-desc="สนับสนุนภารกิจสมเด็จพระกนิษฐาธิราชเจ้าฯ พระราชทานเหรียญกาชาดสมนาคุณ ชั้นที่ 1"
+           data-img="ใส่ลิงก์รูปภาพที่จะให้โชว์ในป๊อปอัป.jpg"
+           data-link="#">
+          <div class="news-thumb">
+            <!-- ถ้าอยากเปลี่ยนกล่องสีๆ เป็นรูปภาพ ให้ลบ <div class="nt1"></div> แล้วใส่ <img src="รููป.jpg" style="width:100%;height:100%;object-fit:cover;"> แทนครับ -->
+            <div class="nt1"></div>
+            <span class="news-date">11 เม.ย. 2567</span>
+          </div>
+          <h3>วางเครือข่ายสื่อสารเคลื่อนที่เร็ว (4G/5G) ถวายความปลอดภัย ณ เดอะมอลล์ นครราชสีมา</h3>
+          <p>สนับสนุนภารกิจสมเด็จพระกนิษฐาธิราชเจ้าฯ พระราชทานเหรียญกาชาดสมนาคุณ ชั้นที่ 1</p>
+        </a>
+      </article>
 
-  <article class="news-card">
-    <a href="#" style="display: block; text-decoration: none; color: inherit; height: 100%;">
-      <div class="news-thumb">
-        <div class="nt2"></div>
-        <span class="news-date">22 ก.พ. 2567</span>
-      </div>
-      <h3>วางเครือข่ายสื่อสาร ณ ม.ราชภัฏอุบลราชธานี ถวายความปลอดภัย</h3>
-      <p>เสด็จทอดพระเนตรนิทรรศการงานหัตถกรรมชุมชนภูมิปัญญาไทย</p>
-    </a>
-  </article>
+      <!-- การ์ดข่าวที่ 2 -->
+      <article class="news-card">
+        <a href="javascript:void(0)" class="modal-trigger" style="display: block; text-decoration: none; color: inherit; height: 100%;"
+           data-name="วางเครือข่ายสื่อสาร ณ ม.ราชภัฏอุบลราชธานี"
+           data-subtitle="ถวายความปลอดภัย (22 ก.พ. 2567)"
+           data-desc="เสด็จทอดพระเนตรนิทรรศการงานหัตถกรรมชุมชนภูมิปัญญาไทย"
+           data-img="ใส่ลิงก์รูปภาพที่จะให้โชว์ในป๊อปอัป.jpg"
+           data-link="#">
+          <div class="news-thumb">
+            <div class="nt2"></div>
+            <span class="news-date">22 ก.พ. 2567</span>
+          </div>
+          <h3>วางเครือข่ายสื่อสาร ณ ม.ราชภัฏอุบลราชธานี ถวายความปลอดภัย</h3>
+          <p>เสด็จทอดพระเนตรนิทรรศการงานหัตถกรรมชุมชนภูมิปัญญาไทย</p>
+        </a>
+      </article>
 
-  <article class="news-card">
-    <a href="#" style="display: block; text-decoration: none; color: inherit; height: 100%;">
-      <div class="news-thumb">
-        <div class="nt3"></div>
-        <span class="news-date">8 ก.พ. 2567</span>
-      </div>
-      <h3>สนับสนุนภารกิจพระราชทานปริญญาบัตร มหาวิทยาลัยอุบลราชธานี</h3>
-      <p>เชื่อมโยงวางเครือข่ายสื่อสารถวายความปลอดภัย</p>
-    </a>
-  </article>
+      <!-- การ์ดข่าวที่ 3 -->
+      <article class="news-card">
+        <a href="javascript:void(0)" class="modal-trigger" style="display: block; text-decoration: none; color: inherit; height: 100%;"
+           data-name="สนับสนุนภารกิจพระราชทานปริญญาบัตร"
+           data-subtitle="มหาวิทยาลัยอุบลราชธานี (8 ก.พ. 2567)"
+           data-desc="เชื่อมโยงวางเครือข่ายสื่อสารถวายความปลอดภัย"
+           data-img="ใส่ลิงก์รูปภาพที่จะให้โชว์ในป๊อปอัป.jpg"
+           data-link="#">
+          <div class="news-thumb">
+            <div class="nt3"></div>
+            <span class="news-date">8 ก.พ. 2567</span>
+          </div>
+          <h3>สนับสนุนภารกิจพระราชทานปริญญาบัตร มหาวิทยาลัยอุบลราชธานี</h3>
+          <p>เชื่อมโยงวางเครือข่ายสื่อสารถวายความปลอดภัย</p>
+        </a>
+      </article>
 
-</div>
+    </div>
   </div>
 </section>
 
@@ -1433,6 +1545,27 @@ section{position:relative;}
     
   </div>
 </section>
+
+<!-- ============ ป๊อปอัป Modal ============ -->
+<div class="modal-overlay" id="modal">
+    <div class="modal-box">
+        <!-- เพิ่มปุ่มปิด Modal -->
+        <button class="close-modal-btn" id="closeModalBtn">×</button>
+        <div class="modal-content-wrapper">
+            <div class="modal-left">
+                <div class="modal-image-frame">
+                    <img src="" id="modal-image" alt="ภาพสถานที่">
+                </div>
+            </div>
+            <div class="modal-right">
+                <h2 id="modal-title" class="modal-title">ชื่อหัวข้อหลัก</h2>
+                <h4 id="modal-subtitle" class="modal-subtitle">คำอธิบายย่อย</h4>
+                <hr class="modal-divider">
+                <div id="modal-desc" class="modal-desc">รายละเอียดเนื้อหา...</div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- ============ CONTACT / FOOTER ============ -->
 <footer class="contact" id="contact">
@@ -1749,29 +1882,29 @@ section{position:relative;}
   }
 
   // ================= LIGHTBOX (IMAGE MODAL) SCRIPT =================
-  const modal = document.getElementById('imageModal');
+  const imgModal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImage');
   const closeBtn = document.querySelector('.img-close');
   const zoomableImages = document.querySelectorAll('.zoomable');
 
-  if (modal && modalImg) {
+  if (imgModal && modalImg) {
     zoomableImages.forEach(img => {
       img.addEventListener('click', function(e) {
         e.preventDefault(); 
         modalImg.src = this.src; 
-        modal.classList.add('show-modal'); 
+        imgModal.classList.add('show-modal'); 
       });
     });
 
     if (closeBtn) {
       closeBtn.addEventListener('click', function() {
-        modal.classList.remove('show-modal'); 
+        imgModal.classList.remove('show-modal'); 
       });
     }
 
-    modal.addEventListener('click', function(e) {
+    imgModal.addEventListener('click', function(e) {
       if (e.target !== modalImg) {
-        modal.classList.remove('show-modal'); 
+        imgModal.classList.remove('show-modal'); 
       }
     });
   }
@@ -1806,6 +1939,43 @@ section{position:relative;}
     
     popup.classList.remove('show');
   }
+
+  // ================= MODAL SCRIPT (ป๊อปอัปสำหรับ PR & MAP) =================
+  const modal = document.getElementById('modal');
+  const closeModalBtn = document.getElementById('closeModalBtn'); // เรียกปุ่มกากบาทใหม่
+
+  function openZoneModal(data) {
+      document.getElementById('modal-title').innerText = data.name;
+      document.getElementById('modal-subtitle').innerText = data.subtitle || ""; // ป้องกัน undefined
+      document.getElementById('modal-desc').innerText = data.desc || ""; // ป้องกัน undefined
+      document.getElementById('modal-image').src = data.img || ""; 
+      
+      modal.classList.add('active');
+  }
+
+  // เรียกใช้ Modal เมื่อกดที่ PR Banners
+  document.querySelectorAll('.modal-trigger').forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          openZoneModal({
+              name: trigger.getAttribute('data-name'),
+              subtitle: trigger.getAttribute('data-subtitle'),
+              desc: trigger.getAttribute('data-desc'),
+              img: trigger.getAttribute('data-img'),
+              link: trigger.getAttribute('data-link')
+          });
+      });
+  });
+
+  function closeModal() { modal.classList.remove('active'); }
+  
+  // กดกากบาทเพื่อปิด
+  if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', closeModal);
+  }
+
+  // กดพื้นที่ว่างเพื่อปิด
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
 
 </script>
 </body>
